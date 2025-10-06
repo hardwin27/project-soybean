@@ -13,10 +13,6 @@ public class ToolCardController : CardController
     public ToolCardData ToolCardData { get => toolCardData; }
     public List<RuntimeStat> RuntimeStats { get => runtimeStats; }
 
-    protected override void Awake()
-    {
-        base.Awake();
-    }
 
     public override void AssignCardData(CardData data)
     {
@@ -29,6 +25,8 @@ public class ToolCardController : CardController
             runtimeStats.Add(runtimeStat);
         }
         OnToolDataUpdated?.Invoke();
+
+        print($"ASSIGN TOOL {data.CardName}");
     }
 
     protected void ResetStat()
