@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Bon Fire
   cardType: 0
+  cardSprite: {fileID: 1821430817178382005, guid: 60c513f8bd4640947ac1c16e9c35dbdc, type: 3}

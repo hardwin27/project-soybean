@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: River
   cardType: 0
+  cardSprite: {fileID: -230049943765253345, guid: 76a0ab404dd1ddc4e877bf9fbccdc2cb, type: 3}

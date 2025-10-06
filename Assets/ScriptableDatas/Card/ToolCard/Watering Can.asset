@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Watering Can
   cardType: 2
+  cardSprite: {fileID: -6353250158189382985, guid: ef2dbff76fc5d6d47ab7af576692bf29, type: 3}
   statDatas:
   - {fileID: 11400000, guid: e828a091bd70cf142b1e44398cc44aab, type: 2}

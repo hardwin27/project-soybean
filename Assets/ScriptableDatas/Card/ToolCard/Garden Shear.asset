@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Garden Shear
   cardType: 2
+  cardSprite: {fileID: 4770390552978917424, guid: ffe107920a7686d4fa9149c5d362b7fa, type: 3}
   statDatas: []

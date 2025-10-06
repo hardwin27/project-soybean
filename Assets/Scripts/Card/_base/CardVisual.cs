@@ -26,14 +26,26 @@ public class CardVisual : MonoBehaviour
 
     protected virtual void UpdateBaseVisual()
     {
-        gameObject.name = cardController.CardData.CardName;
-        cardNameText.text = cardController.CardData.CardName;
-        foreach (var cardTypeColor in cardTypeColors)
+        CardData data = cardController.CardData;
+
+        gameObject.name = data.CardName;
+        cardNameText.text = data.CardName;
+        
+        if (data.CardSprite != null)
         {
-            if (cardTypeColor.CardType == cardController.CardData.CardType)
+            cardRenderer.sprite = data.CardSprite;
+            cardRenderer.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+            cardNameText.gameObject.SetActive(false);
+        }
+        else
+        {
+            foreach (var cardTypeColor in cardTypeColors)
             {
-                cardRenderer.color = cardTypeColor.Color;
-                break;
+                if (cardTypeColor.CardType == data.CardType)
+                {
+                    cardRenderer.color = cardTypeColor.Color;
+                    break;
+                }
             }
         }
     }

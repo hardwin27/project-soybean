@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Young Soybean Tree
   cardType: 1
+  cardSprite: {fileID: 2499843051522736046, guid: 47bbc94b75a08e545b4dc48b0b5ae653, type: 3}
