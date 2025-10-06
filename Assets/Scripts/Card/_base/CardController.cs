@@ -30,7 +30,7 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
     public Action OnCardPosDragged;
     public Action OnCardUnstacked;
-    public Action OnCardStacked;
+    public Action<CardController> OnCardStacked;
     public Action OnCardDragEnd;
     public Action<bool, int> OnDragSorted;
 
@@ -192,7 +192,7 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
             SetPos(StackedOnCard.StackPoint.position);
             ToggleDragSorting(false, cardToStackTo.ZOrder + 1);
-            OnCardStacked?.Invoke();
+            OnCardStacked?.Invoke(this);
         }
     }
 

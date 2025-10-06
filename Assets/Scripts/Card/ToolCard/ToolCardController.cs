@@ -6,8 +6,7 @@ using System;
 public class ToolCardController : CardController
 {
     [SerializeField, ReadOnly] private ToolCardData toolCardData;
-
-    [SerializeField] private List<RuntimeStat> runtimeStats = new List<RuntimeStat>();
+    [SerializeField, ReadOnly] private List<RuntimeStat> runtimeStats = new List<RuntimeStat>();
 
     public Action OnToolDataUpdated;
 
@@ -23,6 +22,12 @@ public class ToolCardController : CardController
     {
         base.AssignCardData(data);
         toolCardData = data as ToolCardData;
+        runtimeStats.Clear();
+        foreach (var stat in toolCardData.StatDatas)
+        {
+            var runtimeStat = new RuntimeStat(stat);
+            runtimeStats.Add(runtimeStat);
+        }
         OnToolDataUpdated?.Invoke();
     }
 

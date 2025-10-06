@@ -13,6 +13,12 @@ public class RuntimeStat
 
     public Action OnValueUpdated;
 
+    public RuntimeStat(StatData _stat)
+    {
+        stat = _stat;
+        SetValue(0);
+    }
+
     public void SetValue(int value)
     {
         currentValue = value;
