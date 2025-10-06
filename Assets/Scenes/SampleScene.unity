@@ -196,8 +196,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   recipes:
-  - {fileID: 11400000, guid: 5ae08eb9e4ed5224ab223459447c742b, type: 2}
+  - {fileID: 11400000, guid: ca2e0c51c7cafbe40b5843d48986f0d3, type: 2}
   - {fileID: 11400000, guid: 5af85e69dca75e14680b8604a6a990be, type: 2}
+  - {fileID: 11400000, guid: 1b0473e400938db42961bef9c22e90b7, type: 2}
+  - {fileID: 11400000, guid: 7b873691c57378146ae239f671d060e8, type: 2}
+  - {fileID: 11400000, guid: 0f444801369b5994f8d9615a17669161, type: 2}
+  - {fileID: 11400000, guid: 5ae08eb9e4ed5224ab223459447c742b, type: 2}
   cards: []
 --- !u!1 &519420028
 GameObject:
