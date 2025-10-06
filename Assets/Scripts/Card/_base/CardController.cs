@@ -16,6 +16,8 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
     [SerializeField] protected CardData cardData;
     [SerializeField] protected bool canBeDragged;
+    [SerializeField, ReadOnly] protected bool isOnProcess = false;
+    [SerializeField, ReadOnly] protected bool isTopStack = false;
     [SerializeField, ReadOnly] protected bool isDragged;
 
     [SerializeField] protected Transform stackPoint;
@@ -30,6 +32,7 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
     public Action OnCardPosDragged;
     public Action OnCardUnstacked;
+    public Action OnCardDestroyed;
     public Action<CardController> OnCardStacked;
     public Action OnCardDragEnd;
     public Action<bool, int> OnDragSorted;
@@ -37,6 +40,8 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     public CardData CardData { get => cardData;  }
 
     public bool CanBeDragged { get => canBeDragged; }
+    public bool IsOnProcess { get => isOnProcess; set => isOnProcess = value; }
+    public bool IsTopStack { get => isTopStack; set => isTopStack = value; }
     public bool IsDragged { get => isDragged; }
 
     public Transform StackPoint { get => stackPoint; }
@@ -85,7 +90,7 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        if (!CanBeDragged)
+        if (!CanBeDragged || IsOnProcess)
         { 
             return; 
         }
@@ -98,7 +103,7 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
     public void OnDrag(PointerEventData eventData)
     {
-        if (!CanBeDragged)
+        if (!!CanBeDragged || IsOnProcess)
         {
             return;
         }
@@ -108,12 +113,27 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        if (!CanBeDragged)
+        if (!CanBeDragged || IsOnProcess)
         {
             return;
         }
 
         HandleDragEnd();
+    }
+
+    public void OnDisable()
+    {
+        OnCardDestroyed?.Invoke();
+        Destroy(gameObject, 3f);
+    }
+
+    protected void HandleStackedCardDestroyed()
+    {
+        StackedOnCard.OnCardPosDragged -= HandleStackedPosDragged;
+        StackedOnCard.OnDragSorted -= HandleStackedDragSorted;
+        StackedOnCard.OnCardDestroyed -= HandleStackedCardDestroyed;
+        StackedOnCard.OnCardUnstacked?.Invoke();
+        stackedOnCard = null;
     }
 
     public virtual void AssignCardData(CardData data)
@@ -176,6 +196,7 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
             StackedOnCard.OnCardPosDragged -= HandleStackedPosDragged;
             StackedOnCard.OnDragSorted -= HandleStackedDragSorted;
+            StackedOnCard.OnCardDestroyed -= HandleStackedCardDestroyed;
             StackedOnCard.OnCardUnstacked?.Invoke();
             stackedOnCard = null;
         }
@@ -189,6 +210,7 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
             stackedOnCard = cardToStackTo;
             StackedOnCard.OnCardPosDragged += HandleStackedPosDragged;
             StackedOnCard.OnDragSorted += HandleStackedDragSorted;
+            StackedOnCard.OnCardDestroyed += HandleStackedCardDestroyed;
 
             SetPos(StackedOnCard.StackPoint.position);
             ToggleDragSorting(false, cardToStackTo.ZOrder + 1);

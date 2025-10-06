@@ -10,6 +10,8 @@ public class CardComboManager : Singleton<CardComboManager>
 
     [SerializeField, ReadOnly] private List<CardController> cards = new List<CardController>();
 
+    private CardGeneratorManager cardGeneratorManager;
+
     private void Awake()
     {
         cards = FindObjectsByType<CardController>(FindObjectsSortMode.None).ToList();
@@ -17,6 +19,15 @@ public class CardComboManager : Singleton<CardComboManager>
         {
             card.OnCardStacked += CheckStackedCard;
         }
+
+        cardGeneratorManager = CardGeneratorManager.Instance;
+        cardGeneratorManager.OnCardGenerated += HandleNewCard;
+    }
+
+    private void HandleNewCard(CardController card)
+    {
+        cards.Add(card);
+        card.OnCardStacked += CheckStackedCard;
     }
 
     private void CheckStackedCard(CardController stackedCard)
