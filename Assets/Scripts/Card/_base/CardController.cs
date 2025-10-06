@@ -1,11 +1,13 @@
 using System;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Rendering;
 
+
+
+// NOTE: TRY OUT THE GENERIC APPROACH IN THE FUTURE. IT'S ON DISCORD IMPORTANT
 [RequireComponent(typeof(Collider2D), typeof(SortingGroup))]
 public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
@@ -13,7 +15,6 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     protected SortingGroup cardSorting;
 
     [SerializeField] protected CardData cardData;
-    [SerializeField] protected CardVisual cardVisual;
     [SerializeField] protected bool canBeDragged;
     [SerializeField, ReadOnly] protected bool isDragged;
 
@@ -25,11 +26,15 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     [SerializeField] protected string cardDefaultSortName;
     [SerializeField] protected string cardDraggedSortName;
 
+    public Action OnBaseDataUpdated;
+
     public Action OnCardPosDragged;
     public Action OnCardUnstacked;
     public Action OnCardStacked;
     public Action OnCardDragEnd;
     public Action<bool, int> OnDragSorted;
+
+    public CardData CardData { get => cardData;  }
 
     public bool CanBeDragged { get => canBeDragged; }
     public bool IsDragged { get => isDragged; }
@@ -41,7 +46,7 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
     public int ZOrder
     {
-        private set
+        protected set
         {
             if (cardSorting != null)
             {
@@ -59,27 +64,32 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         }
     }
 
-    private void Awake()
+    protected virtual void Awake()
     {
         cardCollider = GetComponent<Collider2D>();
         cardSorting = GetComponent<SortingGroup>();
 
+        if (cardData != null)
+        {
+            AssignCardData(cardData);
+        }
+
         isDragged = false;
     }
 
-    private void Start()
+    protected void Start()
     {
-        if (cardData != null) 
-        {
-            cardVisual.SetVisual(cardData);
-        }
-
         lastPost = transform.position;
         HandleDragEnd();
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        if (!CanBeDragged)
+        { 
+            return; 
+        }
+
         SetDragPos(eventData);
         ToggleDragSorting(true, 0);
 
@@ -98,7 +108,18 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        if (!CanBeDragged)
+        {
+            return;
+        }
+
         HandleDragEnd();
+    }
+
+    public virtual void AssignCardData(CardData data)
+    {
+        cardData = data;
+        OnBaseDataUpdated?.Invoke();
     }
 
     protected void SetDragPos(PointerEventData eventData)

@@ -1,5 +1,6 @@
 using UnityEngine;
 using Sirenix.OdinInspector;
+using System;
 
 [System.Serializable]
 public class RuntimeStat
@@ -8,5 +9,13 @@ public class RuntimeStat
     [SerializeField, ReadOnly] private int currentValue;
 
     public StatData Stat { get => stat; }
-    public int CurrentValue { get => currentValue; set => currentValue = value; }
+    public int CurrentValue { get => currentValue;  }
+
+    public Action OnValueUpdated;
+
+    public void SetValue(int value)
+    {
+        currentValue = value;
+        OnValueUpdated?.Invoke();
+    }
 }

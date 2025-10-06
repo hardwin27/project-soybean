@@ -356,7 +356,7 @@ GameObject:
   - component: {fileID: 3857152050507311390}
   - component: {fileID: 7565457305340144349}
   - component: {fileID: 173459824613252619}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BaseCard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
