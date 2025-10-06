@@ -6,17 +6,24 @@ using UnityEngine.UI;
 public class CardProcessor : MonoBehaviour
 {
     [SerializeField, ReadOnly] private bool isProcessing = false;
+    [SerializeField] private Canvas cardCanvas;
     [SerializeField] private Slider progressSlider;
 
     [SerializeField, ReadOnly] private RecipeData processedRecipe;
     [SerializeField, ReadOnly] private List<CardController> processedStack;
 
-    public float processDuration;
-    public float processTimer;
+    private float processDuration;
+    private float processTimer;
 
     private void Awake()
     {
         ResetProcess();
+    }
+
+    private void Start()
+    {
+        cardCanvas.worldCamera = Camera.main;
+        progressSlider.maxValue = 1f;
     }
 
     private void Update()
@@ -26,6 +33,7 @@ public class CardProcessor : MonoBehaviour
             if (processTimer < processDuration)
             {
                 processTimer += Time.deltaTime;
+                progressSlider.value = processTimer / processDuration;
             }
             else
             { 
@@ -42,6 +50,8 @@ public class CardProcessor : MonoBehaviour
 
         processDuration = 0f;
         processTimer = 0f;
+
+        progressSlider.gameObject.SetActive(false);
     }
 
     private void FinishProcess()
@@ -125,6 +135,7 @@ public class CardProcessor : MonoBehaviour
             card.IsOnProcess = true;
         }
 
+        progressSlider.gameObject.SetActive(true);
         isProcessing = true;
     }
 

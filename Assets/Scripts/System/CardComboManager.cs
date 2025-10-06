@@ -35,10 +35,16 @@ public class CardComboManager : Singleton<CardComboManager>
         List<CardController> cardStack = new List<CardController>();
 
         CardController card = stackedCard;
+        CardController bottomCard = null;
         while (card != null) 
         {
             cardStack.Add(card);
+            if (card.StackedOnCard != null)
+            {
+                bottomCard = card.StackedOnCard;
+            }
             card = card.StackedOnCard;
+            
         }
 
         RecipeData selectedRecipe = null;
@@ -60,6 +66,10 @@ public class CardComboManager : Singleton<CardComboManager>
         if (selectedRecipe != null) 
         {
             Debug.Log($"COMBO {selectedRecipe.name}");
+            if (bottomCard.TryGetComponent(out CardProcessor cardProcessor))
+            {
+                cardProcessor.ProcessRecipe(selectedRecipe, cardStack);
+            }
         }
         else
         {

@@ -103,7 +103,7 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
     public void OnDrag(PointerEventData eventData)
     {
-        if (!!CanBeDragged || IsOnProcess)
+        if (!CanBeDragged || IsOnProcess)
         {
             return;
         }
