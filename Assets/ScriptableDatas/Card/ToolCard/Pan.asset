@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Pan
   m_EditorClassIdentifier: 
   cardName: Pan
-  buyPrice: 1
+  buyPrice: 0
   sellPrice: 0
   cardType: 2
   cardSprite: {fileID: 21300000, guid: 4cbeb94c03614d546bc0d4b2b74e1667, type: 3}

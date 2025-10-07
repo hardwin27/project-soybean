@@ -4,6 +4,21 @@ using UnityEngine;
 
 public class DeckBuyCardController : DeckCardController
 {
+    private void OnMouseUp()
+    {
+        if (CurrentCardOnDeck == null)
+        {
+            return;
+        }
+
+        if (CurrentCardOnDeck.CardData.BuyPrice <= 0)
+        {
+            OnDeckCardGenerated?.Invoke(CurrentCardOnDeck.CardData);
+
+            ChangeToNextCard();
+        }
+    }
+
     public override bool CanTakeCard(List<CardController> cardStacks)
     {
         int totalMoney = 0;

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: River
   m_EditorClassIdentifier: 
   cardName: River
-  buyPrice: 1
+  buyPrice: 0
   sellPrice: 0
   cardType: 0
   cardSprite: {fileID: 21300000, guid: 76a0ab404dd1ddc4e877bf9fbccdc2cb, type: 3}

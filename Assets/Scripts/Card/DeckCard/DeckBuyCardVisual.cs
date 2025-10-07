@@ -21,6 +21,8 @@ public class DeckBuyCardVisual : CardVisual
 
     protected override void UpdateBaseVisual()
     {
+        UpdateBaseSprite(cardController.CardData.CardSprite, cardController.CardData.CardType);
+        cardNameText.gameObject.SetActive(true);
         return;
     }
 
@@ -31,13 +33,13 @@ public class DeckBuyCardVisual : CardVisual
         {
             cardNameText.text = deckBuyCardController.DeckCardData.CardName;
             cardPriceText.text = "";
-            UpdateBaseSprite(null, deckBuyCardController.CardData.CardType);
+            /*UpdateBaseSprite(null, deckBuyCardController.CardData.CardType);*/
         }
         else
         {
             cardNameText.text = $"Buy {deckBuyCardController.CurrentCardOnDeck.CardData.CardName}";
             cardPriceText.text = $"{deckBuyCardController.CurrentCardOnDeck.CardData.BuyPrice}";
-            UpdateBaseSprite(deckBuyCardController.CurrentCardOnDeck.CardOnDeckSprite, deckBuyCardController.CurrentCardOnDeck.CardData.CardType);
+            /*UpdateBaseSprite(deckBuyCardController.CurrentCardOnDeck.CardOnDeckSprite, deckBuyCardController.CurrentCardOnDeck.CardData.CardType);*/
         }
     }
 }
