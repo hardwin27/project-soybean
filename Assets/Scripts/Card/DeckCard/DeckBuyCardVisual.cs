@@ -13,10 +13,10 @@ public class DeckBuyCardVisual : CardVisual
         deckBuyCardController = GetComponent<DeckBuyCardController>();
 
         deckBuyCardController.OnDeckCardUpdated += UpdateDeckBuyVisual;
-        deckBuyCardController.OnDeckCardGenerated += (card) =>
+        /*deckBuyCardController.OnDeckCardGenerated += (card) =>
         {
             UpdateDeckBuyVisual();
-        };
+        };*/
     }
 
     protected override void UpdateBaseVisual()

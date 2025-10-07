@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Farmer
   m_EditorClassIdentifier: 
   cardName: Farmer
-  buyPrice: 0
+  buyPrice: 1
   sellPrice: 0
   cardType: 1
   cardSprite: {fileID: 21300000, guid: 426ad3c7b1a72e748991d7d827684f33, type: 3}

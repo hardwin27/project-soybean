@@ -61,5 +61,7 @@ public class DeckCardController : CardController, ICardTaker
         {
             currentCardIndex = 0;
         }
+
+        OnDeckCardUpdated?.Invoke();
     }
 }

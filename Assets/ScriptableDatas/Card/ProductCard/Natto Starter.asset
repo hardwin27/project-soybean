@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Natto Starter
   m_EditorClassIdentifier: 
   cardName: Natto Starter
-  buyPrice: 0
+  buyPrice: 1
   sellPrice: 0
   cardType: 1
   cardSprite: {fileID: 21300000, guid: d07176fb850c71b4e9fea40e9e3011ad, type: 3}

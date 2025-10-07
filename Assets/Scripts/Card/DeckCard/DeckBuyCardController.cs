@@ -40,8 +40,9 @@ public class DeckBuyCardController : DeckCardController
             card.gameObject.SetActive(false);
         }
 
-        ChangeToNextCard();
 
         OnDeckCardGenerated?.Invoke(CurrentCardOnDeck.CardData);
+        
+        ChangeToNextCard();        
     }
 }
