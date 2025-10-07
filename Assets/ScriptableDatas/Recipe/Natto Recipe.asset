@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2040d34e3ada00447a716f803309cee1, type: 3}
+  m_Name: Natto Recipe
+  m_EditorClassIdentifier: 
+  cardCombos:
+  - {fileID: 11400000, guid: 6644b1ac2376bfd49a2cd240793dfc31, type: 2}
+  - {fileID: 11400000, guid: 26c0c7169b333b34c90d40419658bd61, type: 2}
+  topCardReq: {fileID: 11400000, guid: 26c0c7169b333b34c90d40419658bd61, type: 2}
+  requiredTools: []
+  processDuration: 5
+  generatedCard: {fileID: 11400000, guid: 2d9f4aebd1e21114685f3f2a21720d8d, type: 2}
+  generatedCardAmount: 2
+  destroyedCards:
+  - {fileID: 11400000, guid: 6644b1ac2376bfd49a2cd240793dfc31, type: 2}
+  toolChanges: []
