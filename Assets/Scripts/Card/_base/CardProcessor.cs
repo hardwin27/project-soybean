@@ -69,7 +69,7 @@ public class CardProcessor : MonoBehaviour
 
             for (int i = 0; i < processedRecipe.GeneratedCardAmount; i++)
             {
-                Vector2 randomPos = RandomPosAround(transform.position, 1.5f);
+                Vector2 randomPos = RandomValue.RandomPosAround(transform.position, 2f);
 
                 CardGeneratorManager.Instance.GenerateCard(
                    processedRecipe.GeneratedCard,
@@ -144,13 +144,5 @@ public class CardProcessor : MonoBehaviour
 
         progressSlider.gameObject.SetActive(true);
         isProcessing = true;
-    }
-
-    private static Vector2 RandomPosAround(Vector2 center, float radius)
-    {
-        float angle = Random.Range(0f, Mathf.PI * 2f);
-        float x = Mathf.Cos(angle) * radius;
-        float y = Mathf.Sin(angle) * radius;
-        return center + new Vector2(x, y);
     }
 }

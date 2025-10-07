@@ -8,13 +8,13 @@ public class CardComboManager : Singleton<CardComboManager>
 {
     [SerializeField] private List<RecipeData> recipes = new List<RecipeData>();
 
-    [SerializeField, ReadOnly] private List<CardController> cards = new List<CardController>();
+    /*[SerializeField, ReadOnly] private List<CardController> cards = new List<CardController>();*/
 
     private CardGeneratorManager cardGeneratorManager;
 
     private void Awake()
     {
-        cards = FindObjectsByType<CardController>(FindObjectsSortMode.None).ToList();
+        List<CardController> cards = FindObjectsByType<CardController>(FindObjectsSortMode.None).ToList();
         foreach (var card in cards)
         {
             card.OnCardStacked += CheckStackedCard;
@@ -26,7 +26,6 @@ public class CardComboManager : Singleton<CardComboManager>
 
     private void HandleNewCard(CardController card)
     {
-        cards.Add(card);
         card.OnCardStacked += CheckStackedCard;
     }
 
@@ -35,7 +34,7 @@ public class CardComboManager : Singleton<CardComboManager>
         List<CardController> cardStack = new List<CardController>();
 
         CardController card = stackedCard;
-        CardController bottomCard = null;
+        CardController bottomCard = stackedCard;
         while (card != null) 
         {
             cardStack.Add(card);
@@ -47,33 +46,45 @@ public class CardComboManager : Singleton<CardComboManager>
             
         }
 
-        RecipeData selectedRecipe = null;
-        foreach (var recipe in  recipes) 
+        if (bottomCard is ICardTaker cardTaker)
         {
-            if (recipe.TopCardReq == stackedCard.CardData)
-            {
-                if (CheckReqToolPass(recipe, cardStack))
-                {
-                    if (CheckCombo(recipe, cardStack))
-                    {
-                        selectedRecipe = recipe;
-                        break;
-                    }
-                }
-            }
-        }
+            cardStack.Remove(bottomCard);
 
-        if (selectedRecipe != null) 
-        {
-            Debug.Log($"COMBO {selectedRecipe.name}");
-            if (bottomCard.TryGetComponent(out CardProcessor cardProcessor))
+            if (cardTaker.CanTakeCard(cardStack))
             {
-                cardProcessor.ProcessRecipe(selectedRecipe, cardStack);
+                cardTaker.TakeCard(cardStack);
             }
         }
         else
         {
-            Debug.Log($"No Combo Detected");
+            RecipeData selectedRecipe = null;
+            foreach (var recipe in recipes)
+            {
+                if (recipe.TopCardReq == stackedCard.CardData)
+                {
+                    if (CheckReqToolPass(recipe, cardStack))
+                    {
+                        if (CheckCombo(recipe, cardStack))
+                        {
+                            selectedRecipe = recipe;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            if (selectedRecipe != null)
+            {
+                Debug.Log($"COMBO {selectedRecipe.name}");
+                if (bottomCard.TryGetComponent(out CardProcessor cardProcessor))
+                {
+                    cardProcessor.ProcessRecipe(selectedRecipe, cardStack);
+                }
+            }
+            else
+            {
+                Debug.Log($"No Combo Detected");
+            }
         }
     }
 

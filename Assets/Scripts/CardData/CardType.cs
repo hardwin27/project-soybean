@@ -4,5 +4,7 @@ public enum CardType
 {
     Utility,
     Product,
-    Tool
+    Tool,
+    Deck,
+    Money
 }
