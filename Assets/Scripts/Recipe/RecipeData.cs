@@ -10,6 +10,7 @@ public class RecipeData : ScriptableObject
     [SerializeField] private List<RecipeToolReq> requiredTools = new List<RecipeToolReq>();
     [SerializeField] private float processDuration;
     [SerializeField] private CardData generatedCard;
+    [SerializeField] private int generatedCardAmount = 1;
     [SerializeField] private List<CardData> destroyedCards;
     [SerializeField] private List<RecipeToolReq> toolChanges = new List<RecipeToolReq>();
 
@@ -18,6 +19,7 @@ public class RecipeData : ScriptableObject
     public List<RecipeToolReq> RequiredTools { get => requiredTools; }
     public float ProcessDuration { get => processDuration; }
     public CardData GeneratedCard { get => generatedCard; }
+    public int GeneratedCardAmount { get => generatedCardAmount; }
     public List<CardData> DestroyedCards { get => destroyedCards; }
     public List<RecipeToolReq> ToolChanges { get => toolChanges; }
 }

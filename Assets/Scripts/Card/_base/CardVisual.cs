@@ -16,6 +16,7 @@ public class CardVisual : MonoBehaviour
 
     [SerializeField] protected TextMeshPro cardNameText;
     [SerializeField] protected SpriteRenderer cardRenderer;
+    [SerializeField] protected Vector3 cardRendererSpriteScale;
     [SerializeField] protected List<CardTypeColor> cardTypeColors;
 
     protected virtual void Awake()
@@ -34,7 +35,7 @@ public class CardVisual : MonoBehaviour
         if (data.CardSprite != null)
         {
             cardRenderer.sprite = data.CardSprite;
-            cardRenderer.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+            cardRenderer.transform.localScale = /*new Vector3(0.3f, 0.3f, 0.3f)*/cardRendererSpriteScale;
             cardNameText.gameObject.SetActive(false);
         }
         else

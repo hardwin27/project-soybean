@@ -17,14 +17,43 @@ public class ToolCardVisual : CardVisual
 
     protected void UpdateToolVisual()
     {
+        Debug.Log($"UpdateToolVisual");
         foreach (var runtimeStat in toolCardController.RuntimeStats)
         {
-            runtimeStat.OnValueUpdated += UpdateStatIndicator;
+            GameObject statIndicator = GenerateStatIndicator(runtimeStat.Stat);
+
+            if (statIndicator != null) 
+            {
+                runtimeStat.OnValueUpdated += () =>
+                {
+                    ToggleIndicator(runtimeStat, statIndicator);
+                };
+
+                ToggleIndicator(runtimeStat, statIndicator);
+            }
         }
     }
 
-    protected void UpdateStatIndicator()
+    protected void ToggleIndicator(RuntimeStat runtimeStat, GameObject statIndicator)
     {
+        statIndicator.SetActive(runtimeStat.CurrentValue > 0);
+    }
 
+    protected GameObject GenerateStatIndicator(StatData statData)
+    {
+        GameObject statIndicator = null;
+
+        if (statData.StatIndicatorSprite != null) 
+        {
+            statIndicator = new GameObject($"{statData.StatName} Indicator");
+            statIndicator.transform.parent = statIndicatorParent;
+            statIndicator.transform.localPosition = statData.StatIndicatorPos;
+            statIndicator.transform.localScale = statData.StatIndicatorSize;
+            
+            SpriteRenderer statRenderer = statIndicator.AddComponent<SpriteRenderer>();
+            statRenderer.sprite = statData.StatIndicatorSprite;
+        }
+
+        return statIndicator;
     }
 }

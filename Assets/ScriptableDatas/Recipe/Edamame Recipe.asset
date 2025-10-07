@@ -19,6 +19,7 @@ MonoBehaviour:
   requiredTools: []
   processDuration: 3
   generatedCard: {fileID: 11400000, guid: 1613965851917ec48a712809876a0bef, type: 2}
+  generatedCardAmount: 3
   destroyedCards:
   - {fileID: 11400000, guid: 75388f4dcf290e44c8c27c41c2abb66f, type: 2}
   toolChanges: []

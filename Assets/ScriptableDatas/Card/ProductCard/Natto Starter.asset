@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a32bf65d960db90498ad63e779f0f7fb, type: 3}
+  m_Name: Natto Starter
+  m_EditorClassIdentifier: 
+  cardName: Soybean Seed
+  cardType: 1
+  cardSprite: {fileID: 21300000, guid: d07176fb850c71b4e9fea40e9e3011ad, type: 3}

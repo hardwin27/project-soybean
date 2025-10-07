@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8761259839710314657
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3904772500985923801}
+  m_Layer: 0
+  m_Name: StatIndicators
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3904772500985923801
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8761259839710314657}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1527463463835763419}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &4159895519560639639
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -60,7 +91,10 @@ PrefabInstance:
     - {fileID: 7565457305340144349, guid: 6ed42a861f27fea44b91d9f1cab9e63b, type: 3}
     - {fileID: 173459824613252619, guid: 6ed42a861f27fea44b91d9f1cab9e63b, type: 3}
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 3208895008169469516, guid: 6ed42a861f27fea44b91d9f1cab9e63b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3904772500985923801}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2839094570219111961, guid: 6ed42a861f27fea44b91d9f1cab9e63b, type: 3}
       insertIndex: -1
@@ -72,6 +106,11 @@ PrefabInstance:
 --- !u!212 &140578970282156941 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 4055919429897701146, guid: 6ed42a861f27fea44b91d9f1cab9e63b, type: 3}
+  m_PrefabInstance: {fileID: 4159895519560639639}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1527463463835763419 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3208895008169469516, guid: 6ed42a861f27fea44b91d9f1cab9e63b, type: 3}
   m_PrefabInstance: {fileID: 4159895519560639639}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2223818992814924430 stripped
@@ -93,6 +132,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardData: {fileID: 0}
   canBeDragged: 1
+  isOnProcess: 0
+  isTopStack: 0
   isDragged: 0
   stackPoint: {fileID: 2257734592085842062}
   stackedOnCard: {fileID: 0}
@@ -115,6 +156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardNameText: {fileID: 3225437142161472267}
   cardRenderer: {fileID: 140578970282156941}
+  cardRendererSpriteScale: {x: 0.3, y: 0.3, z: 0.3}
   cardTypeColors:
   - CardType: 0
     Color: {r: 1, g: 0.8000001, b: 0, a: 1}
@@ -122,7 +164,8 @@ MonoBehaviour:
     Color: {r: 0.38823533, g: 0.6431373, b: 0.1137255, a: 1}
   - CardType: 2
     Color: {r: 0.5137255, g: 0.078431375, b: 0.019607844, a: 1}
-  statIndicatorParent: {fileID: 0}
+  toolCardController: {fileID: 0}
+  statIndicatorParent: {fileID: 3904772500985923801}
 --- !u!4 &2257734592085842062 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2805741782347152409, guid: 6ed42a861f27fea44b91d9f1cab9e63b, type: 3}

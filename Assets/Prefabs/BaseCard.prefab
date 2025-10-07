@@ -191,7 +191,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3749518253528124622
 RectTransform:
   m_ObjectHideFlags: 0
@@ -376,6 +376,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardNameText: {fileID: 1547522013718126492}
   cardRenderer: {fileID: 4055919429897701146}
+  cardRendererSpriteScale: {x: 0.3, y: 0.3, z: 0.3}
   cardTypeColors:
   - CardType: 0
     Color: {r: 1, g: 0.8000001, b: 0, a: 1}

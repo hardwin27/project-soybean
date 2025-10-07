@@ -13,6 +13,10 @@ public class ToolCardController : CardController
     public ToolCardData ToolCardData { get => toolCardData; }
     public List<RuntimeStat> RuntimeStats { get => runtimeStats; }
 
+    protected override void Awake()
+    {
+        base.Awake();
+    }
 
     public override void AssignCardData(CardData data)
     {

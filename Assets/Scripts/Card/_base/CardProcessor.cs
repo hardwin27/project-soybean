@@ -65,12 +65,19 @@ public class CardProcessor : MonoBehaviour
 
         if (processedRecipe.GeneratedCard != null) 
         {
-            Vector2 randomPos = RandomPosAround(transform.position, 2.5f);
 
-            CardGeneratorManager.Instance.GenerateCard(
-                processedRecipe.GeneratedCard, 
-                new Vector3(randomPos.x, randomPos.y, transform.position.z)
-            );
+
+            for (int i = 0; i < processedRecipe.GeneratedCardAmount; i++)
+            {
+                Vector2 randomPos = RandomPosAround(transform.position, 1.5f);
+
+                CardGeneratorManager.Instance.GenerateCard(
+                   processedRecipe.GeneratedCard,
+                   new Vector3(randomPos.x, randomPos.y, transform.position.z)
+               );
+
+
+            }
         }
 
         if (processedRecipe.DestroyedCards.Count > 0)

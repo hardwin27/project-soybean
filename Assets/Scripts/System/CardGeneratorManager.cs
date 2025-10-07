@@ -11,6 +11,7 @@ public class CardGeneratorManager : Singleton<CardGeneratorManager>
 
     public void GenerateCard(CardData cardData, Vector3 pos)
     {
+        Debug.Log($"GenerateCard");
         GameObject generatedCardObj = null;
 
         if (cardData.CardType == CardType.Tool)

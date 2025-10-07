@@ -74,18 +74,14 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         cardCollider = GetComponent<Collider2D>();
         cardSorting = GetComponent<SortingGroup>();
 
-        if (cardData != null)
-        {
-            AssignCardData(cardData);
-        }
-
         isDragged = false;
     }
 
     protected void Start()
     {
+        AssignCardData(cardData);
         lastPost = transform.position;
-        HandleDragEnd();
+        /*HandleDragEnd();*/
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -165,7 +161,7 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
     protected void HandleStackedPosDragged()
     {
-        if (StackedOnCard == null)
+        if (StackedOnCard == null && StackedOnCard != this)
         {
             return;
         }
@@ -187,6 +183,11 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
     protected void StackWithCard(CardController cardToStackTo)
     {
+        if (cardToStackTo == this)
+        {
+            return;
+        }
+
         if (StackedOnCard != null)
         {
             if (cardToStackTo == StackedOnCard)
@@ -220,6 +221,11 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
     protected bool CanStackWithCard(CardController cardController)
     {
+        if (cardController == this)
+        {
+            return false;
+        }
+
         // for now prevent to stack on parents
         if (StackedOnCard == null)
         {

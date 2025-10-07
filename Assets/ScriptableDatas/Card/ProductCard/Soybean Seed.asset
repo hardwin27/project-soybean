@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Soybean Seed
   cardType: 1
-  cardSprite: {fileID: 4519569956932712252, guid: 3072987eb337a364bac47f767b9f4ce4, type: 3}
+  cardSprite: {fileID: 21300000, guid: 3072987eb337a364bac47f767b9f4ce4, type: 3}
