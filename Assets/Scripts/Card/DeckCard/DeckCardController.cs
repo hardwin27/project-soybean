@@ -12,6 +12,19 @@ public class DeckCardController : CardController, ICardTaker
     public Action<CardData> OnDeckCardGenerated;
 
     public DeckCardData DeckCardData { get => deckCardData;  }
+    public CardOnDeckData CurrentCardOnDeck
+    {
+        get
+        {
+            if (deckCardData == null) 
+            {
+                return null;
+            }
+
+            return deckCardData.CardsOnDeck[currentCardIndex] ?? null;
+        }
+    }
+
 
     protected override void Awake()
     {
@@ -39,5 +52,14 @@ public class DeckCardController : CardController, ICardTaker
     {
         if (deckCardData == null)
             return;
+    }
+
+    public void ChangeToNextCard()
+    {
+        currentCardIndex++;
+        if (currentCardIndex >= deckCardData.CardsOnDeck.Count)
+        {
+            currentCardIndex = 0;
+        }
     }
 }

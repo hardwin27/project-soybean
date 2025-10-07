@@ -31,10 +31,15 @@ public class CardVisual : MonoBehaviour
 
         gameObject.name = data.CardName;
         cardNameText.text = data.CardName;
-        
-        if (data.CardSprite != null)
+
+        UpdateBaseSprite(data.CardSprite, data.CardType);
+    }
+
+    protected void UpdateBaseSprite(Sprite cardSprite, CardType cardType)
+    {
+        if (cardSprite != null)
         {
-            cardRenderer.sprite = data.CardSprite;
+            cardRenderer.sprite = cardSprite;
             cardRenderer.transform.localScale = /*new Vector3(0.3f, 0.3f, 0.3f)*/cardRendererSpriteScale;
             cardNameText.gameObject.SetActive(false);
         }
@@ -42,7 +47,7 @@ public class CardVisual : MonoBehaviour
         {
             foreach (var cardTypeColor in cardTypeColors)
             {
-                if (cardTypeColor.CardType == data.CardType)
+                if (cardTypeColor.CardType == cardType)
                 {
                     cardRenderer.color = cardTypeColor.Color;
                     break;
