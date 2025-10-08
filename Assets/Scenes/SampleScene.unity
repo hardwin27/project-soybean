@@ -914,13 +914,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dragSpeed: 10
-  minX: -12
-  maxX: 12
-  minY: -6
-  maxY: 6
+  minX: -4.2
+  maxX: 4.2
+  minY: -0.3
+  maxY: 4
   zoomSpeed: 4
   minZoom: 2.12
-  maxZoom: 8
+  maxZoom: 6
   smoothZoomTime: 0.1
   blockingLayers:
     serializedVersion: 2
