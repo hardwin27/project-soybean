@@ -15,6 +15,7 @@ public class QuestController : MonoBehaviour
     [SerializeField] private GameplayUiController gameplayUi;
 
     public Action<QuestStatus> OnQuestAdded;
+    public Action OnLastQuestCompleted;
 
     private void Awake()
     {
@@ -32,6 +33,14 @@ public class QuestController : MonoBehaviour
         {
             OnQuestAdded?.Invoke(quest);
         }
+
+        quests[quests.Count - 1].OnQuestUpdated += () =>
+        {
+            if (quests[quests.Count - 1].IsCompleted)
+            {
+                OnLastQuestCompleted?.Invoke();
+            }
+        };
     }
 
     private void HandleRecipeProcessed(RecipeData recipe)

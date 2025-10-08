@@ -22,4 +22,5 @@ MonoBehaviour:
   generatedCardAmount: 2
   destroyedCards:
   - {fileID: 11400000, guid: 6644b1ac2376bfd49a2cd240793dfc31, type: 2}
+  - {fileID: 11400000, guid: 26c0c7169b333b34c90d40419658bd61, type: 2}
   toolChanges: []
