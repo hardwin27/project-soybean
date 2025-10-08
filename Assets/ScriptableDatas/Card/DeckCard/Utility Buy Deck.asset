@@ -22,3 +22,4 @@ MonoBehaviour:
     cardOnDeckSprite: {fileID: 0}
   - cardData: {fileID: 11400000, guid: 0652d4af353c0d14f8136588a45d0e04, type: 2}
     cardOnDeckSprite: {fileID: 0}
+  isLimited: 1

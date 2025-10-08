@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "RecipeQuestData", menuName = "Quest/Recipe Quest Data")]
-public class RecipeQuestData : ScriptableObject
+public class RecipeQuestData : QuestData
 {
     [SerializeField] protected RecipeData targetRecipe;
 

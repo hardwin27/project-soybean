@@ -64,7 +64,15 @@ public class DeckCardController : CardController, ICardTaker
         currentCardIndex++;
         if (currentCardIndex >= deckCardData.CardsOnDeck.Count)
         {
-            currentCardIndex = 0;
+            if (DeckCardData.IsLimited)
+            {
+                gameObject.SetActive(false);
+                return;
+            }
+            else
+            {
+                currentCardIndex = 0;
+            }
         }
 
         OnDeckCardUpdated?.Invoke();

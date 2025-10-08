@@ -15,7 +15,7 @@ MonoBehaviour:
   cardCombos:
   - {fileID: 11400000, guid: 1613965851917ec48a712809876a0bef, type: 2}
   - {fileID: 11400000, guid: eede1dc33a1a3d54c9ffc1e94eaa742c, type: 2}
-  topCardReq: {fileID: 11400000, guid: eede1dc33a1a3d54c9ffc1e94eaa742c, type: 2}
+  topCardReq: {fileID: 0}
   requiredTools:
   - toolCard: {fileID: 11400000, guid: eede1dc33a1a3d54c9ffc1e94eaa742c, type: 2}
     toolStats:
@@ -25,6 +25,7 @@ MonoBehaviour:
       statValue: 1
   processDuration: 5
   generatedCard: {fileID: 11400000, guid: 4f27c6ac64c3db14682d653b9e8444c7, type: 2}
+  generatedCardAmount: 1
   destroyedCards:
   - {fileID: 11400000, guid: 1613965851917ec48a712809876a0bef, type: 2}
   toolChanges:

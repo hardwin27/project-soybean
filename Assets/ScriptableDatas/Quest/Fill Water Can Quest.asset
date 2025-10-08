@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c170e3bae9011da4887c199c4f8e62d4, type: 3}
+  m_Name: Fill Water Can Quest
+  m_EditorClassIdentifier: 
+  questTitle: Bring Watering Can to the water source
+  targetRecipe: {fileID: 11400000, guid: 5af85e69dca75e14680b8604a6a990be, type: 2}

@@ -2,15 +2,21 @@ using UnityEngine;
 
 public class QuestUi : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private QuestController questController;
+    [SerializeField] private GameObject questEntryPrefab;
+    [SerializeField] private Transform questEntryParent;
+
+    private void Awake()
     {
-        
+        questController.OnQuestAdded += AddQuestEntry;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void AddQuestEntry(QuestStatus questStatus)
     {
-        
+        GameObject questEntryObj = Instantiate(questEntryPrefab, questEntryParent);
+        if (questEntryObj.TryGetComponent(out QuestEntryUi questEntryUi))
+        {
+            questEntryUi.AssignQuest(questStatus);
+        }
     }
 }

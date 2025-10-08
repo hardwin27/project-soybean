@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "UiQuestData", menuName = "Quest/UI Quest Data")]
-public class UiQuestData : ScriptableObject
+public class UiQuestData : QuestData
 {
     [SerializeField] protected string targetUiId;
 

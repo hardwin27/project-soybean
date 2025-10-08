@@ -5,8 +5,10 @@ using UnityEngine;
 public class DeckCardData : CardData
 {
     [SerializeField] protected List<CardOnDeckData> cardsOnDeck = new List<CardOnDeckData>();
+    [SerializeField] protected bool isLimited;
 
     public List<CardOnDeckData> CardsOnDeck { get => cardsOnDeck; }
+    public bool IsLimited { get => isLimited; }
 
     private void OnValidate()
     {

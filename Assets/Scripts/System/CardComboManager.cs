@@ -3,6 +3,7 @@ using System.Linq;
 using SingletonSystem;
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
+using System;
 
 public class CardComboManager : Singleton<CardComboManager>
 {
@@ -11,6 +12,8 @@ public class CardComboManager : Singleton<CardComboManager>
     /*[SerializeField, ReadOnly] private List<CardController> cards = new List<CardController>();*/
 
     private CardGeneratorManager cardGeneratorManager;
+
+    public Action<RecipeData> OnRecipeProcessed;
 
     private void Awake()
     {
@@ -65,7 +68,7 @@ public class CardComboManager : Singleton<CardComboManager>
             RecipeData selectedRecipe = null;
             foreach (var recipe in recipes)
             {
-                if (recipe.TopCardReq == stackedCard.TopCard.CardData)
+                if (CheckTopCardPass(recipe, stackedCard.TopCard))
                 {
                     if (CheckReqToolPass(recipe, cardStack))
                     {
@@ -84,6 +87,7 @@ public class CardComboManager : Singleton<CardComboManager>
                 if (bottomCard.TryGetComponent(out CardProcessor cardProcessor))
                 {
                     cardProcessor.ProcessRecipe(selectedRecipe, cardStack);
+                    OnRecipeProcessed?.Invoke(selectedRecipe);
                 }
             }
             else
@@ -108,6 +112,16 @@ public class CardComboManager : Singleton<CardComboManager>
         }
 
         return !cardDataOnStack.Except(recipe.CardCombos).Any() && !recipe.CardCombos.Except(cardDataOnStack).Any();
+    }
+
+    private bool CheckTopCardPass(RecipeData recipe, CardController topCard)
+    {
+        if (recipe.TopCardReq == null)
+        {
+            return true;
+        }
+
+        return recipe.TopCardReq == topCard.CardData;
     }
 
     private bool CheckReqToolPass(RecipeData recipe, List<CardController> cardStack)

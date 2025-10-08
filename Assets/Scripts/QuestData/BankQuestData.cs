@@ -1,7 +1,7 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "BankQuestData", menuName = "Scriptable Objects/BankQuestData")]
-public class BankQuestData : ScriptableObject
+[CreateAssetMenu(fileName = "BankQuestData", menuName = "Quest/Bank Quest Data")]
+public class BankQuestData : QuestData
 {
     [SerializeField] protected int targetTotalMoney;
 

@@ -1,9 +1,12 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class DeckSellCardController : DeckCardController
 {
     [SerializeField] private MoneyCardData moneyCardData;
+
+    public Action<CardController> OnCardSold;
     
     public override bool CanTakeCard(List<CardController> cardStacks)
     {
@@ -32,14 +35,15 @@ public class DeckSellCardController : DeckCardController
             totalMoney += card.CardData.SellPrice;
         }
 
-        foreach (CardController card in cardStacks)
-        {
-            card.gameObject.SetActive(false);
-        }
-
         for (int i = 0; i < totalMoney; i++)
         {
             OnDeckCardGenerated?.Invoke(moneyCardData);
+        }
+
+        foreach (CardController card in cardStacks)
+        {
+            OnCardSold?.Invoke(card);
+            card.gameObject.SetActive(false);
         }
     }
 }
