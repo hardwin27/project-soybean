@@ -1003,7 +1003,7 @@ MonoBehaviour:
   smoothZoomTime: 0.1
   blockingLayers:
     serializedVersion: 2
-    m_Bits: 9
+    m_Bits: 41
   dragOrigin: {x: 0, y: 0, z: 0}
   isDragging: 0
 --- !u!1 &546127916
@@ -2669,7 +2669,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 892935462}
   m_HandleRect: {fileID: 892935461}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -3916,7 +3916,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 834890157}
   m_HandleRect: {fileID: 834890156}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:

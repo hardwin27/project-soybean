@@ -1,5 +1,6 @@
 using UnityEngine;
 using Sirenix.OdinInspector;
+using UnityEngine.EventSystems;
 
 public class CameraController : MonoBehaviour
 {
@@ -62,6 +63,9 @@ public class CameraController : MonoBehaviour
 
     void HandleZoomInput()
     {
+        if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
+            return;
+
         float scroll = Input.GetAxis("Mouse ScrollWheel");
         
         if (scroll != 0)
@@ -75,9 +79,16 @@ public class CameraController : MonoBehaviour
 
     bool IsOverBlockingObject()
     {
-        Vector2 mousePosition = cam.ScreenToWorldPoint(Input.mousePosition);
+        /*Vector2 mousePosition = cam.ScreenToWorldPoint(Input.mousePosition);
         RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero, Mathf.Infinity, blockingLayers);
         
+        return hit.collider != null;*/
+
+        if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
+            return true;
+
+        Vector2 mousePosition = cam.ScreenToWorldPoint(Input.mousePosition);
+        RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero, Mathf.Infinity, blockingLayers);
         return hit.collider != null;
     }
 
