@@ -25,6 +25,8 @@ public class DeckSellCardController : DeckCardController
     {
         int totalMoney = 0;
 
+        Debug.Log($"DECKSELL stack length: {cardStacks.Count}");
+
         foreach(CardController card in cardStacks) 
         {
             totalMoney += card.CardData.SellPrice;

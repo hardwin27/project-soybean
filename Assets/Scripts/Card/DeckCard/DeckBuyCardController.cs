@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class DeckBuyCardController : DeckCardController
 {
-    private void OnMouseUp()
+    protected override void OnMouseUp()
     {
+        base.OnMouseUp();
         if (CurrentCardOnDeck == null)
         {
             return;

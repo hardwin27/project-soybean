@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
+using TMPro.EditorUtilities;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Rendering;
@@ -23,6 +24,7 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     [SerializeField] protected Transform stackPoint;
 
     [SerializeField, ReadOnly] protected CardController stackedOnCard;
+    [SerializeField, ReadOnly] protected CardController topCard;
     [SerializeField, ReadOnly] protected Vector3 lastPost;
 
     [SerializeField] protected string cardDefaultSortName;
@@ -48,6 +50,7 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
     public bool IsStacked { get => stackedOnCard != null; }
     public CardController StackedOnCard { get => stackedOnCard; }
+    public CardController TopCard { get => topCard; }
 
     public int ZOrder
     {
@@ -81,6 +84,7 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     {
         AssignCardData(cardData);
         lastPost = transform.position;
+        SetTopCard(this);
         /*HandleDragEnd();*/
     }
 
@@ -123,12 +127,18 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         Destroy(gameObject, 3f);
     }
 
+    public void SetTopCard(CardController card)
+    {
+        topCard = card;
+    }
+
     protected void HandleStackedCardDestroyed()
     {
         StackedOnCard.OnCardPosDragged -= HandleStackedPosDragged;
         StackedOnCard.OnDragSorted -= HandleStackedDragSorted;
         StackedOnCard.OnCardDestroyed -= HandleStackedCardDestroyed;
         StackedOnCard.OnCardUnstacked?.Invoke();
+        stackedOnCard.SetTopCard(stackedOnCard);
         stackedOnCard = null;
     }
 
@@ -199,6 +209,7 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
             StackedOnCard.OnDragSorted -= HandleStackedDragSorted;
             StackedOnCard.OnCardDestroyed -= HandleStackedCardDestroyed;
             StackedOnCard.OnCardUnstacked?.Invoke();
+            stackedOnCard.SetTopCard(stackedOnCard);
             stackedOnCard = null;
         }
 
@@ -209,6 +220,7 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         else
         {
             stackedOnCard = cardToStackTo;
+            stackedOnCard.SetTopCard(TopCard);
             StackedOnCard.OnCardPosDragged += HandleStackedPosDragged;
             StackedOnCard.OnDragSorted += HandleStackedDragSorted;
             StackedOnCard.OnCardDestroyed += HandleStackedCardDestroyed;

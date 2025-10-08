@@ -33,11 +33,12 @@ public class CardComboManager : Singleton<CardComboManager>
     {
         List<CardController> cardStack = new List<CardController>();
 
-        CardController card = stackedCard;
-        CardController bottomCard = stackedCard;
+        CardController card = stackedCard.TopCard;
+        CardController bottomCard = stackedCard.TopCard;
         while (card != null) 
         {
             cardStack.Add(card);
+            Debug.Log($"CardComboManager add {card.CardData.CardName} to cardStack");
             if (card.StackedOnCard != null)
             {
                 bottomCard = card.StackedOnCard;
@@ -48,7 +49,11 @@ public class CardComboManager : Singleton<CardComboManager>
 
         if (bottomCard is ICardTaker cardTaker)
         {
+            Debug.Log($"CardComboManager stackLength before: {cardStack.Count}");
+            
             cardStack.Remove(bottomCard);
+
+            Debug.Log($"CardComboManager stackLength after: {cardStack.Count}");
 
             if (cardTaker.CanTakeCard(cardStack))
             {
@@ -60,7 +65,7 @@ public class CardComboManager : Singleton<CardComboManager>
             RecipeData selectedRecipe = null;
             foreach (var recipe in recipes)
             {
-                if (recipe.TopCardReq == stackedCard.CardData)
+                if (recipe.TopCardReq == stackedCard.TopCard.CardData)
                 {
                     if (CheckReqToolPass(recipe, cardStack))
                     {

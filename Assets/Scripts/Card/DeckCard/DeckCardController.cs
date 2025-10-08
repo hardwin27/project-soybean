@@ -31,6 +31,11 @@ public class DeckCardController : CardController, ICardTaker
         base.Awake();
     }
 
+    protected virtual void OnMouseUp()
+    {
+        return;
+    }
+
     public override void AssignCardData(CardData data)
     {
         base.AssignCardData(data);
