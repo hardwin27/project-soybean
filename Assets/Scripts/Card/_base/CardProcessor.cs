@@ -58,6 +58,8 @@ public class CardProcessor : MonoBehaviour
     {
         isProcessing = false;
 
+        AudioManager.Instance.PlaySFXObject("process_finished");
+
         foreach (CardController card in processedStack)
         {
             card.IsOnProcess = false;
@@ -144,5 +146,6 @@ public class CardProcessor : MonoBehaviour
 
         progressSlider.gameObject.SetActive(true);
         isProcessing = true;
+        AudioManager.Instance.PlaySFXObject("process_started");
     }
 }

@@ -94,6 +94,8 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
             return; 
         }
 
+        AudioManager.Instance.PlaySFXObject("card_dragged");
+
         SetDragPos(eventData);
         ToggleDragSorting(true, 0);
 

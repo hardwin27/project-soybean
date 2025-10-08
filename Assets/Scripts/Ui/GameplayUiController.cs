@@ -20,12 +20,14 @@ public class GameplayUiController : MonoBehaviour
         {
             questTab.transform.SetAsLastSibling();
             OnUiTriggered?.Invoke("quest-tab");
+            AudioManager.Instance.PlaySFX("ui_tab_changed");
         });
 
         recipeButton.onClick.AddListener(() =>
         {
             recipeTab.transform.SetAsLastSibling();
             OnUiTriggered?.Invoke("recipe-tab");
+            AudioManager.Instance.PlaySFX("ui_tab_changed");
         });
     }
 }

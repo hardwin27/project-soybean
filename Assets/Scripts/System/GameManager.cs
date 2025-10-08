@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
         gameClearPanel.SetActive(false);
         questController.OnLastQuestCompleted += HandleLastQuestFinished;
         restartGameButton.onClick.AddListener(ReloadScene);
+
+        AudioManager.Instance.PlayMusic("main_bgm");
     }
 
     private void HandleLastQuestFinished()

@@ -47,6 +47,8 @@ public class DeckBuyCardController : DeckCardController
     {
         base.TakeCard(cardStacks);
 
+        AudioManager.Instance.PlaySFXObject("give_money");
+
         int reqMoney = CurrentCardOnDeck.CardData.BuyPrice;
         
         for(int money = 0; money < reqMoney; money++) 

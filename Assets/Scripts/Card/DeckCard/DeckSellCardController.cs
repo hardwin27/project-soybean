@@ -45,5 +45,7 @@ public class DeckSellCardController : DeckCardController
             OnCardSold?.Invoke(card);
             card.gameObject.SetActive(false);
         }
+
+        AudioManager.Instance.PlaySFXObject("get_money");
     }
 }

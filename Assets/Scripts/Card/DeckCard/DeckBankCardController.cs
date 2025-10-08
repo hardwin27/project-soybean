@@ -24,6 +24,7 @@ public class DeckBankCardController : DeckCardController
 
     protected override void OnMouseUp()
     {
+        base.OnMouseUp();
         Debug.Log($"DECK BANK");
 
         if (currentMoney > 0)
@@ -32,6 +33,8 @@ public class DeckBankCardController : DeckCardController
             OnDeckCardGenerated?.Invoke(moneyCardData);
             OnDeckBankDatUpdated.Invoke();
         }
+
+        AudioManager.Instance.PlaySFXObject("get_money");
     }
 
     public override bool CanTakeCard(List<CardController> cardStacks)
@@ -73,5 +76,7 @@ public class DeckBankCardController : DeckCardController
         }
 
         OnDeckBankDatUpdated?.Invoke();
+
+        AudioManager.Instance.PlaySFXObject("give_money");
     }
 }

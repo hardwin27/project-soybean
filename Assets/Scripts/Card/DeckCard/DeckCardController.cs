@@ -33,6 +33,7 @@ public class DeckCardController : CardController, ICardTaker
 
     protected virtual void OnMouseUp()
     {
+        AudioManager.Instance.PlaySFXObject("card_dragged");
         return;
     }
 

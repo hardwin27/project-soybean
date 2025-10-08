@@ -1,8 +1,9 @@
+using PoolingSystem;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Pool;
 
-public class SFXController : MonoBehaviour
+public class SFXController : MonoBehaviour, IPoolable
 {
     [SerializeField] private AudioSource _audioSource;
 

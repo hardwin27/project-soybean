@@ -24,6 +24,7 @@ public class AudioManager : Singleton<AudioManager>
         else
         {
             musicSource.clip = s.Clip;
+            musicSource.volume = s.Volume;
             musicSource.Play();
         }
     }
@@ -43,12 +44,21 @@ public class AudioManager : Singleton<AudioManager>
         else
         {
             sfxSource.clip = s.Clip;
+            sfxSource.volume = s.Volume;
             sfxSource.Play();
         }
     }
 
-    public void PlaySFXObject(SoundData soundData)
+    public void PlaySFXObject(string name)
     {
-        sfxManager.PlaySFXClip(soundData.Clip, soundData.Volume);
+        SoundData s = Array.Find(sfxSounds, x => x.Name == name);
+        if (s == null)
+        {
+            Debug.Log("SFX Not Found");
+        }
+        else
+        {
+            sfxManager.PlaySFXClip(s.Clip, s.Volume);
+        }
     }
 }
