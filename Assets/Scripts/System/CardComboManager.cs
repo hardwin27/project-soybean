@@ -15,6 +15,8 @@ public class CardComboManager : Singleton<CardComboManager>
 
     public Action<RecipeData> OnRecipeProcessed;
 
+    public List<RecipeData> Recipes { get => recipes; }
+
     private void Awake()
     {
         List<CardController> cards = FindObjectsByType<CardController>(FindObjectsSortMode.None).ToList();

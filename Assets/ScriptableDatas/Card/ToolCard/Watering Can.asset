@@ -19,3 +19,4 @@ MonoBehaviour:
   cardSprite: {fileID: 21300000, guid: ef2dbff76fc5d6d47ab7af576692bf29, type: 3}
   statDatas:
   - {fileID: 11400000, guid: e828a091bd70cf142b1e44398cc44aab, type: 2}
+  withResourceSprite: {fileID: 21300000, guid: baa7472075ae06e45a77cdcc07f6cb7c, type: 3}

@@ -11,10 +11,12 @@ public class DebugUi : MonoBehaviour
     [SerializeField] private Button changeButton;
     [SerializeField] private GameObject debugUi;
     [SerializeField] private KeyCode hideDebugKeyCode;
+    [SerializeField] private Button closeButton;
 
     private void Start()
     {
         changeButton.onClick.AddListener(ChangeLayout);
+        closeButton.onClick.AddListener(CloseGame);
     }
 
     private void Update()
@@ -34,5 +36,19 @@ public class DebugUi : MonoBehaviour
         }
 
         layoutRenderer.sprite = layoutSprites[currentLayoutInd];
+    }
+
+    private void CloseGame()
+    {
+        RuntimePlatform platform = Application.platform;
+
+        // Check if the game is running on a PC (Windows or macOS)
+        if (platform == RuntimePlatform.WindowsPlayer ||
+            platform == RuntimePlatform.WindowsEditor ||
+            platform == RuntimePlatform.OSXPlayer ||
+            platform == RuntimePlatform.OSXEditor)
+        {
+            Application.Quit();
+        }
     }
 }

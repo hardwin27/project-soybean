@@ -5,8 +5,9 @@ using UnityEngine;
 public class ToolCardData : CardData
 {
     [SerializeField] protected List<StatData> statDatas = new List<StatData>();
-
+    [SerializeField] protected Sprite withResourceSprite;
     public List<StatData> StatDatas { get => statDatas; }
+    public Sprite WithResourceSprite { get => withResourceSprite; }
 
     private void OnValidate()
     {
