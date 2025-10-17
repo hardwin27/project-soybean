@@ -29,6 +29,9 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     [SerializeField] protected string cardDefaultSortName;
     [SerializeField] protected string cardDraggedSortName;
 
+    [Title("Debugging")]
+    [SerializeField, ReadOnly] List<CardController> overlapCardControllers = new List<CardController>();
+
     public Action OnBaseDataUpdated;
 
     public Action OnCardPosDragged;
@@ -108,6 +111,8 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         {
             return;
         }
+
+        Debug.Log($"Dragging {gameObject.name}");
 
         SetDragPos(eventData);
     }
@@ -241,6 +246,11 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
             return false;
         }
 
+        if (cardController == TopCard)
+        {
+            return false;
+        }
+
         // for now prevent to stack on parents
         if (StackedOnCard == null)
         {
@@ -270,7 +280,7 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         List<Collider2D> overlapColliders = new List<Collider2D>();
         Physics2D.OverlapCollider(cardCollider, new ContactFilter2D().NoFilter(), overlapColliders);
 
-        List<CardController> overlapCardControllers = new List<CardController>();
+        overlapCardControllers = new List<CardController>();
         foreach (Collider2D overlapCollider in overlapColliders)
         {
             if (overlapCollider.TryGetComponent(out CardController cardController))
@@ -298,18 +308,15 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
             foreach (CardController cardController in overlapCardControllers)
             {
-                /*StackWithCard(cardController);
-                return;*/
-
                 if (CanStackWithCard(cardController.TopCard))
                 {
+                    Debug.Log($"Stack To Card: {cardController.TopCard}");
                     StackWithCard(cardController.TopCard);
                     return;
                 }
             }
 
-            Debug.Log($"Not Stacking");
-
+            Debug.LogWarning($"Rejected Form Stack");
             SetPos(lastPost);
             ToggleDragSorting(false, ZOrder);
         }

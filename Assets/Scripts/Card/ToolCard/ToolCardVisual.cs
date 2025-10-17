@@ -17,7 +17,7 @@ public class ToolCardVisual : CardVisual
 
     protected void UpdateToolVisual()
     {
-        Debug.Log($"UpdateToolVisual");
+        /*Debug.Log($"UpdateToolVisual");*/
         foreach (var runtimeStat in toolCardController.RuntimeStats)
         {
             GameObject statIndicator = GenerateStatIndicator(runtimeStat.Stat);

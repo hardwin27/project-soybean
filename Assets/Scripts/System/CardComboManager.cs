@@ -43,7 +43,7 @@ public class CardComboManager : Singleton<CardComboManager>
         while (card != null) 
         {
             cardStack.Add(card);
-            Debug.Log($"CardComboManager add {card.CardData.CardName} to cardStack");
+            /*Debug.Log($"CardComboManager add {card.CardData.CardName} to cardStack");*/
             if (card.StackedOnCard != null)
             {
                 bottomCard = card.StackedOnCard;
@@ -54,11 +54,11 @@ public class CardComboManager : Singleton<CardComboManager>
 
         if (bottomCard is ICardTaker cardTaker)
         {
-            Debug.Log($"CardComboManager stackLength before: {cardStack.Count}");
+            /*Debug.Log($"CardComboManager stackLength before: {cardStack.Count}");*/
             
             cardStack.Remove(bottomCard);
 
-            Debug.Log($"CardComboManager stackLength after: {cardStack.Count}");
+            /*Debug.Log($"CardComboManager stackLength after: {cardStack.Count}");*/
 
             if (cardTaker.CanTakeCard(cardStack))
             {
@@ -85,7 +85,6 @@ public class CardComboManager : Singleton<CardComboManager>
 
             if (selectedRecipe != null)
             {
-                Debug.Log($"COMBO {selectedRecipe.name}");
                 if (bottomCard.TryGetComponent(out CardProcessor cardProcessor))
                 {
                     cardProcessor.ProcessRecipe(selectedRecipe, cardStack);
@@ -103,7 +102,7 @@ public class CardComboManager : Singleton<CardComboManager>
     {
         if (recipe.CardCombos.Count != cardStack.Count)
         {
-            Debug.Log($"Recipe {recipe.name} have different stack");
+            /*Debug.Log($"Recipe {recipe.name} have different stack");*/
             return false;
         }
 
@@ -141,7 +140,7 @@ public class CardComboManager : Singleton<CardComboManager>
 
             if (toolCard == null)
             {
-                Debug.Log($"{recipe.name} False, {reqTool.ToolCard.CardName} not found");
+                /*Debug.Log($"{recipe.name} False, {reqTool.ToolCard.CardName} not found");*/
                 return false;
             }
 
@@ -151,19 +150,19 @@ public class CardComboManager : Singleton<CardComboManager>
                 RuntimeStat stat = toolCard.RuntimeStats.Find(s => s.Stat == reqToolStat.StatData);
                 if (stat == null)
                 {
-                    Debug.Log($"{recipe.name} False, {reqTool.ToolCard.CardName} stat {reqToolStat.StatData.StatName} not found");
+                    /*Debug.Log($"{recipe.name} False, {reqTool.ToolCard.CardName} stat {reqToolStat.StatData.StatName} not found");*/
                     return false;
                 }
 
                 if (stat.CurrentValue != reqToolStat.StatValue)
                 {
-                    Debug.Log($"{recipe.name} False, {reqTool.ToolCard.CardName} stat {reqToolStat.StatData.StatName} value diff");
+                    /*Debug.Log($"{recipe.name} False, {reqTool.ToolCard.CardName} stat {reqToolStat.StatData.StatName} value diff");*/
                     return false;
                 }
             }
         }
 
-        Debug.Log($"{recipe.name} True, All Tool Clear");
+        /*Debug.Log($"{recipe.name} True, All Tool Clear");*/
         return true;
     }
 }

@@ -30,7 +30,7 @@ public class ToolCardController : CardController
         }
         OnToolDataUpdated?.Invoke();
 
-        print($"ASSIGN TOOL {data.CardName}");
+        /*print($"ASSIGN TOOL {data.CardName}");*/
     }
 
     protected void ResetStat()
