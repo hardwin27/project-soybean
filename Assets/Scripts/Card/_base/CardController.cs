@@ -25,6 +25,7 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     [SerializeField, ReadOnly] protected CardController stackedOnCard;
     [SerializeField, ReadOnly] protected CardController topCard;
     [SerializeField, ReadOnly] protected Vector3 lastPost;
+    [SerializeField, ReadOnly] protected Vector3 dragOffset;
 
     [SerializeField] protected string cardDefaultSortName;
     [SerializeField] protected string cardDraggedSortName;
@@ -92,12 +93,15 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        
-        
+        Debug.Log($"EventData: {eventData.pointerPressRaycast.gameObject.name}");
+        Debug.Log($"EventData Postion {Camera.main.ScreenToWorldPoint(eventData.position)}");
+
         if (!CanBeDragged || IsOnProcess)
         { 
             return; 
         }
+
+        dragOffset = transform.position - Camera.main.ScreenToWorldPoint(eventData.position);
 
         AudioManager.Instance.PlaySFXObject("card_dragged");
 
@@ -114,7 +118,7 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
             return;
         }
 
-        Debug.Log($"Dragging {gameObject.name}");
+        /*Debug.Log($"Dragging {gameObject.name}");*/
 
         SetDragPos(eventData);
     }
@@ -159,7 +163,7 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     protected void SetDragPos(PointerEventData eventData)
     {
         Vector3 dragPos = Camera.main.ScreenToWorldPoint(eventData.position);
-        transform.position = new Vector3(dragPos.x, dragPos.y, transform.position.z);
+        transform.position = new Vector3(dragPos.x + dragOffset.x, dragPos.y + dragOffset.y, transform.position.z);
         OnCardPosDragged?.Invoke();
     }
 
