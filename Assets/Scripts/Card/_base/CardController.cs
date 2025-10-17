@@ -96,10 +96,10 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
         AudioManager.Instance.PlaySFXObject("card_dragged");
 
+        lastPost = transform.position;
+
         SetDragPos(eventData);
         ToggleDragSorting(true, 0);
-
-        lastPost = transform.position;
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -159,6 +159,7 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     protected void SetPos(Vector3 pos)
     {
         transform.position = new Vector3(pos.x, pos.y, transform.position.z);
+        lastPost = transform.position;
         OnCardPosDragged?.Invoke();
     }
 
@@ -217,6 +218,7 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         if (cardToStackTo == null)
         {
             ToggleDragSorting(false);
+            lastPost = transform.position;
         }
         else
         {
@@ -292,12 +294,14 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
                 /*StackWithCard(cardController);
                 return;*/
 
-                if (CanStackWithCard(cardController))
+                if (CanStackWithCard(cardController.TopCard))
                 {
-                    StackWithCard(cardController);
+                    StackWithCard(cardController.TopCard);
                     return;
                 }
             }
+
+            Debug.Log($"Not Stacking");
 
             transform.position = lastPost;
             ToggleDragSorting(false);
