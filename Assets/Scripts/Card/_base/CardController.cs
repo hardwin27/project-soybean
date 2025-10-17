@@ -251,7 +251,6 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
             return false;
         }
 
-        // for now prevent to stack on parents
         if (StackedOnCard == null)
         {
             return true;
