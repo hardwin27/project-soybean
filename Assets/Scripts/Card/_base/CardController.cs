@@ -99,7 +99,7 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         lastPost = transform.position;
 
         SetDragPos(eventData);
-        ToggleDragSorting(true, 0);
+        ToggleDragSorting(true, ZOrder);
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -270,26 +270,33 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         List<Collider2D> overlapColliders = new List<Collider2D>();
         Physics2D.OverlapCollider(cardCollider, new ContactFilter2D().NoFilter(), overlapColliders);
 
-        List<CardController> overlapCardController = new List<CardController>();
+        List<CardController> overlapCardControllers = new List<CardController>();
         foreach (Collider2D overlapCollider in overlapColliders)
         {
             if (overlapCollider.TryGetComponent(out CardController cardController))
             {
                 if (!cardController.IsDragged)
                 {
-                    overlapCardController.Add(cardController);
+                    overlapCardControllers.Add(cardController);
                 }
             }
         }
 
-        if (overlapCardController.Count <= 0)
+        if (overlapCardControllers.Count <= 0)
         {
             ToggleDragSorting(false);
             StackWithCard(null);
         }
         else
         {
-            foreach (CardController cardController in overlapCardController)
+            overlapCardControllers.Sort((a, b) =>
+            {
+                float distA = Vector3.SqrMagnitude(a.transform.position - transform.position);
+                float distB = Vector3.SqrMagnitude(b.transform.position - transform.position);
+                return distA.CompareTo(distB);
+            });
+
+            foreach (CardController cardController in overlapCardControllers)
             {
                 /*StackWithCard(cardController);
                 return;*/
@@ -303,8 +310,8 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
             Debug.Log($"Not Stacking");
 
-            transform.position = lastPost;
-            ToggleDragSorting(false);
+            SetPos(lastPost);
+            ToggleDragSorting(false, ZOrder);
         }
     }
 }
