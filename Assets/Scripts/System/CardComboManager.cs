@@ -58,6 +58,8 @@ public class CardComboManager : Singleton<CardComboManager>
             
             cardStack.Remove(bottomCard);
 
+            bottomCard.SetTopCard(bottomCard);
+
             /*Debug.Log($"CardComboManager stackLength after: {cardStack.Count}");*/
 
             if (cardTaker.CanTakeCard(cardStack))

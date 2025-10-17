@@ -92,6 +92,8 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        
+        
         if (!CanBeDragged || IsOnProcess)
         { 
             return; 
