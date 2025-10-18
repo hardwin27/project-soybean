@@ -918,10 +918,10 @@ MonoBehaviour:
   maxX: 4.2
   minY: -0.3
   maxY: 4
-  zoomSpeed: 4
+  zoomSpeed: 100
   minZoom: 2.12
   maxZoom: 6
-  smoothZoomTime: 0.1
+  smoothZoomTime: 0.05
   blockingLayers:
     serializedVersion: 2
     m_Bits: 41

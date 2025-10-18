@@ -23,6 +23,12 @@ public class CameraController : MonoBehaviour
     private float targetZoom;
     private float zoomVelocity;
 
+    private float MinX { get => minX; }
+    private float MaxX { get => maxX; }
+    private float MinY { get => minY; }
+    private float MaxY { get => maxY; }
+
+
     void Start()
     {
         cam = GetComponent<Camera>();
@@ -36,8 +42,8 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
-        HandleDragInput();
         HandleZoomInput();
+        HandleDragInput();
     }
 
     void HandleDragInput()
@@ -67,15 +73,25 @@ public class CameraController : MonoBehaviour
             return;
 
         float scroll = Input.GetAxis("Mouse ScrollWheel");
-        
-        if (scroll != 0)
-        {
-            targetZoom -= scroll * zoomSpeed;
-            targetZoom = Mathf.Clamp(targetZoom, minZoom, maxZoom);
-        }
-        
+        if (scroll == 0)
+            return;
+
+        Vector3 mouseWorldBefore = cam.ScreenToWorldPoint(Input.mousePosition);
+
+        targetZoom -= scroll * zoomSpeed;
+        targetZoom = Mathf.Clamp(targetZoom, minZoom, maxZoom);
+
+        float previousZoom = cam.orthographicSize;
         cam.orthographicSize = Mathf.SmoothDamp(cam.orthographicSize, targetZoom, ref zoomVelocity, smoothZoomTime);
+
+        Vector3 mouseWorldAfter = cam.ScreenToWorldPoint(Input.mousePosition);
+
+        Vector3 difference = mouseWorldBefore - mouseWorldAfter;
+        transform.position += difference;
+
+        ApplyZoomBounds();
     }
+
 
     bool IsOverBlockingObject()
     {
@@ -103,15 +119,17 @@ public class CameraController : MonoBehaviour
     {
         Vector3 currentPos = cam.ScreenToWorldPoint(Input.mousePosition);
         currentPos.z = transform.position.z;
-        
+
         Vector3 difference = dragOrigin - currentPos;
-        
-        transform.position += difference * dragSpeed * Time.deltaTime;
-        
-        if (minX != maxX || minY != maxY)
+
+        Vector3 desiredPos = transform.position + difference * dragSpeed * Time.deltaTime;
+
+        if (MinX != MaxX || MinY != MaxY)
         {
-            ApplyCameraBounds();
+            desiredPos = ClampPositionToCameraBounds(desiredPos);
         }
+
+        transform.position = desiredPos;
     }
 
     void EndDrag()
@@ -119,21 +137,63 @@ public class CameraController : MonoBehaviour
         isDragging = false;
     }
 
-    void ApplyCameraBounds()
+    Vector3 ClampPositionToCameraBounds(Vector3 position)
     {
-        Vector3 clampedPosition = transform.position;
-        clampedPosition.x = Mathf.Clamp(clampedPosition.x, minX, maxX);
-        clampedPosition.y = Mathf.Clamp(clampedPosition.y, minY, maxY);
-        transform.position = clampedPosition;
+        // current camera half-extents (in world units)
+        float vertExtentCurrent = cam.orthographicSize;
+        float horizExtentCurrent = vertExtentCurrent * cam.aspect;
+
+        // half-extents when at the most zoomed-out view (editor reference)
+        float vertExtentMax = maxZoom;
+        float horizExtentMax = vertExtentMax * cam.aspect;
+
+        // how much extra room the camera center should gain when zoomed in
+        // (this is zero when current == maxZoom; positive when zoomed in)
+        float extraX = Mathf.Max(0f, horizExtentMax - horizExtentCurrent);
+        float extraY = Mathf.Max(0f, vertExtentMax - vertExtentCurrent);
+
+        // Editor min/max are center limits at maxZoom, so expand them by extra when zoomed in
+        float minXBound = minX - extraX;
+        float maxXBound = maxX + extraX;
+        float minYBound = minY - extraY;
+        float maxYBound = maxY + extraY;
+
+        // Safeguard: if bounds inverted (user set too-small range for current view),
+        // collapse to center of the editor-defined range to keep camera stable (no jitter)
+        if (minXBound > maxXBound)
+        {
+            float centerX = (minX + maxX) * 0.5f;
+            minXBound = maxXBound = centerX;
+        }
+        if (minYBound > maxYBound)
+        {
+            float centerY = (minY + maxY) * 0.5f;
+            minYBound = maxYBound = centerY;
+        }
+
+        position.x = Mathf.Clamp(position.x, minXBound, maxXBound);
+        position.y = Mathf.Clamp(position.y, minYBound, maxYBound);
+
+        return position;
     }
+
+    void ApplyZoomBounds()
+    {
+        if (MinX != MaxX || MinY != MaxY)
+        {
+            transform.position = ClampPositionToCameraBounds(transform.position);
+        }
+    }
+
+
 
     void OnDrawGizmosSelected()
     {
-        if (minX != maxX || minY != maxY)
+        if (MinX != MaxX || MinY != MaxY)
         {
             Gizmos.color = Color.green;
-            Vector3 center = new Vector3((minX + maxX) * 0.5f, (minY + maxY) * 0.5f, transform.position.z);
-            Vector3 size = new Vector3(maxX - minX, maxY - minY, 0.1f);
+            Vector3 center = new Vector3((MinX + MaxX) * 0.5f, (MinY + MaxY) * 0.5f, transform.position.z);
+            Vector3 size = new Vector3(MaxX - MinX, MaxY - MinY, 0.1f);
             Gizmos.DrawWireCube(center, size);
         }
     }
