@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: Natto
   buyPrice: 0
-  sellPrice: 5
+  sellPrice: 3
   cardType: 1
   cardSprite: {fileID: 21300000, guid: b6a0141242413d54e8d4836aa49d0d2a, type: 3}

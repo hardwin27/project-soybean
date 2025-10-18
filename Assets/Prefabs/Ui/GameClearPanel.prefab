@@ -491,7 +491,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Game Clear!!
+  m_text: This is the end of current demo.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cf09105ae9c35994b8457bede5d9e497, type: 2}
   m_sharedMaterial: {fileID: 4772289742887338056, guid: cf09105ae9c35994b8457bede5d9e497, type: 2}
