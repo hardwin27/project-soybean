@@ -30,6 +30,12 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     [SerializeField] protected string cardDefaultSortName;
     [SerializeField] protected string cardDraggedSortName;
 
+    [Title("Card Bounds")]
+    [SerializeField] private float cardWidth = 1f;
+    [SerializeField] private float cardHeight = 1.4f;
+    [SerializeField] private Rect cardBoundary;
+
+
     [Title("Debugging")]
     [SerializeField, ReadOnly] List<CardController> overlapCardControllers = new List<CardController>();
 
@@ -80,6 +86,14 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     {
         cardCollider = GetComponent<Collider2D>();
         cardSorting = GetComponent<SortingGroup>();
+
+        BoxCollider2D boxCol = cardCollider as BoxCollider2D;
+
+        if (boxCol != null) 
+        {
+            cardWidth = boxCol.size.x;
+            cardHeight = boxCol.size.y;
+        }
 
         isDragged = false;
     }
@@ -165,8 +179,26 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
     protected void SetDragPos(PointerEventData eventData)
     {
-        Vector3 dragPos = Camera.main.ScreenToWorldPoint(eventData.position);
+        /*Vector3 dragPos = Camera.main.ScreenToWorldPoint(eventData.position);
         transform.position = new Vector3(dragPos.x + dragOffset.x, dragPos.y + dragOffset.y, transform.position.z);
+        OnCardPosDragged?.Invoke();*/
+
+        Vector3 dragPos = Camera.main.ScreenToWorldPoint(eventData.position);
+        Vector3 targetPos = new Vector3(dragPos.x + dragOffset.x, dragPos.y + dragOffset.y, transform.position.z);
+
+        // Clamp the position so the card’s edges stay inside the boundary
+        float halfW = cardWidth * 0.5f;
+        float halfH = cardHeight * 0.5f;
+
+        float minX = cardBoundary.xMin + halfW;
+        float maxX = cardBoundary.xMax - halfW;
+        float minY = cardBoundary.yMin + halfH;
+        float maxY = cardBoundary.yMax - halfH;
+
+        float clampedX = Mathf.Clamp(targetPos.x, minX + halfW, maxX - halfW);
+        float clampedY = Mathf.Clamp(targetPos.y, minY + halfH, maxY - halfH);
+
+        transform.position = new Vector3(clampedX, clampedY, targetPos.z);
         OnCardPosDragged?.Invoke();
     }
 

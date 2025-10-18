@@ -359,9 +359,20 @@ MonoBehaviour:
   isDragged: 0
   stackPoint: {fileID: 2805741782347152409}
   stackedOnCard: {fileID: 0}
+  topCard: {fileID: 0}
   lastPost: {x: 0, y: 0, z: 0}
+  dragOffset: {x: 0, y: 0, z: 0}
   cardDefaultSortName: Card
   cardDraggedSortName: DraggedCard
+  cardWidth: 1.5
+  cardHeight: 2
+  cardBoundary:
+    serializedVersion: 2
+    x: -7.8
+    y: -3.8
+    width: 16
+    height: 11.8
+  overlapCardControllers: []
 --- !u!114 &173459824613252619
 MonoBehaviour:
   m_ObjectHideFlags: 0
