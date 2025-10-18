@@ -16,7 +16,9 @@ MonoBehaviour:
   buyPrice: 0
   sellPrice: 0
   cardType: 3
-  cardSprite: {fileID: 21300000, guid: ff1dee9f9324bb7458c2ad2167ce6cfb, type: 3}
+  cardSprite: {fileID: 21300000, guid: 6d7358ab8bf847f42b690366c95b4428, type: 3}
   cardsOnDeck:
   - cardData: {fileID: 11400000, guid: fe80c59c2b92e9042b60766a19cf99bd, type: 2}
     cardOnDeckSprite: {fileID: 0}
+  isLimited: 0
+  instructionColor: {r: 0.9960785, g: 0.9803922, b: 0.93725497, a: 1}

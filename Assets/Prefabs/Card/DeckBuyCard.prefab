@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.3626, y: -0.887}
+  m_AnchoredPosition: {x: 0.393, y: -0.866}
   m_SizeDelta: {x: 0.6791, y: 0.3218}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &6700421925377926375
@@ -113,8 +113,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0.2627451, g: 0.20000002, b: 0.14509805, a: 1}
+    rgba: 4294901502
+  m_fontColor: {r: 0.9960785, g: 0.9960785, b: 0.9960785, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -236,7 +236,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1547522013718126492, guid: 6ed42a861f27fea44b91d9f1cab9e63b, type: 3}
       propertyPath: m_fontSize
-      value: 1.3
+      value: 1.42
       objectReference: {fileID: 0}
     - target: {fileID: 1547522013718126492, guid: 6ed42a861f27fea44b91d9f1cab9e63b, type: 3}
       propertyPath: m_fontColor.b
@@ -252,7 +252,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1547522013718126492, guid: 6ed42a861f27fea44b91d9f1cab9e63b, type: 3}
       propertyPath: m_fontSizeBase
-      value: 1.3
+      value: 1.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 1547522013718126492, guid: 6ed42a861f27fea44b91d9f1cab9e63b, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4280300353
       objectReference: {fileID: 0}
     - target: {fileID: 2380749079838095206, guid: 6ed42a861f27fea44b91d9f1cab9e63b, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -331,9 +335,12 @@ MonoBehaviour:
   isDragged: 0
   stackPoint: {fileID: 8858443195548433433}
   stackedOnCard: {fileID: 0}
+  topCard: {fileID: 0}
   lastPost: {x: 0, y: 0, z: 0}
+  dragOffset: {x: 0, y: 0, z: 0}
   cardDefaultSortName: Card
   cardDraggedSortName: DraggedCard
+  overlapCardControllers: []
   deckCardData: {fileID: 0}
   currentCardIndex: 0
 --- !u!114 &8087671095721233848

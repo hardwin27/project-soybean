@@ -54,16 +54,20 @@ public class CardComboManager : Singleton<CardComboManager>
 
         if (bottomCard is ICardTaker cardTaker)
         {
-            /*Debug.Log($"CardComboManager stackLength before: {cardStack.Count}");*/
-            
-            cardStack.Remove(bottomCard);
+            List<CardController> stackWithoutBotCard = new List<CardController>();
 
-            bottomCard.SetTopCard(bottomCard);
-
-            /*Debug.Log($"CardComboManager stackLength after: {cardStack.Count}");*/
-
-            if (cardTaker.CanTakeCard(cardStack))
+            foreach(var cardOnStack in cardStack)
             {
+                if (cardOnStack != bottomCard)
+                {
+                    stackWithoutBotCard.Add(cardOnStack);
+                }
+            }
+
+            if (cardTaker.CanTakeCard(stackWithoutBotCard))
+            {
+                cardStack.Remove(bottomCard);
+                bottomCard.SetTopCard(bottomCard);
                 cardTaker.TakeCard(cardStack);
             }
         }

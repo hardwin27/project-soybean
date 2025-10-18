@@ -63,6 +63,7 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
             {
                 cardSorting.sortingOrder = value;
             }
+            transform.position = new Vector3 (transform.position.x, transform.position.y, -value);
         }
         get
         {
@@ -106,6 +107,8 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         AudioManager.Instance.PlaySFXObject("card_dragged");
 
         lastPost = transform.position;
+
+        transform.SetAsFirstSibling();
 
         SetDragPos(eventData);
         ToggleDragSorting(true, ZOrder);
