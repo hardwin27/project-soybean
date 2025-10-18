@@ -104,6 +104,9 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         lastPost = transform.position;
         SetTopCard(this);
         /*HandleDragEnd();*/
+
+        BoundCardPos(transform.position);
+        StartCoroutine("DelayedOverlapCheck");
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -156,6 +159,40 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         Destroy(gameObject, 3f);
     }
 
+    private System.Collections.IEnumerator DelayedOverlapCheck()
+    {
+        yield return null;
+
+        Debug.Log($"DelayedOverlapCheck {gameObject.name}");
+
+        int originalZ = ZOrder;
+        ZOrder = 999999;
+
+        yield return null;
+
+        List<Collider2D> overlapColliders = new List<Collider2D>();
+        Physics2D.OverlapCollider(cardCollider, new ContactFilter2D().NoFilter(), overlapColliders);
+
+        ZOrder = originalZ;
+
+        overlapCardControllers = new List<CardController>();
+        foreach (Collider2D overlapCollider in overlapColliders)
+        {
+            if (overlapCollider.TryGetComponent(out CardController cardController))
+            {
+                if (!cardController.IsDragged)
+                {
+                    overlapCardControllers.Add(cardController);
+                    Debug.Log($"DelayedOverlapCheck {gameObject.name} overlap with {cardController.gameObject.name}");
+                    if (ZOrder <= cardController.ZOrder)
+                    {
+                        ZOrder = cardController.ZOrder + 1;
+                    }
+                }
+            }
+        }
+    }
+
     public void SetTopCard(CardController card)
     {
         topCard = card;
@@ -183,7 +220,9 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         transform.position = new Vector3(dragPos.x + dragOffset.x, dragPos.y + dragOffset.y, transform.position.z);
         OnCardPosDragged?.Invoke();*/
 
-        Vector3 dragPos = Camera.main.ScreenToWorldPoint(eventData.position);
+        BoundCardPos(Camera.main.ScreenToWorldPoint(eventData.position));
+
+        /*Vector3 dragPos = Camera.main.ScreenToWorldPoint(eventData.position);
         Vector3 targetPos = new Vector3(dragPos.x + dragOffset.x, dragPos.y + dragOffset.y, transform.position.z);
 
         // Clamp the position so the card’s edges stay inside the boundary
@@ -198,8 +237,27 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         float clampedX = Mathf.Clamp(targetPos.x, minX + halfW, maxX - halfW);
         float clampedY = Mathf.Clamp(targetPos.y, minY + halfH, maxY - halfH);
 
-        transform.position = new Vector3(clampedX, clampedY, targetPos.z);
+        transform.position = new Vector3(clampedX, clampedY, targetPos.z);*/
         OnCardPosDragged?.Invoke();
+    }
+
+    protected void BoundCardPos(Vector3 posToBound)
+    {
+        Vector3 targetPos = new Vector3(posToBound.x + dragOffset.x, posToBound.y + dragOffset.y, transform.position.z);
+
+        // Clamp the position so the card’s edges stay inside the boundary
+        float halfW = cardWidth * 0.5f;
+        float halfH = cardHeight * 0.5f;
+
+        float minX = cardBoundary.xMin + halfW;
+        float maxX = cardBoundary.xMax - halfW;
+        float minY = cardBoundary.yMin + halfH;
+        float maxY = cardBoundary.yMax - halfH;
+
+        float clampedX = Mathf.Clamp(targetPos.x, minX + halfW, maxX - halfW);
+        float clampedY = Mathf.Clamp(targetPos.y, minY + halfH, maxY - halfH);
+
+        transform.position = new Vector3(clampedX, clampedY, targetPos.z);
     }
 
     protected void SetPos(Vector3 pos)
