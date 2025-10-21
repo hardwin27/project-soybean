@@ -37,7 +37,7 @@ public class DeckBuyCardVisual : CardVisual
         }
         else
         {
-            cardNameText.text = $"Buy {deckBuyCardController.CurrentCardOnDeck.CardData.CardName}";
+            cardNameText.text = $"{deckBuyCardController.DeckCardData.InstructionCommandWord} {deckBuyCardController.CurrentCardOnDeck.CardData.CardName}";
             cardNameText.color = deckBuyCardController.DeckCardData.InstructionColor;
             cardPriceText.text = $"{deckBuyCardController.CurrentCardOnDeck.CardData.BuyPrice}";
             /*UpdateBaseSprite(deckBuyCardController.CurrentCardOnDeck.CardOnDeckSprite, deckBuyCardController.CurrentCardOnDeck.CardData.CardType);*/

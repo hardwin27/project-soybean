@@ -22,3 +22,4 @@ MonoBehaviour:
     cardOnDeckSprite: {fileID: 0}
   isLimited: 0
   instructionColor: {r: 0.21960786, g: 0.3019608, b: 0.38823533, a: 1}
+  instructionCommandWord: Buy

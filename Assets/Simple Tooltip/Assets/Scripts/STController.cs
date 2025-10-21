@@ -34,7 +34,7 @@ public class STController : MonoBehaviour
 
         // Keep a reference for the panel image and transform
         panel = GetComponent<Image>();
-        rect = GetComponent<RectTransform>();*/
+        rect = GetComponent<RectTransfor m>();*/
 
         // Hide at the start
         HideTooltip();

@@ -6,22 +6,26 @@ using System;
 // Hardcode quest for now
 public class QuestController : MonoBehaviour
 {
-    [SerializeField] private List<QuestStatus> quests = new List<QuestStatus>();
+    /*[SerializeField] private List<QuestStatus> quests = new List<QuestStatus>();*/
+    [SerializeField] private List<QuestChapter> questChapters = new List<QuestChapter>();
 
     [Title("Component for Quest")]
     [SerializeField, ReadOnly] protected CardComboManager cardComboManager;
+    [SerializeField, ReadOnly] protected CardGeneratorManager cardGeneratorManager;
     [SerializeField] private DeckSellCardController sellDeck;
     [SerializeField] private DeckBankCardController bankDeck;
     [SerializeField] private GameplayUiController gameplayUi;
 
     public Action<QuestStatus> OnQuestAdded;
+    public Action<QuestChapter> OnQuestChapterAdded;
     public Action OnLastQuestCompleted;
 
     private void Awake()
     {
         cardComboManager = CardComboManager.Instance;
-
+        cardGeneratorManager = CardGeneratorManager.Instance;
         cardComboManager.OnRecipeProcessed += HandleRecipeProcessed;
+        cardGeneratorManager.OnCardGenerated += HandleCardGenerated;
         sellDeck.OnCardSold += HandleCardSold;
         bankDeck.OnDeckBankDatUpdated += HandleBankUpdated;
         gameplayUi.OnUiTriggered += HandleUiUsed;
@@ -29,14 +33,19 @@ public class QuestController : MonoBehaviour
 
     private void Start()
     {
-        foreach(var quest in quests)
+        /*foreach(var quest in quests)
         {
             OnQuestAdded?.Invoke(quest);
+        }*/
+
+        foreach (var chapter in questChapters)
+        {
+            OnQuestChapterAdded?.Invoke(chapter);
         }
 
-        quests[quests.Count - 1].OnQuestUpdated += () =>
+        questChapters[questChapters.Count - 1].Quests[questChapters[questChapters.Count - 1].Quests.Count - 1].OnQuestUpdated += () =>
         {
-            if (quests[quests.Count - 1].IsCompleted)
+            if (questChapters[questChapters.Count - 1].Quests[questChapters[questChapters.Count - 1].Quests.Count - 1].IsCompleted)
             {
                 OnLastQuestCompleted?.Invoke();
             }
@@ -45,16 +54,40 @@ public class QuestController : MonoBehaviour
 
     private void HandleRecipeProcessed(RecipeData recipe)
     {
-        foreach (var quest in quests) 
+        foreach (var chapter in questChapters)
         {
-            if (!quest.IsCompleted)
+            foreach (var quest in chapter.Quests)
             {
-                if (quest.QuestData is RecipeQuestData)
+                if (!quest.IsCompleted)
                 {
-                    RecipeQuestData recipeQuestData = (RecipeQuestData)quest.QuestData;
-                    if (recipeQuestData.TargetRecipe == recipe)
+                    if (quest.QuestData is RecipeQuestData)
                     {
-                        quest.ToggleQuest(true);
+                        RecipeQuestData recipeQuestData = (RecipeQuestData)quest.QuestData;
+                        if (recipeQuestData.TargetRecipe == recipe)
+                        {
+                            quest.ToggleQuest(true);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private void HandleCardGenerated(CardController cardController) 
+    {
+        foreach (var chapter in questChapters)
+        {
+            foreach (var quest in chapter.Quests)
+            {
+                if (!quest.IsCompleted)
+                {
+                    if (quest.QuestData is GeneratedCardQuestData)
+                    {
+                        GeneratedCardQuestData generatedCardQuestData = (GeneratedCardQuestData)quest.QuestData;
+                        if (generatedCardQuestData.TargetGeneratedCard == cardController.CardData)
+                        {
+                            quest.ToggleQuest(true);
+                        }
                     }
                 }
             }
@@ -63,16 +96,19 @@ public class QuestController : MonoBehaviour
 
     private void HandleCardSold(CardController cardController)
     {
-        foreach (var quest in quests)
+        foreach (var chapter in questChapters)
         {
-            if (!quest.IsCompleted)
+            foreach (var quest in chapter.Quests)
             {
-                if (quest.QuestData is SellQuestData)
+                if (!quest.IsCompleted)
                 {
-                    SellQuestData sellQuestData = (SellQuestData)quest.QuestData;
-                    if (sellQuestData.TargetSoldCard == cardController.CardData)
+                    if (quest.QuestData is SellQuestData)
                     {
-                        quest.ToggleQuest(true);
+                        SellQuestData sellQuestData = (SellQuestData)quest.QuestData;
+                        if (sellQuestData.TargetSoldCard == cardController.CardData)
+                        {
+                            quest.ToggleQuest(true);
+                        }
                     }
                 }
             }
@@ -81,16 +117,19 @@ public class QuestController : MonoBehaviour
 
     private void HandleBankUpdated()
     {
-        foreach (var quest in quests)
+        foreach (var chapter in questChapters)
         {
-            if (!quest.IsCompleted)
+            foreach (var quest in chapter.Quests)
             {
-                if (quest.QuestData is BankQuestData)
+                if (!quest.IsCompleted)
                 {
-                    BankQuestData bankQuestData = (BankQuestData)quest.QuestData;
-                    if (bankDeck.CurrentMoney >= bankQuestData.TargetTotalMoney)
+                    if (quest.QuestData is BankQuestData)
                     {
-                        quest.ToggleQuest(true);
+                        BankQuestData bankQuestData = (BankQuestData)quest.QuestData;
+                        if (bankDeck.CurrentMoney >= bankQuestData.TargetTotalMoney)
+                        {
+                            quest.ToggleQuest(true);
+                        }
                     }
                 }
             }
@@ -99,16 +138,19 @@ public class QuestController : MonoBehaviour
 
     private void HandleUiUsed(string uiId)
     {
-        foreach (var quest in quests)
+        foreach (var chapter in questChapters)
         {
-            if (!quest.IsCompleted)
+            foreach (var quest in chapter.Quests)
             {
-                if (quest.QuestData is UiQuestData)
+                if (!quest.IsCompleted)
                 {
-                    UiQuestData uiQuestData = (UiQuestData)quest.QuestData;
-                    if (uiId == uiQuestData.TargetUiId)
+                    if (quest.QuestData is UiQuestData)
                     {
-                        quest.ToggleQuest(true);
+                        UiQuestData uiQuestData = (UiQuestData)quest.QuestData;
+                        if (uiId == uiQuestData.TargetUiId)
+                        {
+                            quest.ToggleQuest(true);
+                        }
                     }
                 }
             }

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df4f39c351627cb408d9b81f308cbe56, type: 3}
   m_Name: Utility Buy Deck
   m_EditorClassIdentifier: 
-  cardName: Buy Utility
+  cardName: Unlock Utility
   buyPrice: 0
   sellPrice: 0
   cardType: 3
@@ -24,3 +24,4 @@ MonoBehaviour:
     cardOnDeckSprite: {fileID: 0}
   isLimited: 1
   instructionColor: {r: 0.9960785, g: 0.9803922, b: 0.93725497, a: 1}
+  instructionCommandWord: Unlock
