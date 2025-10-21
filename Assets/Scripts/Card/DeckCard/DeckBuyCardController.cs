@@ -50,8 +50,8 @@ public class DeckBuyCardController : DeckCardController
         AudioManager.Instance.PlaySFXObject("give_money");
 
         int reqMoney = CurrentCardOnDeck.CardData.BuyPrice;
-        
-        for(int money = 0; money < reqMoney; money++) 
+
+        /*for(int money = 0; money < reqMoney; money++) 
         {
             CardController card = cardStacks[cardStacks.Count - 1];
             cardStacks.Remove(card);
@@ -59,7 +59,29 @@ public class DeckBuyCardController : DeckCardController
         }
 
 
-        OnDeckCardGenerated?.Invoke(CurrentCardOnDeck.CardData);
+        OnDeckCardGenerated?.Invoke(CurrentCardOnDeck.CardData);*/
+
+        int money = 0;
+        foreach (CardController card in cardStacks) 
+        {
+            if (card.CardData is MoneyCardData moneyCardData)
+            {
+                money += moneyCardData.MoneyValue;
+            }
+            else
+            {
+                break;
+            }
+        }
+
+        while (money > 0 && money >= reqMoney && cardStacks.Count > 0)
+        {
+            money -= reqMoney;
+            CardController card = cardStacks[cardStacks.Count - 1];
+            cardStacks.Remove(card);
+            card.gameObject.SetActive(false);
+            OnDeckCardGenerated?.Invoke(CurrentCardOnDeck.CardData);
+        }
         
         ChangeToNextCard();        
     }
