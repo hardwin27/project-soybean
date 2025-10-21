@@ -155,6 +155,7 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
     public void OnDisable()
     {
+        Debug.Log($"{gameObject.name} DESTROYED");
         OnCardDestroyed?.Invoke();
         Destroy(gameObject, 3f);
     }
@@ -195,7 +196,12 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
     public void SetTopCard(CardController card)
     {
+        Debug.Log($"{gameObject.name} assign {card.gameObject.name} as TOPCARD");
         topCard = card;
+        if (topCard == null)
+        {
+            topCard = this;
+        }
         if (stackedOnCard != null && stackedOnCard != this && stackedOnCard != card)
         {
             stackedOnCard.SetTopCard(card);
@@ -208,7 +214,6 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         StackedOnCard.OnDragSorted -= HandleStackedDragSorted;
         StackedOnCard.OnCardDestroyed -= HandleStackedCardDestroyed;
         StackedOnCard.OnCardUnstacked?.Invoke();
-        stackedOnCard.SetTopCard(stackedOnCard);
         stackedOnCard = null;
     }
 
