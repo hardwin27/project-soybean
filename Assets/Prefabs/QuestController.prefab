@@ -47,19 +47,19 @@ MonoBehaviour:
   questChapters:
   - chapterName: Get Prepared
     quests:
+    - questData: {fileID: 11400000, guid: 4724827abb1cfcc46baa871f252864e0, type: 2}
+      isCompleted: 0
+    - questData: {fileID: 11400000, guid: 290a3fb1d1a1a634b88709676c666852, type: 2}
+      isCompleted: 0
     - questData: {fileID: 11400000, guid: 15e4ac9f2eb7ea842bb4e103194377f4, type: 2}
       isCompleted: 0
     - questData: {fileID: 11400000, guid: 9423950574e20df4c99c0a5137c5ab1f, type: 2}
       isCompleted: 0
     - questData: {fileID: 11400000, guid: 42049ae3a898b5b459371af548e146e3, type: 2}
       isCompleted: 0
-    - questData: {fileID: 11400000, guid: 4724827abb1cfcc46baa871f252864e0, type: 2}
-      isCompleted: 0
-    - questData: {fileID: 11400000, guid: 290a3fb1d1a1a634b88709676c666852, type: 2}
-      isCompleted: 0
     - questData: {fileID: 11400000, guid: 120dc1ee207c0fa48bf55fb91710f524, type: 2}
       isCompleted: 0
-  - chapterName: Let's Get  Into Business
+  - chapterName: Let's Do Business
     quests:
     - questData: {fileID: 11400000, guid: 117053cfff37c2742856131ed5e153d6, type: 2}
       isCompleted: 0
