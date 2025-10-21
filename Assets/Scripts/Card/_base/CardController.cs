@@ -165,15 +165,15 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
         Debug.Log($"DelayedOverlapCheck {gameObject.name}");
 
-        int originalZ = ZOrder;
-        ZOrder = 999999;
+        /*int originalZ = ZOrder;
+        ZOrder = 999999;*/
 
         yield return null;
 
         List<Collider2D> overlapColliders = new List<Collider2D>();
         Physics2D.OverlapCollider(cardCollider, new ContactFilter2D().NoFilter(), overlapColliders);
 
-        ZOrder = originalZ;
+        /*ZOrder = originalZ;*/
 
         overlapCardControllers = new List<CardController>();
         foreach (Collider2D overlapCollider in overlapColliders)
