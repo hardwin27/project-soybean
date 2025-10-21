@@ -23,6 +23,9 @@ public class RecipeUi : MonoBehaviour
                 Image targetCardImage = targetCardObj.GetComponent<Image>();
                 targetCardImage.sprite = recipe.GeneratedCard.CardSprite;
 
+                SimpleTooltip targetCardToolTip = targetCardObj.GetComponent<SimpleTooltip>();
+                targetCardToolTip.iconSprite = recipe.GeneratedCard.CardSprite;
+
                 Instantiate(equalSignPrefab, newRecipeEntryObj.transform);
 
                 foreach (var card in recipe.CardCombos)
@@ -32,12 +35,16 @@ public class RecipeUi : MonoBehaviour
                         GameObject toolCardObj = Instantiate(cardIconUiPrefab, newRecipeEntryObj.transform);
                         Image toolCardImage = toolCardObj.GetComponent<Image>();
                         toolCardImage.sprite = (toolCard.WithResourceSprite == null) ? toolCard.CardSprite : toolCard.WithResourceSprite;
+                        SimpleTooltip toolCardToolTop = toolCardObj.GetComponent<SimpleTooltip>();
+                        toolCardToolTop.iconSprite = (toolCard.WithResourceSprite == null) ? toolCard.CardSprite : toolCard.WithResourceSprite;
                     }
                     else
                     {
                         GameObject cardObj = Instantiate(cardIconUiPrefab, newRecipeEntryObj.transform);
                         Image cardImage = cardObj.GetComponent<Image>();
                         cardImage.sprite = card.CardSprite;
+                        SimpleTooltip cardToolTop = cardObj.GetComponent<SimpleTooltip>();
+                        cardToolTop.iconSprite = card.CardSprite;
                     }
 
                     if (recipe.CardCombos.IndexOf(card) < recipe.CardCombos.Count - 1)

@@ -20,6 +20,7 @@ public class CardVisual : MonoBehaviour
     [SerializeField] protected SpriteRenderer cardRenderer;
     [SerializeField] protected Vector3 cardRendererSpriteScale;
     [SerializeField] protected List<CardTypeColor> cardTypeColors;
+    /*[SerializeField] protected SimpleTooltip cardToolTip;*/
 
     protected virtual void Awake()
     {
@@ -70,5 +71,7 @@ public class CardVisual : MonoBehaviour
                 }
             }
         }
+
+        /*cardToolTip.iconSprite = cardSprite;*/
     }
 }

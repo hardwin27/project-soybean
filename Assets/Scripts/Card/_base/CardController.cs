@@ -196,6 +196,10 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     public void SetTopCard(CardController card)
     {
         topCard = card;
+        if (stackedOnCard != null && stackedOnCard != this && stackedOnCard != card)
+        {
+            stackedOnCard.SetTopCard(card);
+        }
     }
 
     protected void HandleStackedCardDestroyed()
