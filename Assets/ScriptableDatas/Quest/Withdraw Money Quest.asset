@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cc9a134605a22d4a973dc74627738ca, type: 3}
   m_Name: Withdraw Money Quest
   m_EditorClassIdentifier: 
-  questTitle: Withdraw one coin from the Bank
+  questTitle: Withdraw one coin from Bank

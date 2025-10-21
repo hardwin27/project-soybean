@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b618f691c583783419031e6fdcb9397e, type: 3}
   m_Name: Unlock River Quest
   m_EditorClassIdentifier: 
-  questTitle: Unlock the River
+  questTitle: Unlock the Water Source
   targetGeneratedCard: {fileID: 11400000, guid: fdb7a794fe5256745a71674a6b69cf7d, type: 2}

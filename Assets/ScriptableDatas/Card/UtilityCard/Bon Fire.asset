@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a32bf65d960db90498ad63e779f0f7fb, type: 3}
   m_Name: Bon Fire
   m_EditorClassIdentifier: 
-  cardName: Bon Fire
+  cardName: Fire Source
   buyPrice: 0
   sellPrice: 0
   cardType: 0

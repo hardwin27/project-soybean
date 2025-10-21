@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3363ba5dd17be084396fb47d0d1b3fda, type: 3}
   m_Name: Sell Natto Quest
   m_EditorClassIdentifier: 
-  questTitle: Sell one Natto to the Market
+  questTitle: Sell one Natto to Market
   targetSoldCard: {fileID: 11400000, guid: 2d9f4aebd1e21114685f3f2a21720d8d, type: 2}

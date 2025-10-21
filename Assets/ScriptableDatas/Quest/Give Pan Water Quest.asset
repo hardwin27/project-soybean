@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c170e3bae9011da4887c199c4f8e62d4, type: 3}
   m_Name: Give Pan Water Quest
   m_EditorClassIdentifier: 
-  questTitle: Fill the Pan with water from the River
+  questTitle: Bring Pan to Water Source
   targetRecipe: {fileID: 11400000, guid: 0f444801369b5994f8d9615a17669161, type: 2}

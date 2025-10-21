@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b618f691c583783419031e6fdcb9397e, type: 3}
   m_Name: Unlock Bonfire Quest
   m_EditorClassIdentifier: 
-  questTitle: Unlock the Bonfire
+  questTitle: Unlock the Fire Source
   targetGeneratedCard: {fileID: 11400000, guid: 0652d4af353c0d14f8136588a45d0e04, type: 2}
