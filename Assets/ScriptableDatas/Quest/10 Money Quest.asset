@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: 10 Money Quest
   m_EditorClassIdentifier: 
   questTitle: Deposit 10 coins to the Bank to Win the Game
-  targetTotalMoney: 10
+  targetTotalMoney: 20

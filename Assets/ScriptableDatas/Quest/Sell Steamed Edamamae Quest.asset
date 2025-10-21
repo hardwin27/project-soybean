@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3363ba5dd17be084396fb47d0d1b3fda, type: 3}
   m_Name: Sell Steamed Edamamae Quest
   m_EditorClassIdentifier: 
-  questTitle: Sell one Steamed Edamame to the market
+  questTitle: Sell one Steamed Edamame at the market
   targetSoldCard: {fileID: 11400000, guid: 4f27c6ac64c3db14682d653b9e8444c7, type: 2}

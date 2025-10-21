@@ -28,6 +28,7 @@ public class QuestController : MonoBehaviour
         cardGeneratorManager.OnCardGenerated += HandleCardGenerated;
         sellDeck.OnCardSold += HandleCardSold;
         bankDeck.OnDeckBankDatUpdated += HandleBankUpdated;
+        bankDeck.OnDeckCardGenerated += HandleBankWithdraw;
         gameplayUi.OnUiTriggered += HandleUiUsed;
     }
 
@@ -130,6 +131,24 @@ public class QuestController : MonoBehaviour
                         {
                             quest.ToggleQuest(true);
                         }
+                    }
+                }
+            }
+        }
+    }
+
+    private void HandleBankWithdraw(CardData cardData)
+    {
+        foreach (var chapter in questChapters)
+        {
+            foreach (var quest in chapter.Quests)
+            {
+                if (!quest.IsCompleted)
+                {
+                    if (quest.QuestData is BankWithdrawQuestData)
+                    {
+                        BankWithdrawQuestData bankWithdrawQuestData = (BankWithdrawQuestData)quest.QuestData;
+                        quest.ToggleQuest(true);
                     }
                 }
             }

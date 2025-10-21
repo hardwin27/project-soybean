@@ -109,8 +109,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 141.30614, y: -25}
-  m_SizeDelta: {x: 192.6423, y: 50}
+  m_AnchoredPosition: {x: 141.30614, y: -35.481598}
+  m_SizeDelta: {x: 192.6423, y: 70.9632}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4345396567315357517
 CanvasRenderer:
@@ -306,3 +306,6 @@ MonoBehaviour:
   questIndicatorImage: {fileID: 7604484225750241747}
   questIncompleteSprite: {fileID: -5888950915727841706, guid: 8981dceb0f6643447a4a10d02b2874cf, type: 3}
   questCompleteSprite: {fileID: -6487376771352369848, guid: 41298708f07caac4681c7274b2e40ac0, type: 3}
+  textBound:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}

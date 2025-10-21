@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c170e3bae9011da4887c199c4f8e62d4, type: 3}
-  m_Name: Give Pan Fire Quest
+  m_Script: {fileID: 11500000, guid: d62fbe15ffeff4944ab9b60c17d503a0, type: 3}
+  m_Name: 1 Money Quest
   m_EditorClassIdentifier: 
-  questTitle: Heat the Pan at the Bonfire
-  targetRecipe: {fileID: 11400000, guid: 1b0473e400938db42961bef9c22e90b7, type: 2}
+  questTitle: Deposit one coin into the Bank
+  targetTotalMoney: 1
