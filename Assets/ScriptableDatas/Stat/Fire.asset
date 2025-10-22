@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Fire
   m_EditorClassIdentifier: 
   statName: Fire
-  statIndicatorSprite: {fileID: 21300000, guid: c79c7a518ca0ab4409042b2cf5139a44, type: 3}
+  statIndicatorSprite: {fileID: 21300000, guid: 613065ef259446543bf638ec60ddfdbd, type: 3}
   statIndicatorPos: {x: -0.152, y: -0.765, z: 0}
   statIndicatorSize: {x: 0.18, y: 0.18, z: 0.18}
