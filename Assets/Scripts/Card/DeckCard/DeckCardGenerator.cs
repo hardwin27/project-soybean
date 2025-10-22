@@ -13,7 +13,7 @@ public class DeckCardGenerator : MonoBehaviour
 
     private void GenerateCardFromDeck(CardData cardData)
     {
-        Vector2 randomPos = RandomValue.RandomPosAround(transform.position, 2f);
+        Vector2 randomPos = RandomValue.RandomPosAround(transform.position, 1.5f);
         CardGeneratorManager.Instance.GenerateCard(cardData, randomPos);
     }
 }

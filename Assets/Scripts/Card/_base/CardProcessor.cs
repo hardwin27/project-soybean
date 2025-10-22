@@ -71,7 +71,7 @@ public class CardProcessor : MonoBehaviour
 
             for (int i = 0; i < processedRecipe.GeneratedCardAmount; i++)
             {
-                Vector2 randomPos = RandomValue.RandomPosAround(transform.position, 2f);
+                Vector2 randomPos = RandomValue.RandomPosAround(transform.position, 1.5f);
 
                 CardGeneratorManager.Instance.GenerateCard(
                    processedRecipe.GeneratedCard,
