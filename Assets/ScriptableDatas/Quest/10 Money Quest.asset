@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d62fbe15ffeff4944ab9b60c17d503a0, type: 3}
   m_Name: 10 Money Quest
   m_EditorClassIdentifier: 
-  questTitle: Deposit 20 coins into Bank to Win the Game
-  targetTotalMoney: 20
+  questTitle: Deposit 15 coins into Bank
+  targetTotalMoney: 15
