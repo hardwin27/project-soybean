@@ -157,6 +157,18 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     {
         Debug.Log($"{gameObject.name} DESTROYED");
         OnCardDestroyed?.Invoke();
+        if (StackedOnCard != null)
+        {
+            stackedOnCard.SetTopCard(stackedOnCard);
+
+            //Separated Logic
+            StackedOnCard.OnCardPosDragged -= HandleStackedPosDragged;
+            StackedOnCard.OnDragSorted -= HandleStackedDragSorted;
+            StackedOnCard.OnCardDestroyed -= HandleStackedCardDestroyed;
+            StackedOnCard.OnCardUnstacked?.Invoke();
+            stackedOnCard = null;
+
+        }
         Destroy(gameObject, 3f);
     }
 
@@ -291,6 +303,7 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
             return;
         }
 
+        Debug.Log($"HandleStackedPosDragged {gameObject.name}");
         transform.position = new Vector3(StackedOnCard.StackPoint.position.x, StackedOnCard.StackPoint.position.y, transform.position.z);
         OnCardPosDragged?.Invoke();
     }

@@ -65,6 +65,8 @@ MonoBehaviour:
       isCompleted: 0
     - questData: {fileID: 11400000, guid: 462ea20683508284db4bd4950b22c298, type: 2}
       isCompleted: 0
+    - questData: {fileID: 11400000, guid: 9b1a7fb0ad961044db6e27e52a546104, type: 2}
+      isCompleted: 0
     - questData: {fileID: 11400000, guid: 0a584891424bde942896d1eed1d935ce, type: 2}
       isCompleted: 0
     - questData: {fileID: 11400000, guid: 517385d22e2815544b40eac874d63677, type: 2}
