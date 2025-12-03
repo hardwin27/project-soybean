@@ -13,12 +13,21 @@ public class AutomationCardController : CardController
 
     [Title("Auto-Stacking Configuration")]
     [SerializeField]
-    [InfoBox("The card to search for when movement finishes.")]
+    [InfoBox("Add CardData assets here. The automation will hunt for cards matching this data.")]
+    private List<CardData> requiredCards = new List<CardData>();
+
+    [SerializeField]
+    [InfoBox("The card currently being hunted.")]
     private CardController targetedCard;
 
     [SerializeField]
-    [InfoBox("How close the targeted card must be to be captured.")]
+    private float scanRadius = 5.0f;
+
+    [SerializeField]
     private float captureRadius = 2.0f;
+
+    [SerializeField]
+    private float moveDuration = 0.5f;
 
     [Space]
     [ReadOnly]
@@ -26,41 +35,33 @@ public class AutomationCardController : CardController
     [InfoBox("Cards currently stacked on top of this automation card via the capture system.")]
     private List<CardController> capturedCards = new List<CardController>();
 
-    // State to handle pausing and resuming
     private Vector3? activeTargetPosition = null;
     private float calculatedSpeed = 0f;
     private Coroutine currentMoveRoutine;
 
     [Title("Debug Movement")]
     [SerializeField]
-    [InfoBox("Set the target position and click the button below to test movement in Play Mode.")]
     private Vector3 debugTargetPosition;
-
-    [SerializeField]
-    private float debugMoveDuration = 0.5f;
 
     [Button("Move To Debug Position", ButtonSizes.Large)]
     [DisableInEditorMode]
     private void DebugMoveToPosition()
     {
         if (!Application.isPlaying) return;
-        if (targetedCard != null) 
+        if (targetedCard != null)
         {
-            MoveToPosition(targetedCard.transform.position, debugMoveDuration);
+            MoveToPosition(targetedCard.transform.position, moveDuration);
         }
         else
         {
-            MoveToPosition(debugTargetPosition, debugMoveDuration);
+            MoveToPosition(debugTargetPosition, moveDuration);
         }
     }
-
-    // -------------------------------------------------------------------------
-    // OPTIMIZED: Coroutine Monitoring instead of Update()
-    // -------------------------------------------------------------------------
 
     private void OnEnable()
     {
         StartCoroutine(MonitorCapturedCards());
+        StartCoroutine(ScanForTargets());
     }
 
     private IEnumerator MonitorCapturedCards()
@@ -69,7 +70,6 @@ public class AutomationCardController : CardController
 
         while (true)
         {
-            // Iterate backwards so we can remove items safely
             for (int i = capturedCards.Count - 1; i >= 0; i--)
             {
                 CardController card = capturedCards[i];
@@ -82,31 +82,89 @@ public class AutomationCardController : CardController
 
                 if (!IsCardInMyStack(card))
                 {
-                    Debug.Log($"[Automation] Card {card.name} left the stack. Removing from list.");
+                    // Debug.Log($"[Automation] Card {card.name} left the stack.");
                     capturedCards.RemoveAt(i);
                 }
             }
-
             yield return waitInterval;
+        }
+    }
+
+    private IEnumerator ScanForTargets()
+    {
+        WaitForSeconds scanInterval = new WaitForSeconds(1.0f); // Scan once per second
+
+        while (true)
+        {
+            if (!isAutoMoving && targetedCard == null && requiredCards.Count > 0 && !IsOnProcess)
+            {
+                FindBestTarget();
+            }
+            yield return scanInterval;
+        }
+    }
+
+    private void FindBestTarget()
+    {
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, scanRadius);
+
+        float closestDist = float.MaxValue;
+        CardController bestCandidate = null;
+
+        foreach (Collider2D hit in hits)
+        {
+            if (hit.TryGetComponent(out CardController candidate))
+            {
+                if (candidate == this) continue;
+
+                if (candidate.IsDragged) continue;
+
+                if (capturedCards.Contains(candidate)) continue;
+
+                bool isRequiredType = false;
+                if (candidate.CardData != null)
+                {
+                    foreach (CardData reqData in requiredCards)
+                    {
+                        if (reqData != null && reqData == candidate.CardData)
+                        {
+                            isRequiredType = true;
+                            break;
+                        }
+                    }
+                }
+
+                if (isRequiredType)
+                {
+                    float dist = Vector3.Distance(transform.position, candidate.transform.position);
+                    if (dist < closestDist)
+                    {
+                        closestDist = dist;
+                        bestCandidate = candidate;
+                    }
+                }
+            }
+        }
+
+        if (bestCandidate != null)
+        {
+            Debug.Log($"[Automation] Found Target: {bestCandidate.name}");
+            targetedCard = bestCandidate;
+            MoveToPosition(targetedCard.transform.position, moveDuration);
         }
     }
 
     private bool IsCardInMyStack(CardController cardToCheck)
     {
         if (cardToCheck == this) return true;
-
         CardController currentParent = cardToCheck.StackedOnCard;
 
         while (currentParent != null)
         {
-            if (currentParent == this)
-            {
-                return true;
-            }
+            if (currentParent == this) return true;
             currentParent = currentParent.StackedOnCard;
         }
-
-        return false; 
+        return false;
     }
 
     public void MoveToPosition(Vector3 targetWorldPosition, float duration, Action onComplete = null)
@@ -117,7 +175,6 @@ public class AutomationCardController : CardController
         calculatedSpeed = distance > 0 ? distance / duration : 0;
 
         activeTargetPosition = targetWorldPosition;
-
         StartMoveRoutine(targetWorldPosition, duration, onComplete);
     }
 
@@ -131,7 +188,7 @@ public class AutomationCardController : CardController
     {
         isAutoMoving = true;
 
-        StackWithCard(null);
+        StackWithCard(null); 
 
         ToggleDragSorting(true, ZOrder + 10);
 
@@ -186,9 +243,16 @@ public class AutomationCardController : CardController
             }
             else
             {
-                Debug.Log($"[Automation] Target Card too far: {dist} > {captureRadius}");
+                Debug.Log($"[Automation] Target Card too far or moved: {dist} > {captureRadius}");
+                targetedCard = null; // Clear target so we can try again or find a new one
             }
         }
+        else
+        {
+            targetedCard = null;
+        }
+
+        targetedCard = null;
     }
 
     public override void OnBeginDrag(PointerEventData eventData)
