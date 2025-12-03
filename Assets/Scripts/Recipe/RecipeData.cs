@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Rendering;
 
 [CreateAssetMenu(menuName = "Recipe")]
 public class RecipeData : ScriptableObject
@@ -17,7 +17,21 @@ public class RecipeData : ScriptableObject
     public List<CardData> CardCombos { get => cardCombos; }
     public CardData TopCardReq { get => topCardReq; }
     public List<RecipeToolReq> RequiredTools { get => requiredTools; }
-    public float ProcessDuration { get => processDuration; }
+    public float ProcessDuration
+    {
+        get
+        {
+            float duration = 0f;
+
+            foreach (var card in cardCombos)
+            {
+                duration += card.ProgressTime;
+            }
+
+            return duration;
+        }
+
+    }
     public CardData GeneratedCard { get => generatedCard; }
     public int GeneratedCardAmount { get => generatedCardAmount; }
     public List<CardData> DestroyedCards { get => destroyedCards; }

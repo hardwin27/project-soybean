@@ -15,5 +15,6 @@ MonoBehaviour:
   cardName: Natto Starter
   buyPrice: 1
   sellPrice: 0
+  progressTime: 6
   cardType: 1
   cardSprite: {fileID: 21300000, guid: d07176fb850c71b4e9fea40e9e3011ad, type: 3}

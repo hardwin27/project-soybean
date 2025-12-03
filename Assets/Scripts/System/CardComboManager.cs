@@ -73,6 +73,11 @@ public class CardComboManager : Singleton<CardComboManager>
         }
         else
         {
+            if (bottomCard is AutomationCardController)
+            {
+                cardStack.Remove(bottomCard);
+                bottomCard = cardStack[0];
+            }
             RecipeData selectedRecipe = null;
             foreach (var recipe in recipes)
             {

@@ -109,7 +109,7 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         StartCoroutine("DelayedOverlapCheck");
     }
 
-    public void OnBeginDrag(PointerEventData eventData)
+    public virtual void OnBeginDrag(PointerEventData eventData)
     {
         Debug.Log($"EventData: {eventData.pointerPressRaycast.gameObject.name}");
         Debug.Log($"EventData Postion {Camera.main.ScreenToWorldPoint(eventData.position)}");
@@ -131,7 +131,7 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         ToggleDragSorting(true, ZOrder);
     }
 
-    public void OnDrag(PointerEventData eventData)
+    public virtual void OnDrag(PointerEventData eventData)
     {
         if (!CanBeDragged || IsOnProcess)
         {
@@ -143,7 +143,7 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         SetDragPos(eventData);
     }
 
-    public void OnEndDrag(PointerEventData eventData)
+    public virtual void OnEndDrag(PointerEventData eventData)
     {
         if (!CanBeDragged || IsOnProcess)
         {
@@ -319,7 +319,7 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         /*HandleCardStackPos();*/
     }
 
-    protected void StackWithCard(CardController cardToStackTo)
+    public void StackWithCard(CardController cardToStackTo)
     {
         if (cardToStackTo == this)
         {

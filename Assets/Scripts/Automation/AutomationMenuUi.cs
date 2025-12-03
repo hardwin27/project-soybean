@@ -1,8 +1,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class RecipeUi : MonoBehaviour
+public class AutomationMenuUi : MonoBehaviour
 {
+    [SerializeField] private Transform automationOptionPanel;
     [SerializeField] private Transform recipeEntryParent;
     [SerializeField] private GameObject recipeEntryPrefab;
     [SerializeField] private GameObject cardIconUiPrefab;
@@ -13,7 +14,7 @@ public class RecipeUi : MonoBehaviour
     {
         CardComboManager cardComboManager = CardComboManager.Instance;
 
-        foreach (var recipe in cardComboManager.Recipes) 
+        foreach (var recipe in cardComboManager.Recipes)
         {
             if (recipe.GeneratedCard != null)
             {
@@ -50,6 +51,16 @@ public class RecipeUi : MonoBehaviour
                     {
                         Instantiate(plusSignPrefab, newRecipeEntryObj.transform);
                     }
+                }
+
+                Button recipeButton = newRecipeEntryObj.GetComponentInChildren<Button>();
+                if (recipeButton != null) 
+                {
+                    Debug.Log($"{gameObject.name} Automation button found");
+                    recipeButton.onClick.AddListener(() =>
+                    {
+                        Debug.Log($"automation click {recipe.GeneratedCard.name}");
+                    });
                 }
             }
         }

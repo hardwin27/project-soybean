@@ -15,5 +15,6 @@ MonoBehaviour:
   cardName: Water Source
   buyPrice: 0
   sellPrice: 0
+  progressTime: 5
   cardType: 0
   cardSprite: {fileID: 21300000, guid: 76a0ab404dd1ddc4e877bf9fbccdc2cb, type: 3}

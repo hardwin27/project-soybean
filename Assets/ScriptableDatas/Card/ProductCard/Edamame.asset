@@ -15,5 +15,6 @@ MonoBehaviour:
   cardName: Edamame
   buyPrice: 0
   sellPrice: 1
+  progressTime: 23
   cardType: 1
   cardSprite: {fileID: 21300000, guid: 118f80466fc9d684090d779c6dce058d, type: 3}
