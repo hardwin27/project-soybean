@@ -11,10 +11,10 @@ public class AutomationCardController : CardController
     [ReadOnly]
     [SerializeField] protected bool isAutoMoving = false;
 
-    [Title("Auto-Stacking Configuration")]
-    [SerializeField]
-    [InfoBox("Add CardData assets here. The automation will hunt for cards matching this data.")]
-    private List<CardData> requiredCards = new List<CardData>();
+    
+    /*[InfoBox("Add CardData assets here. The automation will hunt for cards matching this data.")]
+    private List<CardData> requiredCards = new List<CardData>();*/
+    [SerializeField, ReadOnly] private RecipeData requiredRecipe = null;
 
     [SerializeField]
     [InfoBox("The card currently being hunted.")]
@@ -64,6 +64,20 @@ public class AutomationCardController : CardController
         StartCoroutine(ScanForTargets());
     }
 
+    protected virtual void OnMouseOver()
+    {
+        if (Input.GetMouseButtonUp(1))
+        {
+            AutomationManager.Instance.SelectAutomationCard(this);
+            Debug.Log($"{gameObject.name} RIGHT CLICKED");
+        }
+    }
+
+    public void AssignRequiredCards(RecipeData _reqRecipe)
+    {
+        requiredRecipe = _reqRecipe;
+    }
+
     private IEnumerator MonitorCapturedCards()
     {
         WaitForSeconds waitInterval = new WaitForSeconds(0.5f);
@@ -96,7 +110,7 @@ public class AutomationCardController : CardController
 
         while (true)
         {
-            if (!isAutoMoving && targetedCard == null && requiredCards.Count > 0 && !IsOnProcess)
+            if (requiredRecipe != null && !isAutoMoving && targetedCard == null && requiredRecipe.CardCombos.Count > 0 && !IsOnProcess)
             {
                 FindBestTarget();
             }
@@ -116,15 +130,62 @@ public class AutomationCardController : CardController
             if (hit.TryGetComponent(out CardController candidate))
             {
                 if (candidate == this) continue;
-
                 if (candidate.IsDragged) continue;
-
                 if (capturedCards.Contains(candidate)) continue;
 
                 bool isRequiredType = false;
-                if (candidate.CardData != null)
+
+                // 1. TOOL CARD LOGIC
+                if (candidate.TryGetComponent(out ToolCardController toolCandidate))
                 {
-                    foreach (CardData reqData in requiredCards)
+                    // A. Check if this tool is in the CardCombos list (Is it an ingredient?)
+                    bool isInCombos = false;
+                    foreach (CardData reqData in requiredRecipe.CardCombos)
+                    {
+                        if (reqData != null && reqData == toolCandidate.CardData)
+                        {
+                            isInCombos = true;
+                            break;
+                        }
+                    }
+
+                    if (isInCombos)
+                    {
+                        // B. Check if it is ALSO in RequiredTools (Does it have special stat requirements?)
+                        RecipeToolReq reqTool = requiredRecipe.RequiredTools.Find(x => x.ToolCard == toolCandidate.ToolCardData);
+
+                        if (reqTool != null)
+                        {
+                            // Case: Defined in RequiredTools -> MUST pass Stat Check
+                            bool allStatClear = true;
+                            foreach (RecipeToolReqStat reqToolStat in reqTool.ToolStats)
+                            {
+                                RuntimeStat targetedRuntimeStat = toolCandidate.RuntimeStats.Find(runtimeStat => runtimeStat.Stat == reqToolStat.StatData);
+
+                                // Fail if stat is missing OR value doesn't match
+                                if (targetedRuntimeStat == null || targetedRuntimeStat.CurrentValue != reqToolStat.StatValue)
+                                {
+                                    allStatClear = false;
+                                    break;
+                                }
+                            }
+
+                            if (allStatClear)
+                            {
+                                isRequiredType = true;
+                            }
+                        }
+                        else
+                        {
+                            // Case: In Combos, but NOT in RequiredTools -> No stat check needed -> Valid
+                            isRequiredType = true;
+                        }
+                    }
+                }
+                // 2. NORMAL CARD LOGIC
+                else if (candidate.CardData != null)
+                {
+                    foreach (CardData reqData in requiredRecipe.CardCombos)
                     {
                         if (reqData != null && reqData == candidate.CardData)
                         {
@@ -134,6 +195,7 @@ public class AutomationCardController : CardController
                     }
                 }
 
+                // 3. DISTANCE CHECK (Shared for both types)
                 if (isRequiredType)
                 {
                     float dist = Vector3.Distance(transform.position, candidate.transform.position);

@@ -22,6 +22,9 @@ public class AutomationManager : Singleton<AutomationManager>
 
     public void AssignRecipe(RecipeData recipeData)
     {
-        
+        if (selectedAutomationCard != null) 
+        {
+            selectedAutomationCard.AssignRequiredCards(recipeData);
+        }
     }
 }

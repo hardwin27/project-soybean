@@ -76,6 +76,11 @@ public class SimpleTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         HideTooltip();
     }
 
+    private void OnDisable()
+    {
+        HideTooltip();
+    }
+
     public void OnPointerEnter(PointerEventData eventData)
     {
         if (!isUIObject)

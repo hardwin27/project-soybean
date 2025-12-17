@@ -9,9 +9,35 @@ public class AutomationMenuUi : MonoBehaviour
     [SerializeField] private GameObject cardIconUiPrefab;
     [SerializeField] private GameObject equalSignPrefab;
     [SerializeField] private GameObject plusSignPrefab;
+    [SerializeField] private Button closeButton;
+
+    private void Awake()
+    {
+        if (AutomationManager.Instance != null)
+        {
+            AutomationManager.Instance.OnAutomationCardSelected += OpenAutomationUi;
+        }
+
+        closeButton.onClick.AddListener(CloseAutomationUi);
+    }
+
+    private void OnDestroy()
+    {
+        if (AutomationManager.Instance != null)
+        {
+            AutomationManager.Instance.OnAutomationCardSelected -= OpenAutomationUi;
+        }
+
+        if (closeButton != null)
+        {
+            closeButton.onClick.RemoveListener(CloseAutomationUi);
+        }
+    }
 
     private void Start()
     {
+        automationOptionPanel.gameObject.SetActive(false);
+
         CardComboManager cardComboManager = CardComboManager.Instance;
 
         foreach (var recipe in cardComboManager.Recipes)
@@ -60,9 +86,26 @@ public class AutomationMenuUi : MonoBehaviour
                     recipeButton.onClick.AddListener(() =>
                     {
                         Debug.Log($"automation click {recipe.GeneratedCard.name}");
+                        AutomationManager.Instance.AssignRecipe(recipe);
+                        CloseAutomationUi();
                     });
                 }
             }
+        }
+    }
+
+    private void OpenAutomationUi()
+    {
+        Debug.Log("OpenAutomationUi");
+        automationOptionPanel.gameObject.SetActive(true);
+    }
+
+    private void CloseAutomationUi()
+    {
+        automationOptionPanel.gameObject.SetActive(false);
+        if (AutomationManager.Instance != null)
+        {
+            AutomationManager.Instance.ClearSelectedAutomationCard();
         }
     }
 }
