@@ -1,11 +1,10 @@
 using System;
 using UnityEngine;
 using SingletonSystem;
-using Sirenix.OdinInspector;
 
 public class AutomationManager : Singleton<AutomationManager>
 {
-    [SerializeField, ReadOnly] private AutomationCardController selectedAutomationCard;
+    [SerializeField] private AutomationCardController selectedAutomationCard;
 
     public Action OnAutomationCardSelected;
 

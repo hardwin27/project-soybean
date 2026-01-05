@@ -1,5 +1,4 @@
 using UnityEngine;
-using Sirenix.OdinInspector;
 using UnityEngine.EventSystems;
 
 public class CameraController : MonoBehaviour
@@ -17,8 +16,8 @@ public class CameraController : MonoBehaviour
     [Header("Layer Settings")]
     [SerializeField] private LayerMask blockingLayers = 1;
     
-    [SerializeField, ReadOnly] private Vector3 dragOrigin;
-    [SerializeField, ReadOnly] private bool isDragging = false;
+    [SerializeField] private Vector3 dragOrigin;
+    [SerializeField] private bool isDragging = false;
     private Camera cam;
     private float targetZoom;
     private float zoomVelocity;

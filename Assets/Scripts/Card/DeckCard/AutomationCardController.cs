@@ -3,21 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using Sirenix.OdinInspector;
 
 public class AutomationCardController : CardController
 {
-    [Title("Automation State")]
-    [ReadOnly]
     [SerializeField] protected bool isAutoMoving = false;
 
     
     /*[InfoBox("Add CardData assets here. The automation will hunt for cards matching this data.")]
     private List<CardData> requiredCards = new List<CardData>();*/
-    [SerializeField, ReadOnly] private RecipeData requiredRecipe = null;
+    [SerializeField] private RecipeData requiredRecipe = null;
 
     [SerializeField]
-    [InfoBox("The card currently being hunted.")]
     private CardController targetedCard;
 
     [SerializeField]
@@ -30,21 +26,16 @@ public class AutomationCardController : CardController
     private float moveDuration = 0.5f;
 
     [Space]
-    [ReadOnly]
     [SerializeField]
-    [InfoBox("Cards currently stacked on top of this automation card via the capture system.")]
     private List<CardController> capturedCards = new List<CardController>();
 
     private Vector3? activeTargetPosition = null;
     private float calculatedSpeed = 0f;
     private Coroutine currentMoveRoutine;
 
-    [Title("Debug Movement")]
     [SerializeField]
     private Vector3 debugTargetPosition;
 
-    [Button("Move To Debug Position", ButtonSizes.Large)]
-    [DisableInEditorMode]
     private void DebugMoveToPosition()
     {
         if (!Application.isPlaying) return;

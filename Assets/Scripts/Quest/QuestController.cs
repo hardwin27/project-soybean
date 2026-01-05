@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using Sirenix.OdinInspector;
 using System;
 
 // Hardcode quest for now
@@ -9,9 +8,8 @@ public class QuestController : MonoBehaviour
     /*[SerializeField] private List<QuestStatus> quests = new List<QuestStatus>();*/
     [SerializeField] private List<QuestChapter> questChapters = new List<QuestChapter>();
 
-    [Title("Component for Quest")]
-    [SerializeField, ReadOnly] protected CardComboManager cardComboManager;
-    [SerializeField, ReadOnly] protected CardGeneratorManager cardGeneratorManager;
+    [SerializeField] protected CardComboManager cardComboManager;
+    [SerializeField] protected CardGeneratorManager cardGeneratorManager;
     [SerializeField] private DeckSellCardController sellDeck;
     [SerializeField] private DeckBankCardController bankDeck;
     [SerializeField] private GameplayUiController gameplayUi;

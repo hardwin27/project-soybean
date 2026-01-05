@@ -1,10 +1,9 @@
-using Sirenix.OdinInspector;
 using UnityEngine;
 
 [RequireComponent(typeof(ToolCardController))]
 public class ToolCardVisual : CardVisual
 {
-    [SerializeField, ReadOnly] private ToolCardController toolCardController;
+    [SerializeField] private ToolCardController toolCardController;
 
     [SerializeField] protected Transform statIndicatorParent;
 

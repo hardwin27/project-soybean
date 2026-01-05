@@ -4,8 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
-using Sirenix.OdinInspector;
-
 namespace PoolingSystem
 {
     [System.Serializable]
@@ -14,7 +12,7 @@ namespace PoolingSystem
         [SerializeField] private GameObject _entityToPool;
         [SerializeField] private int _defaultCapacity;
         [SerializeField] private int _maxSize;
-        [SerializeField, ReadOnly] private List<GameObject> _createdEntities = new List<GameObject>();
+        [SerializeField] private List<GameObject> _createdEntities = new List<GameObject>();
 
         private IObjectPool<GameObject> _pool;
 

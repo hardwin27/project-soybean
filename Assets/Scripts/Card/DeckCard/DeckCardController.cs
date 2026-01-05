@@ -1,12 +1,11 @@
-using Sirenix.OdinInspector;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class DeckCardController : CardController, ICardTaker
 {
-    [SerializeField, ReadOnly] protected DeckCardData deckCardData;
-    [SerializeField, ReadOnly] protected int currentCardIndex;
+    [SerializeField] protected DeckCardData deckCardData;
+    [SerializeField] protected int currentCardIndex;
 
     public Action OnDeckCardUpdated;
     public Action<CardData> OnDeckCardGenerated;

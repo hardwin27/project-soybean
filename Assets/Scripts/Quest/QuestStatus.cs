@@ -1,4 +1,3 @@
-using Sirenix.OdinInspector;
 using System;
 using UnityEngine;
 
@@ -6,7 +5,7 @@ using UnityEngine;
 public class QuestStatus
 {
     [SerializeField] private QuestData questData;
-    [SerializeField, ReadOnly] private bool isCompleted;
+    [SerializeField] private bool isCompleted;
 
     public Action OnQuestUpdated;
 

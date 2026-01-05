@@ -1,12 +1,11 @@
-using Sirenix.OdinInspector;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class DeckBankCardController : DeckCardController
 {
-    [SerializeField, ReadOnly] protected BankDeckCardData bankDeckCardData;
-    [SerializeField, ReadOnly] protected int currentMoney;
+    [SerializeField] protected BankDeckCardData bankDeckCardData;
+    [SerializeField] protected int currentMoney;
     [SerializeField] private MoneyCardData moneyCardData;
 
     public Action OnDeckBankDatUpdated;

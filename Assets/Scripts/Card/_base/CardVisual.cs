@@ -1,7 +1,6 @@
 using UnityEngine;
 using TMPro;
 using System.Collections.Generic;
-using Sirenix.OdinInspector;
 using System.Threading;
 
 [RequireComponent(typeof(CardController))]
@@ -38,7 +37,6 @@ public class CardVisual : MonoBehaviour
         UpdateBaseSprite(data.CardSprite, data.CardType);
     }
 
-    [Button]
     protected void DebugUpdateBaseSprite()
     {
         cardController = GetComponent<CardController>();

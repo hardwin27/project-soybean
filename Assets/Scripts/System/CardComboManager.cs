@@ -1,7 +1,6 @@
 using UnityEngine;
 using System.Linq;
 using SingletonSystem;
-using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using System;
 

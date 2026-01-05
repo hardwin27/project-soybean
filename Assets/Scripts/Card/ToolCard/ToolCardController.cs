@@ -1,12 +1,11 @@
 using UnityEngine;
-using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using System;
 
 public class ToolCardController : CardController
 {
-    [SerializeField, ReadOnly] private ToolCardData toolCardData;
-    [SerializeField, ReadOnly] private List<RuntimeStat> runtimeStats = new List<RuntimeStat>();
+    [SerializeField] private ToolCardData toolCardData;
+    [SerializeField] private List<RuntimeStat> runtimeStats = new List<RuntimeStat>();
 
     public Action OnToolDataUpdated;
 

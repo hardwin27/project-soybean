@@ -1,4 +1,3 @@
-using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,7 +10,7 @@ public class QuestEntryUi : MonoBehaviour
     [SerializeField] private Sprite questIncompleteSprite;
     [SerializeField] private Sprite questCompleteSprite;
 
-    [SerializeField, ReadOnly] private Bounds textBound;
+    [SerializeField] private Bounds textBound;
 
     protected QuestStatus questStatus;
 

@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Rendering;
@@ -16,28 +15,26 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
     [SerializeField] protected CardData cardData;
     [SerializeField] protected bool canBeDragged;
-    [SerializeField, ReadOnly] protected bool isOnProcess = false;
-    [SerializeField, ReadOnly] protected bool isTopStack = false;
-    [SerializeField, ReadOnly] protected bool isDragged;
+    [SerializeField] protected bool isOnProcess = false;
+    [SerializeField] protected bool isTopStack = false;
+    [SerializeField] protected bool isDragged;
 
     [SerializeField] protected Transform stackPoint;
 
-    [SerializeField, ReadOnly] protected CardController stackedOnCard;
-    [SerializeField, ReadOnly] protected CardController topCard;
-    [SerializeField, ReadOnly] protected Vector3 lastPost;
-    [SerializeField, ReadOnly] protected Vector3 dragOffset;
+    [SerializeField] protected CardController stackedOnCard;
+    [SerializeField] protected CardController topCard;
+    [SerializeField] protected Vector3 lastPost;
+    [SerializeField] protected Vector3 dragOffset;
 
     [SerializeField] protected string cardDefaultSortName;
     [SerializeField] protected string cardDraggedSortName;
 
-    [Title("Card Bounds")]
     [SerializeField] private float cardWidth = 1f;
     [SerializeField] private float cardHeight = 1.4f;
     [SerializeField] private Rect cardBoundary;
 
 
-    [Title("Debugging")]
-    [SerializeField, ReadOnly] List<CardController> overlapCardControllers = new List<CardController>();
+    [SerializeField] List<CardController> overlapCardControllers = new List<CardController>();
 
     public Action OnBaseDataUpdated;
 

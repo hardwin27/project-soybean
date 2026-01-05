@@ -1,16 +1,15 @@
-using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class CardProcessor : MonoBehaviour
 {
-    [SerializeField, ReadOnly] private bool isProcessing = false;
+    [SerializeField] private bool isProcessing = false;
     [SerializeField] private Canvas cardCanvas;
     [SerializeField] private Slider progressSlider;
 
-    [SerializeField, ReadOnly] private RecipeData processedRecipe;
-    [SerializeField, ReadOnly] private List<CardController> processedStack;
+    [SerializeField] private RecipeData processedRecipe;
+    [SerializeField] private List<CardController> processedStack;
 
     private float processDuration;
     private float processTimer;
