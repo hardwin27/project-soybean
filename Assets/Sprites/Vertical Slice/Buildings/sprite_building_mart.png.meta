@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: ffa650d87985c774caac84a6a440877b
+guid: d5f9c1163098ea441a82280cef9021bb
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5698966402931928475
-    second: sprite_tile_pan_0
+      213: 4581319933034802153
+    second: sprite_building_mart_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: sprite_tile_pan_0
+      name: sprite_building_mart_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 512
-        height: 335
+        width: 465
+        height: 512
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5625b5e304439e0b0800000000000000
-      internalID: -5698966402931928475
+      spriteID: 9eba4fac43e149f30800000000000000
+      internalID: 4581319933034802153
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 8029a575f3758644aa48692a8020c2fc
+    spriteID: f469e91c85d3a3648b929406765b8f67
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      sprite_tile_pan_0: -5698966402931928475
+      sprite_building_mart_0: 4581319933034802153
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

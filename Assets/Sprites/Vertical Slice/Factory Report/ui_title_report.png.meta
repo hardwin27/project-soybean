@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: ffa650d87985c774caac84a6a440877b
+guid: 32f705a2b5c8ea34db56c60a20c61b79
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5698966402931928475
-    second: sprite_tile_pan_0
+      213: -8110111221219418523
+    second: ui_title_report_0
+  - first:
+      213: 1300706960837930717
+    second: ui_title_report_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +49,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -100,23 +103,45 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: sprite_tile_pan_0
+      name: ui_title_report_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 512
-        height: 335
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 301
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5625b5e304439e0b0800000000000000
-      internalID: -5698966402931928475
+      spriteID: 56e9e4240d8137f80800000000000000
+      internalID: -8110111221219418523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui_title_report_1
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 1
+        width: 261
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dde6f95e61a0d0210800000000000000
+      internalID: 1300706960837930717
       vertices: []
       indices: 
       edges: []
@@ -125,7 +150,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 8029a575f3758644aa48692a8020c2fc
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +160,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      sprite_tile_pan_0: -5698966402931928475
+      ui_title_report_0: -8110111221219418523
+      ui_title_report_1: 1300706960837930717
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

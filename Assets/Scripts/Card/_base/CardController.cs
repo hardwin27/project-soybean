@@ -21,6 +21,7 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
     [SerializeField] protected Transform stackPoint;
 
+    [SerializeField] protected bool isAllowedToStack = true;
     [SerializeField] protected CardController stackedOnCard;
     [SerializeField] protected CardController topCard;
     [SerializeField] protected Vector3 lastPost;
@@ -32,6 +33,7 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     [SerializeField] private float cardWidth = 1f;
     [SerializeField] private float cardHeight = 1.4f;
     [SerializeField] private Rect cardBoundary;
+    [SerializeField] private bool shouldBeBounded = true;
 
 
     [SerializeField] List<CardController> overlapCardControllers = new List<CardController>();
@@ -263,19 +265,27 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     {
         Vector3 targetPos = new Vector3(posToBound.x + dragOffset.x, posToBound.y + dragOffset.y, transform.position.z);
 
-        // Clamp the position so the card’s edges stay inside the boundary
-        float halfW = cardWidth * 0.5f;
-        float halfH = cardHeight * 0.5f;
+        if (shouldBeBounded)
+        {
+            // Clamp the position so the card’s edges stay inside the boundary
+            float halfW = cardWidth * 0.5f;
+            float halfH = cardHeight * 0.5f;
 
-        float minX = cardBoundary.xMin + halfW;
-        float maxX = cardBoundary.xMax - halfW;
-        float minY = cardBoundary.yMin + halfH;
-        float maxY = cardBoundary.yMax - halfH;
+            float minX = cardBoundary.xMin + halfW;
+            float maxX = cardBoundary.xMax - halfW;
+            float minY = cardBoundary.yMin + halfH;
+            float maxY = cardBoundary.yMax - halfH;
 
-        float clampedX = Mathf.Clamp(targetPos.x, minX + halfW, maxX - halfW);
-        float clampedY = Mathf.Clamp(targetPos.y, minY + halfH, maxY - halfH);
+            float clampedX = Mathf.Clamp(targetPos.x, minX + halfW, maxX - halfW);
+            float clampedY = Mathf.Clamp(targetPos.y, minY + halfH, maxY - halfH);
 
-        transform.position = new Vector3(clampedX, clampedY, targetPos.z);
+            transform.position = new Vector3(clampedX, clampedY, targetPos.z);
+        }
+
+        else
+        {
+            transform.position = targetPos;
+        }
     }
 
     protected void SetPos(Vector3 pos)
@@ -409,33 +419,50 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
             }
         }
 
-        if (overlapCardControllers.Count <= 0)
+        if (isAllowedToStack)
         {
-            ToggleDragSorting(false);
-            StackWithCard(null);
+            if (overlapCardControllers.Count <= 0)
+            {
+                ToggleDragSorting(false);
+                StackWithCard(null);
+            }
+            else
+            {
+                overlapCardControllers.Sort((a, b) =>
+                {
+                    float distA = Vector3.SqrMagnitude(a.transform.position - transform.position);
+                    float distB = Vector3.SqrMagnitude(b.transform.position - transform.position);
+                    return distA.CompareTo(distB);
+                });
+
+                foreach (CardController cardController in overlapCardControllers)
+                {
+                    if (CanStackWithCard(cardController.TopCard))
+                    {
+                        Debug.Log($"Stack To Card: {cardController.TopCard}");
+                        StackWithCard(cardController.TopCard);
+                        return;
+                    }
+                }
+
+                Debug.LogWarning($"Rejected Form Stack");
+                SetPos(lastPost);
+                ToggleDragSorting(false, ZOrder);
+            }
         }
         else
         {
-            overlapCardControllers.Sort((a, b) =>
+            if (overlapCardControllers.Count <= 0)
             {
-                float distA = Vector3.SqrMagnitude(a.transform.position - transform.position);
-                float distB = Vector3.SqrMagnitude(b.transform.position - transform.position);
-                return distA.CompareTo(distB);
-            });
-
-            foreach (CardController cardController in overlapCardControllers)
-            {
-                if (CanStackWithCard(cardController.TopCard))
-                {
-                    Debug.Log($"Stack To Card: {cardController.TopCard}");
-                    StackWithCard(cardController.TopCard);
-                    return;
-                }
+                ToggleDragSorting(false);
+                StackWithCard(null);
             }
-
-            Debug.LogWarning($"Rejected Form Stack");
-            SetPos(lastPost);
-            ToggleDragSorting(false, ZOrder);
+            else
+            {
+                Debug.LogWarning($"Rejected Form Stack");
+                SetPos(lastPost);
+                ToggleDragSorting(false, ZOrder);
+            }
         }
     }
 }

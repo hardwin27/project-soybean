@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class DeckCardController : CardController, ICardTaker
 {
@@ -34,6 +35,12 @@ public class DeckCardController : CardController, ICardTaker
     {
         AudioManager.Instance.PlaySFXObject("card_dragged");
         return;
+    }
+
+    public override void OnEndDrag(PointerEventData eventData)
+    {
+        SetPos(lastPost);
+        ToggleDragSorting(false, ZOrder);
     }
 
     public override void AssignCardData(CardData data)
