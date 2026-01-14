@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Rendering;
-
+using ReadOnlyEditor;
 
 
 // NOTE: TRY OUT THE GENERIC APPROACH IN THE FUTURE. IT'S ON DISCORD IMPORTANT
@@ -15,17 +15,17 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
     [SerializeField] protected CardData cardData;
     [SerializeField] protected bool canBeDragged;
-    [SerializeField] protected bool isOnProcess = false;
-    [SerializeField] protected bool isTopStack = false;
-    [SerializeField] protected bool isDragged;
+    [SerializeField, ReadOnly] protected bool isOnProcess = false;
+    [SerializeField, ReadOnly] protected bool isTopStack = false;
+    [SerializeField, ReadOnly] protected bool isDragged;
 
     [SerializeField] protected Transform stackPoint;
 
     [SerializeField] protected bool isAllowedToStack = true;
-    [SerializeField] protected CardController stackedOnCard;
-    [SerializeField] protected CardController topCard;
-    [SerializeField] protected Vector3 lastPost;
-    [SerializeField] protected Vector3 dragOffset;
+    [SerializeField, ReadOnly] protected CardController stackedOnCard;
+    [SerializeField, ReadOnly] protected CardController topCard;
+    [SerializeField, ReadOnly] protected Vector3 lastPost;
+    [SerializeField, ReadOnly] protected Vector3 dragOffset;
 
     [SerializeField] protected string cardDefaultSortName;
     [SerializeField] protected string cardDraggedSortName;
@@ -36,7 +36,7 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     [SerializeField] private bool shouldBeBounded = true;
 
 
-    [SerializeField] List<CardController> overlapCardControllers = new List<CardController>();
+    [SerializeField, ReadOnly] List<CardController> overlapCardControllers = new List<CardController>();
 
     public Action OnBaseDataUpdated;
 

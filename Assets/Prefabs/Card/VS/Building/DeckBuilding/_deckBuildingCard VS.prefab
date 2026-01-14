@@ -1,0 +1,129 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &5801855949189374816
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 246664181721527203, guid: 00016afbe1d87b84e8c90df8eec0b543, type: 3}
+      propertyPath: cardData
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1058659164360096559, guid: 00016afbe1d87b84e8c90df8eec0b543, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1058659164360096559, guid: 00016afbe1d87b84e8c90df8eec0b543, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1058659164360096559, guid: 00016afbe1d87b84e8c90df8eec0b543, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1058659164360096559, guid: 00016afbe1d87b84e8c90df8eec0b543, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1058659164360096559, guid: 00016afbe1d87b84e8c90df8eec0b543, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1058659164360096559, guid: 00016afbe1d87b84e8c90df8eec0b543, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1058659164360096559, guid: 00016afbe1d87b84e8c90df8eec0b543, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1058659164360096559, guid: 00016afbe1d87b84e8c90df8eec0b543, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1058659164360096559, guid: 00016afbe1d87b84e8c90df8eec0b543, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1058659164360096559, guid: 00016afbe1d87b84e8c90df8eec0b543, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3055417324052999419, guid: 00016afbe1d87b84e8c90df8eec0b543, type: 3}
+      propertyPath: m_Name
+      value: _deckBuildingCard VS
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 246664181721527203, guid: 00016afbe1d87b84e8c90df8eec0b543, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3055417324052999419, guid: 00016afbe1d87b84e8c90df8eec0b543, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3144598277999164555}
+    - targetCorrespondingSourceObject: {fileID: 3055417324052999419, guid: 00016afbe1d87b84e8c90df8eec0b543, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7120037634392541513}
+  m_SourcePrefab: {fileID: 100100000, guid: 00016afbe1d87b84e8c90df8eec0b543, type: 3}
+--- !u!1 &8855010220605935515 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3055417324052999419, guid: 00016afbe1d87b84e8c90df8eec0b543, type: 3}
+  m_PrefabInstance: {fileID: 5801855949189374816}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3144598277999164555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8855010220605935515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efe5b94705b34944192cb511746ab09f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BuildingDeckCardGenerator
+--- !u!114 &7120037634392541513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8855010220605935515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3338ebba65c2a86409735e15619f721c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BuildingDeckCardController
+  cardData: {fileID: 0}
+  canBeDragged: 1
+  isOnProcess: 0
+  isTopStack: 0
+  isDragged: 0
+  stackPoint: {fileID: 8893152205130495387}
+  isAllowedToStack: 1
+  stackedOnCard: {fileID: 0}
+  topCard: {fileID: 0}
+  lastPost: {x: 0, y: 0, z: 0}
+  dragOffset: {x: 0, y: 0, z: 0}
+  cardDefaultSortName: Card
+  cardDraggedSortName: DraggedCard
+  cardWidth: 1.5
+  cardHeight: 2
+  cardBoundary:
+    serializedVersion: 2
+    x: -7.8
+    y: -3.8
+    width: 16
+    height: 11.8
+  shouldBeBounded: 0
+  overlapCardControllers: []
+  deckCardData: {fileID: 0}
+  currentCardIndex: 0
+--- !u!4 &8893152205130495387 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3165617048674080507, guid: 00016afbe1d87b84e8c90df8eec0b543, type: 3}
+  m_PrefabInstance: {fileID: 5801855949189374816}
+  m_PrefabAsset: {fileID: 0}

@@ -1,12 +1,12 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
+using ReadOnlyEditor;
 
 public class DeckCardController : CardController, ICardTaker
 {
-    [SerializeField] protected DeckCardData deckCardData;
-    [SerializeField] protected int currentCardIndex;
+    [SerializeField, ReadOnly] protected DeckCardData deckCardData;
+    [SerializeField, ReadOnly] protected int currentCardIndex;
 
     public Action OnDeckCardUpdated;
     public Action<CardData> OnDeckCardGenerated;
@@ -37,17 +37,17 @@ public class DeckCardController : CardController, ICardTaker
         return;
     }
 
-    public override void OnEndDrag(PointerEventData eventData)
+    /*public override void OnEndDrag(PointerEventData eventData)
     {
         SetPos(lastPost);
         ToggleDragSorting(false, ZOrder);
-    }
+    }*/
 
     public override void AssignCardData(CardData data)
     {
         base.AssignCardData(data);
         deckCardData = data as DeckCardData;
-        canBeDragged = false;
+        /*canBeDragged = false;*/
 
         OnDeckCardUpdated?.Invoke();
     }

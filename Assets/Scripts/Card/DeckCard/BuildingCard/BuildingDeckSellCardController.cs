@@ -1,0 +1,51 @@
+using System.Collections.Generic;
+using System;
+using UnityEngine;
+
+public class BuildingDeckSellCardController : BuildingDeckCardController
+{
+    [SerializeField] private MoneyCardData moneyCardData;
+
+    public Action<CardController> OnCardSold;
+
+    public override bool CanTakeCard(List<CardController> cardStacks)
+    {
+        Debug.Log($"DECKSELL check can sell");
+
+        foreach (CardController card in cardStacks)
+        {
+            if (card.CardData.SellPrice <= 0)
+            {
+                Debug.Log($"DECKSELL CANNOT SELL {card.CardData.CardName}");
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public override void TakeCard(List<CardController> cardStacks)
+    {
+        int totalMoney = 0;
+
+        Debug.Log($"DECKSELL stack length: {cardStacks.Count}");
+
+        foreach (CardController card in cardStacks)
+        {
+            totalMoney += card.CardData.SellPrice;
+        }
+
+        for (int i = 0; i < totalMoney; i++)
+        {
+            OnDeckCardGenerated?.Invoke(moneyCardData);
+        }
+
+        foreach (CardController card in cardStacks)
+        {
+            OnCardSold?.Invoke(card);
+            card.gameObject.SetActive(false);
+        }
+
+        AudioManager.Instance.PlaySFXObject("get_money");
+    }
+}

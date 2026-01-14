@@ -15,6 +15,7 @@ public class CardVisual : MonoBehaviour
 
     protected CardController cardController;
 
+    [SerializeField] protected bool isReqSpriteAssg = true;
     [SerializeField] protected TextMeshPro cardNameText;
     [SerializeField] protected SpriteRenderer cardRenderer;
     [SerializeField] protected Vector3 cardRendererSpriteScale;
@@ -52,6 +53,11 @@ public class CardVisual : MonoBehaviour
     
     protected void UpdateBaseSprite(Sprite cardSprite, CardType cardType)
     {
+        if (!isReqSpriteAssg)
+        {
+            return;
+        }
+
         if (cardSprite != null)
         {
             cardRenderer.sprite = cardSprite;
