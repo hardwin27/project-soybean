@@ -1,10 +1,11 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System;
+using ReadOnlyEditor;
 
 public class ToolCardController : CardController
 {
-    [SerializeField] private ToolCardData toolCardData;
+    [SerializeField, ReadOnly] private ToolCardData toolCardData;
     [SerializeField] private List<RuntimeStat> runtimeStats = new List<RuntimeStat>();
 
     public Action OnToolDataUpdated;

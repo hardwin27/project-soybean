@@ -1,9 +1,10 @@
 using UnityEngine;
+using ReadOnlyEditor;
 
 [RequireComponent(typeof(ToolCardController))]
 public class ToolCardVisual : CardVisual
 {
-    [SerializeField] private ToolCardController toolCardController;
+    [SerializeField, ReadOnly] private ToolCardController toolCardController;
 
     [SerializeField] protected Transform statIndicatorParent;
 

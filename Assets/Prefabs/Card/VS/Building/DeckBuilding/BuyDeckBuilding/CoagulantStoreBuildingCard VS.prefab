@@ -104,6 +104,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CoagulantStoreBuildingCard VS
       objectReference: {fileID: 0}
+    - target: {fileID: 3815451773892199546, guid: f8f99388995419647ba387015b2fd5c0, type: 3}
+      propertyPath: cardData
+      value: 
+      objectReference: {fileID: 11400000, guid: 9b835bcafbb75aa44a730dd83be6b837, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

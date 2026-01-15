@@ -114,8 +114,12 @@ PrefabInstance:
       objectReference: {fileID: -6004712983087854423, guid: 28f6c60610f58f4409a6376dc62463e8, type: 3}
     - target: {fileID: 3463375374262054704, guid: f8f99388995419647ba387015b2fd5c0, type: 3}
       propertyPath: m_Name
-      value: NattoStoreBuildingCard VS 1
+      value: NattoStoreBuildingCard VS
       objectReference: {fileID: 0}
+    - target: {fileID: 3815451773892199546, guid: f8f99388995419647ba387015b2fd5c0, type: 3}
+      propertyPath: cardData
+      value: 
+      objectReference: {fileID: 11400000, guid: ed97bacb1248137488791e02757489c3, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

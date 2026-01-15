@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a32bf65d960db90498ad63e779f0f7fb, type: 3}
-  m_Name: Supplier VS
+  m_Name: WaterSource VS
   m_EditorClassIdentifier: 
-  cardName: Supplier
+  cardName: Water Source
+  cardPrefab: {fileID: 2317894601332070144, guid: 4f9f8f67526224745a4838da7e9073eb, type: 3}
   buyPrice: 0
-  sellPrice: 1
-  progressTime: 23
-  cardType: 1
-  cardSprite: {fileID: 1610608122356091654, guid: 89b79ad7d54e85c4ead276cf30524f37, type: 3}
+  sellPrice: 0
+  progressTime: 5
+  cardType: 0
+  cardSprite: {fileID: -2165589823011173495, guid: dea679f408ac88c48a8e3eae3f89f6c7, type: 3}

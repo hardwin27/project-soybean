@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a32bf65d960db90498ad63e779f0f7fb, type: 3}
-  m_Name: CoagulantStore VS
-  m_EditorClassIdentifier: 
-  cardName: Supplier
-  buyPrice: 0
-  sellPrice: 1
-  progressTime: 23
+  m_Name: Soybean VS
+  m_EditorClassIdentifier: Assembly-CSharp::CardData
+  cardName: Soybean Mixture
+  cardPrefab: {fileID: 1610351367016072073, guid: c2546f2a8b98e064ab1c4f16abaeb43b, type: 3}
+  buyPrice: 1
+  sellPrice: 2
+  progressTime: 1
   cardType: 1
-  cardSprite: {fileID: 1938997569129587823, guid: 19785f1303f00814ea9f6d8364644bc0, type: 3}
+  cardSprite: {fileID: 856664148704610027, guid: 041054dddb24d984ca75624fcb320ec2, type: 3}
