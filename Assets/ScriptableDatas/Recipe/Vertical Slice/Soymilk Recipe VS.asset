@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2040d34e3ada00447a716f803309cee1, type: 3}
+  m_Name: Soymilk Recipe VS
+  m_EditorClassIdentifier: 
+  cardCombos:
+  - {fileID: 11400000, guid: 57e71ee035a603549bdacab87e50a295, type: 2}
+  - {fileID: 11400000, guid: 84da52d0ec250414b87b60e036985af7, type: 2}
+  topCardReq: {fileID: 0}
+  requiredTools: []
+  processDuration: 1
+  generatedCard: {fileID: 11400000, guid: cdedb379c0feb7847891bb1c7e6249e7, type: 2}
+  generatedCardAmount: 1
+  destroyedCards:
+  - {fileID: 11400000, guid: 57e71ee035a603549bdacab87e50a295, type: 2}
+  toolChanges: []

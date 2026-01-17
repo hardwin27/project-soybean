@@ -10,15 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceff499b3c5d85b43b982e9a0f13648e, type: 3}
-  m_Name: Pan VS
+  m_Name: Strain VS
   m_EditorClassIdentifier: 
-  cardName: Pan
+  cardName: Strain
+  cardPrefab: {fileID: 4244443533437090203, guid: 1f8440fc3dd04464691435b0d0b538b9, type: 3}
   buyPrice: 0
   sellPrice: 0
   progressTime: 3
   cardType: 2
-  cardSprite: {fileID: -5698966402931928475, guid: ffa650d87985c774caac84a6a440877b, type: 3}
-  statDatas:
-  - {fileID: 11400000, guid: e828a091bd70cf142b1e44398cc44aab, type: 2}
-  - {fileID: 11400000, guid: f3420b2ddb0b9c44a810b8bf209ced67, type: 2}
-  withResourceSprite: {fileID: -7751296656535676512, guid: af865be5ee9c9044fae90ffbe340c6ff, type: 3}
+  cardSprite: {fileID: 3441703122444594939, guid: 57205981f3cbb5745a10b07e1259d2ea, type: 3}
+  statDatas: []
+  withResourceSprite: {fileID: 3441703122444594939, guid: 57205981f3cbb5745a10b07e1259d2ea, type: 3}

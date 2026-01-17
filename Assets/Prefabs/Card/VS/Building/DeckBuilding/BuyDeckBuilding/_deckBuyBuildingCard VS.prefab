@@ -298,7 +298,7 @@ MonoBehaviour:
   isTopStack: 0
   isDragged: 0
   stackPoint: {fileID: 3574138178763412784}
-  isAllowedToStack: 1
+  isAllowedToStack: 0
   stackedOnCard: {fileID: 0}
   topCard: {fileID: 0}
   lastPost: {x: 0, y: 0, z: 0}

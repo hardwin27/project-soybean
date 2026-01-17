@@ -236,10 +236,6 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
     protected void SetDragPos(PointerEventData eventData)
     {
-        /*Vector3 dragPos = Camera.main.ScreenToWorldPoint(eventData.position);
-        transform.position = new Vector3(dragPos.x + dragOffset.x, dragPos.y + dragOffset.y, transform.position.z);
-        OnCardPosDragged?.Invoke();*/
-
         BoundCardPos(Camera.main.ScreenToWorldPoint(eventData.position));
 
         /*Vector3 dragPos = Camera.main.ScreenToWorldPoint(eventData.position);

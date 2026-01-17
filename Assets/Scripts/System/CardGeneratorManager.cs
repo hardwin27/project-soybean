@@ -1,17 +1,33 @@
 using UnityEngine;
 using SingletonSystem;
 using System;
+using System.Collections.Generic;
+using ReadOnlyEditor;
+
+[System.Serializable]
+public class CardListing
+{
+    [ReadOnly] public CardData CardData;
+    [ReadOnly] public int CardAmount;
+
+    public CardListing(CardData _cardData)
+    {
+        CardData = _cardData;
+        CardAmount = 0;
+    }
+}
 
 public class CardGeneratorManager : Singleton<CardGeneratorManager>
 {
     [SerializeField] private GameObject BaseCardPrefab;
     [SerializeField] private GameObject ToolCardPrefab;
 
+    [SerializeField, ReadOnly] private List<CardListing> cardListrings = new List<CardListing>();
+
     public Action<CardController> OnCardGenerated;
 
     public void GenerateCard(CardData cardData, Vector3 pos)
     {
-        /*Debug.Log($"GenerateCard");*/
         GameObject generatedCardObj = null;
 
         if (cardData.CardType == CardType.Tool)
@@ -20,18 +36,62 @@ public class CardGeneratorManager : Singleton<CardGeneratorManager>
         }
         else
         {
-            generatedCardObj= Instantiate(BaseCardPrefab);
+            generatedCardObj = Instantiate(BaseCardPrefab);
         }
 
-        if (generatedCardObj != null) 
+        if (generatedCardObj != null)
         {
             generatedCardObj.transform.position = pos;
 
             if (generatedCardObj.TryGetComponent(out CardController cardController))
             {
                 cardController.AssignCardData(cardData);
+
+                AddToListing(cardData);
+
+                Action destructionHandler = null;
+                destructionHandler = () =>
+                {
+                    RemoveFromListing(cardData);
+                    cardController.OnCardDestroyed -= destructionHandler;
+                };
+
+                cardController.OnCardDestroyed += destructionHandler;
+
                 OnCardGenerated?.Invoke(cardController);
             }
+        }
+    }
+
+    private void AddToListing(CardData newCardData)
+    {
+        CardListing existingListing = cardListrings.Find(x => x.CardData == newCardData);
+
+        if (existingListing != null)
+        {
+            existingListing.CardAmount++;
+        }
+        else
+        {
+            CardListing newListing = new CardListing(newCardData);
+            newListing.CardAmount = 1;
+            cardListrings.Add(newListing);
+        }
+    }
+
+    private void RemoveFromListing(CardData cardDataToRemove)
+    {
+        CardListing existingListing = cardListrings.Find(x => x.CardData == cardDataToRemove);
+
+        if (existingListing != null)
+        {
+            existingListing.CardAmount--;
+
+            if (existingListing.CardAmount <= 0)
+            {
+                cardListrings.Remove(existingListing);
+            }
+
         }
     }
 }

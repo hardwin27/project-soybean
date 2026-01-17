@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a32bf65d960db90498ad63e779f0f7fb, type: 3}
-  m_Name: Tofu VS
-  m_EditorClassIdentifier: 
-  cardName: Tofu
-  buyPrice: 0
-  sellPrice: 1
-  progressTime: 23
+  m_Name: Soybean Mixture VS
+  m_EditorClassIdentifier: Assembly-CSharp::CardData
+  cardName: Soybean Mixture
+  cardPrefab: {fileID: 1610351367016072073, guid: c2546f2a8b98e064ab1c4f16abaeb43b, type: 3}
+  buyPrice: 1
+  sellPrice: 2
+  progressTime: 1
   cardType: 1
-  cardSprite: {fileID: 196394411002311230, guid: 5438bc45629b7094cb64499b81587917, type: 3}
+  cardSprite: {fileID: 5089220509270245508, guid: 2efcbbcef27eac146a0ce27d29f7d838, type: 3}

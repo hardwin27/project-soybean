@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a32bf65d960db90498ad63e779f0f7fb, type: 3}
-  m_Name: WaterSource VS
+  m_Name: Water Source VS
   m_EditorClassIdentifier: 
   cardName: Water Source
   cardPrefab: {fileID: 2317894601332070144, guid: 4f9f8f67526224745a4838da7e9073eb, type: 3}
