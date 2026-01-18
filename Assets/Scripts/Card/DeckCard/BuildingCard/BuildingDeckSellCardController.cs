@@ -6,7 +6,20 @@ public class BuildingDeckSellCardController : BuildingDeckCardController
 {
     [SerializeField] private MoneyCardData moneyCardData;
 
+    protected ProgressionManager progressionManager;
+
     public Action<CardController> OnCardSold;
+
+    protected override void Awake()
+    {
+        base.Awake();
+
+        progressionManager = ProgressionManager.Instance;
+        if (progressionManager != null)
+        {
+            progressionManager.RegisterMarket(this);
+        }
+    }
 
     public override bool CanTakeCard(List<CardController> cardStacks)
     {

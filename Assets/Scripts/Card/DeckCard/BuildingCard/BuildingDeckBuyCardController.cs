@@ -3,6 +3,19 @@ using UnityEngine;
 
 public class BuildingDeckBuyCardController : BuildingDeckCardController
 {
+    protected ProgressionManager progressionManager;
+
+    protected override void Awake()
+    {
+        base.Awake();
+
+        progressionManager = ProgressionManager.Instance;
+        if (progressionManager != null)
+        {
+            progressionManager.RegisterShop(this);
+        }
+    }
+
     protected override void OnMouseUp()
     {
         base.OnMouseUp();
