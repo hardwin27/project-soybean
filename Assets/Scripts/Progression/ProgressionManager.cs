@@ -88,6 +88,8 @@ public class ProgressionManager : Singleton<ProgressionManager>
     [SerializeField, ReadOnly] private ProgressionData prevProgressionData;
     [SerializeField, ReadOnly] private ProgressionData currentBatchProgressionData;
     [SerializeField, ReadOnly] private ProgressionData prevBatchProgressionData;
+
+    [SerializeField] private ReportGenerator reportGenerator;
     
     private CardGeneratorManager cardGeneratorManager;
 
@@ -98,7 +100,7 @@ public class ProgressionManager : Singleton<ProgressionManager>
         cardGeneratorManager.OnCardGenerated += HandleCardGenerated;
     }
 
-    private void Start()
+    public void StartProgression()
     {
         currentProgressionData = new ProgressionData();
         prevProgressionData = new ProgressionData();
@@ -173,6 +175,8 @@ public class ProgressionManager : Singleton<ProgressionManager>
             currentProgressionData.MoneySpent;
 
         currentBatchProgressionData.AddProgressionData(currentProgressionData);
+
+        reportGenerator.GenerateReport(prevProgressionData, currentProgressionData, ReportType.Daily);
     }
 
     public void StartNextProgression()

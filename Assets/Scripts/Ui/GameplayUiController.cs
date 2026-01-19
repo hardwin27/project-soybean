@@ -20,21 +20,26 @@ public class GameplayUiController : MonoBehaviour
 
     [SerializeField] private GameObject dayEndPanel;
 
-    private GameTimeManager gameTimeManager;
+    /*private GameTimeManager gameTimeManager;*/
+    private GameManager gameManager;
 
     public Action<string> OnUiTriggered;
 
     private void Awake()
     {
-        gameTimeManager = GameTimeManager.Instance;
+        /*gameTimeManager = GameTimeManager.Instance;
 
         if (gameTimeManager != null )
         {
             gameTimeManager.OnDayStarted+= HandleOnDayStarted;
             gameTimeManager.OnDayEnded += HandleOnDayEnded;
-        }
+        }*/
 
-        closeSideTabButton.onClick.AddListener(CloseMainTab );
+        gameManager = GameManager.Instance;
+        gameManager.OnDayStageStarted += HandleOnDayStageStarted;
+        gameManager.OnDayStageEnded += HandleOnDayStageEnded;
+
+        closeSideTabButton.onClick.AddListener(CloseMainTab);
     }
 
     private void Start()
@@ -60,12 +65,12 @@ public class GameplayUiController : MonoBehaviour
         });
     }
 
-    private void HandleOnDayStarted()
+    private void HandleOnDayStageStarted()
     {
         dayEndPanel.SetActive(false);
     }
 
-    private void HandleOnDayEnded()
+    private void HandleOnDayStageEnded()
     { 
         dayEndPanel.SetActive(true);
     }

@@ -446,6 +446,8 @@ MonoBehaviour:
   productNameText: {fileID: 6387501605523888256}
   producedQtyText: {fileID: 6131752901397767747}
   producedArrowImage: {fileID: 6309138069906619328}
+  increaseArrowSprite: {fileID: -7143197519245499684, guid: 5f0b4f257d42770458158ebed7033c66, type: 3}
+  decreaseArrowSprite: {fileID: 6335673151380421554, guid: c7820e525c7e8424e992cae1752700b6, type: 3}
   sellQtyText: {fileID: 1196855995090019463}
 --- !u!1 &8991709169397159365
 GameObject:

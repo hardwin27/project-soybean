@@ -1,8 +1,10 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using SingletonSystem;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
     [SerializeField] private QuestController questController;
     [SerializeField] private GameObject gameClearPanel;
@@ -10,22 +12,49 @@ public class GameManager : MonoBehaviour
 
     private AudioManager audioManager;
     private GameTimeManager gameTimeManager;
+    private ProgressionManager progressionManager;
+
+    public Action OnDayStageStarted;
+    public Action OnDayStageEnded;
 
     private void Awake()
     {
         audioManager = AudioManager.Instance;
         gameTimeManager = GameTimeManager.Instance;
+        progressionManager = ProgressionManager.Instance;
+
+        gameTimeManager.OnDayEnded += HandleDayEnded;
     }
 
     private void Start()
     {
         gameClearPanel.SetActive(false);
-        questController.OnLastQuestCompleted += HandleLastQuestFinished;
-        restartGameButton.onClick.AddListener(ReloadScene);
+        /*questController.OnLastQuestCompleted += HandleLastQuestFinished;
+        restartGameButton.onClick.AddListener(ReloadScene);*/
 
-        gameTimeManager.StartNextDay();
+        StartFirstDay();
 
         audioManager.PlayMusic("main_bgm");
+    }
+
+    private void StartFirstDay()
+    {
+        progressionManager.StartProgression();
+        gameTimeManager.StartNextDay();
+        OnDayStageStarted?.Invoke();
+    }
+
+    private void StartDayStage()
+    {
+        progressionManager.StartProgression();
+        gameTimeManager.StartNextDay();
+        OnDayStageStarted?.Invoke();
+    }
+
+    private void HandleDayEnded()
+    {
+        progressionManager.EndCurrentProgression();
+        OnDayStageEnded?.Invoke();
     }
 
     private void HandleLastQuestFinished()
