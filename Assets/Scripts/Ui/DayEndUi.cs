@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class DayEndUi : MonoBehaviour
 {
-    [SerializeField] private Button startNextDayButton;
+    /*[SerializeField] private Button startNextDayButton;
 
     private GameTimeManager gameTimeManager;
 
@@ -21,5 +21,5 @@ public class DayEndUi : MonoBehaviour
                 gameTimeManager.StartNextDay();
             }
         });
-    }
+    }*/
 }

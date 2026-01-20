@@ -44,11 +44,25 @@ public class GameManager : Singleton<GameManager>
         OnDayStageStarted?.Invoke();
     }
 
-    private void StartDayStage()
+    public void StartNextDayStage()
     {
-        progressionManager.StartProgression();
+        if (gameTimeManager.CurrentDay < 7)
+        {
+            progressionManager.StartNextProgression();
+            gameTimeManager.StartNextDay();
+            OnDayStageStarted?.Invoke();
+        }
+        else
+        {
+            progressionManager.EndCurrentBatchProgression();
+        }
+    }
+
+    public void StartNextWeekStage()
+    {
+        progressionManager.StartNextBatchProgression();
+        progressionManager.StartNextProgression();
         gameTimeManager.StartNextDay();
-        OnDayStageStarted?.Invoke();
     }
 
     private void HandleDayEnded()

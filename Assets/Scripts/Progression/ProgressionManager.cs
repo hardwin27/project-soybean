@@ -179,6 +179,11 @@ public class ProgressionManager : Singleton<ProgressionManager>
         reportGenerator.GenerateReport(prevProgressionData, currentProgressionData, ReportType.Daily);
     }
 
+    public void EndCurrentBatchProgression()
+    {
+        reportGenerator.GenerateReport(prevBatchProgressionData, currentBatchProgressionData, ReportType.Weekly);
+    }
+
     public void StartNextProgression()
     {
         prevProgressionData = currentProgressionData;

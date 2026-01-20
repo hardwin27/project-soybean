@@ -58,6 +58,7 @@ public class ReportData
 
 public class ReportGenerator : MonoBehaviour
 {
+    private GameManager gameManager;
     private GameTimeManager gameTimeManager;
 
     public Action<ReportData> OnReportGenerated;
@@ -65,6 +66,7 @@ public class ReportGenerator : MonoBehaviour
     private void Awake()
     {
         gameTimeManager = GameTimeManager.Instance;
+        gameManager = GameManager.Instance;
     }
 
     public void GenerateReport(ProgressionData prevProgression, ProgressionData currentProgression, ReportType reportType)
@@ -106,6 +108,25 @@ public class ReportGenerator : MonoBehaviour
                 productListing.SellQty
             );
             reportProductEntryDatas.Add(reportProductEntryData);
+
+            Debug.Log($"GENERATE REPORT FOR {reportProductEntryData.ProductCardData.CardName}");
+        }
+
+        foreach(var productListing in prevProgression.ProductListings)
+        {
+            if (productListing.ProducedQty > 0)
+            { 
+                if (reportProductEntryDatas.Find(r => r.ProductCardData == productListing.CardData) == null)
+                {
+                    ReportProductEntryData reportProductEntryData = new ReportProductEntryData(
+                        productListing.CardData,
+                        0,
+                        QuantityComparisonType.Decreased,
+                        0
+                        );
+                    reportProductEntryDatas.Add(reportProductEntryData);
+                }
+            }
         }
 
         int moneyBefore = prevProgression.OwnedMoney;
@@ -136,5 +157,18 @@ public class ReportGenerator : MonoBehaviour
         );
 
         OnReportGenerated?.Invoke(reportData);
+    }
+
+    public void ConfirmReport(ReportType reportType)
+    {
+        switch(reportType)
+        {
+            case ReportType.Daily:
+                gameManager.StartNextDayStage();
+                break;
+            case ReportType.Weekly:
+                gameManager.StartNextWeekStage();
+                break;
+        }
     }
 }

@@ -25,7 +25,7 @@ public class ReportUiData
     {
         foreach (var reportProductUi in reportProductEntrieUis)
         {
-            GameObject.Destroy(reportProductUi);
+            GameObject.Destroy(reportProductUi.gameObject);
         }
 
         reportProductEntrieUis.Clear();
@@ -37,6 +37,7 @@ public class ReportUiData
             if (newReportProductEntryUiObject.TryGetComponent(out ReportProductEntryUi reportProductEntryUi))
             {
                 reportProductEntryUi.DisplayProductEntryData(reportProductEntryData);
+                reportProductEntrieUis.Add(reportProductEntryUi);
             }
         }
 
@@ -82,6 +83,11 @@ public class ReportSystemUi : MonoBehaviour
         if (usedReportUiData != null)
         {
             usedReportUiData.UpdateReport(reportData, reportProductEntryUiPrefab);
+            reportConfirmButton.onClick.RemoveAllListeners();
+            reportConfirmButton.onClick.AddListener(() =>
+            {
+                reportGenerator.ConfirmReport(reportData.ReportType);
+            });
         }
     }
 }

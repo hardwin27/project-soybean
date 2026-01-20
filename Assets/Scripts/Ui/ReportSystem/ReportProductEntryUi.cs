@@ -14,7 +14,7 @@ public class ReportProductEntryUi : MonoBehaviour
     public void DisplayProductEntryData(ReportProductEntryData reportProductEntryData)
     {
         productNameText.text = reportProductEntryData.ProductCardData.CardName;
-        producedQtyText.text = (reportProductEntryData.ProducedQty== 0) ? $"-" : reportProductEntryData.ProducedQty.ToString();
+        producedQtyText.text = reportProductEntryData.ProducedQty.ToString();
         if (reportProductEntryData.QuantityComparisonType == QuantityComparisonType.None)
         {
             producedArrowImage.gameObject.SetActive(false);
