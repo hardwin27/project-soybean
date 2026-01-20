@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 using ReadOnlyEditor;
 using System.Collections.Generic;
+using UnityEngine.InputSystem.iOS;
 
 [System.Serializable]
 public class ReportUiData
@@ -57,6 +58,9 @@ public class ReportSystemUi : MonoBehaviour
     [SerializeField] private ReportUiData weeklyReportUiData;
 
     [SerializeField] private Button reportConfirmButton;
+    [SerializeField] private Image reportConfrimImage;
+    [SerializeField] private Sprite dailyConfiirmSprite;
+    [SerializeField] private Sprite weekdlyConfirmSprite;
 
     private void Awake()
     {
@@ -72,12 +76,14 @@ public class ReportSystemUi : MonoBehaviour
             dailyReportUiData?.ToggleReport(true);
             weeklyReportUiData?.ToggleReport(false);
             usedReportUiData = dailyReportUiData;
+            reportConfrimImage.sprite = dailyConfiirmSprite;
         }
         else if (reportData.ReportType == ReportType.Weekly)
         {
             dailyReportUiData?.ToggleReport(false);
             weeklyReportUiData?.ToggleReport(true);
             usedReportUiData = weeklyReportUiData;
+            reportConfrimImage.sprite = weekdlyConfirmSprite;
         }
 
         if (usedReportUiData != null)
