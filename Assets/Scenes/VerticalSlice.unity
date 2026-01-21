@@ -4659,7 +4659,7 @@ MonoBehaviour:
   currentWeek: 1
   dayTimer: 0
   isDayActive: 0
-  dayDuration: 20
+  dayDuration: 2
 --- !u!1 &568156471
 GameObject:
   m_ObjectHideFlags: 0
@@ -5828,7 +5828,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -2354466987173002481, guid: 6ba05e6164fd7984c92a273370ca2439, type: 3}
+  m_Sprite: {fileID: -101955982468225219, guid: 8af97385246beef4caa00a309dc668ce, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -15316,8 +15316,8 @@ MonoBehaviour:
     remainingMoney: {fileID: 1834803075}
   reportConfirmButton: {fileID: 2087195043}
   reportConfrimImage: {fileID: 2087195044}
-  dailyConfiirmSprite: {fileID: 8369809440370505392, guid: faff7974cb660e84abae0529bfe4eba0, type: 3}
-  weekdlyConfirmSprite: {fileID: -593199075350616229, guid: d1ae88d92447f9242af34d5d96f2204c, type: 3}
+  nextDayConfirmSprite: {fileID: 8369809440370505392, guid: faff7974cb660e84abae0529bfe4eba0, type: 3}
+  showWeeklyConfirmSprite: {fileID: -593199075350616229, guid: d1ae88d92447f9242af34d5d96f2204c, type: 3}
 --- !u!1001 &1745459564
 PrefabInstance:
   m_ObjectHideFlags: 0

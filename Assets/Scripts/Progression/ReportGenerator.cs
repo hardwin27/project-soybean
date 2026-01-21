@@ -29,7 +29,8 @@ public class ReportProductEntryData
 public class ReportData
 {
     [SerializeField, ReadOnly] private ReportType reportType;
-    [SerializeField, ReadOnly] private string timeStamp;
+    [SerializeField, ReadOnly] private int reportDayPeriod;
+    [SerializeField, ReadOnly] private int reportWeekPeriod;
     [SerializeField, ReadOnly] private List<ReportProductEntryData> productEntryDatas;
     [SerializeField, ReadOnly] private int moneyBefore;
     [SerializeField, ReadOnly] private int totalMoneyCollected;
@@ -37,17 +38,19 @@ public class ReportData
     [SerializeField, ReadOnly] private int remainingMoney;
 
     public ReportType ReportType { get => reportType; }
-    public string TimeStamp { get => timeStamp; }
+    public int ReportDayPeriod { get => reportDayPeriod; }
+    public int ReportWeekPeriod { get => reportWeekPeriod; }
     public List<ReportProductEntryData> ReportProductEntryDatas { get => productEntryDatas; }
     public int MoneyBefore { get => moneyBefore; }
     public int TotalMoneyCollected { get => totalMoneyCollected; }
     public int TotalMoneySpent { get => totalMoneySpent; }
     public int RemainingMoney { get => remainingMoney; }
 
-    public ReportData(ReportType _reportType, string _timestamp, List<ReportProductEntryData> _productEntryDatas, int _moneyBefore, int _totalMoneyCollected, int _totalMoneySpent, int _remainingMoney)
+    public ReportData(ReportType _reportType, int _reportDayPeriod, int _reportWeekPeriod, List<ReportProductEntryData> _productEntryDatas, int _moneyBefore, int _totalMoneyCollected, int _totalMoneySpent, int _remainingMoney)
     {
         reportType = _reportType;
-        timeStamp = _timestamp;
+        reportDayPeriod = _reportDayPeriod;
+        reportWeekPeriod = _reportWeekPeriod;
         productEntryDatas = _productEntryDatas;
         moneyBefore = _moneyBefore;
         totalMoneyCollected = _totalMoneyCollected;
@@ -134,7 +137,7 @@ public class ReportGenerator : MonoBehaviour
         int totalMoneySpent = currentProgression.MoneySpent;
         int remainingMoney = currentProgression.OwnedMoney;
 
-        string timeStamp = "";
+        /*string timeStamp = "";
 
         switch(reportType)
         {
@@ -144,11 +147,12 @@ public class ReportGenerator : MonoBehaviour
             case ReportType.Weekly:
                 timeStamp = $"Week {gameTimeManager.CurrentWeek}";
                 break;
-        }
+        }*/
 
         ReportData reportData = new ReportData(
             reportType,
-            timeStamp,
+            gameTimeManager.CurrentDay,
+            gameTimeManager.CurrentWeek,
             reportProductEntryDatas,
             moneyBefore,
             totalMoneyCollected,

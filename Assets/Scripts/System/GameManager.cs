@@ -61,8 +61,8 @@ public class GameManager : Singleton<GameManager>
     public void StartNextWeekStage()
     {
         progressionManager.StartNextBatchProgression();
-        progressionManager.StartNextProgression();
         gameTimeManager.StartNextDay();
+        OnDayStageStarted?.Invoke();
     }
 
     private void HandleDayEnded()

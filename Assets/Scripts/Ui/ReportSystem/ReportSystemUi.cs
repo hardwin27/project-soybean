@@ -4,6 +4,7 @@ using TMPro;
 using ReadOnlyEditor;
 using System.Collections.Generic;
 using UnityEngine.InputSystem.iOS;
+using UnityEngineInternal;
 
 [System.Serializable]
 public class ReportUiData
@@ -42,7 +43,16 @@ public class ReportUiData
             }
         }
 
-        timeStamptText.text = reportData.TimeStamp;
+        switch (reportData.ReportType)
+        {
+            case ReportType.Daily:
+                timeStamptText.text = $"Week {reportData.ReportWeekPeriod} Day {reportData.ReportDayPeriod}";
+                break;
+            case ReportType.Weekly:
+                timeStamptText.text = $"Week {reportData.ReportWeekPeriod}";
+                break;
+        }
+
         moneyBeforeText.text = $"{reportData.MoneyBefore}";
         totalMoneyCollectedText.text = $"+{reportData.TotalMoneyCollected}";
         totalMoneySpentText.text = $"-{reportData.TotalMoneySpent}";
@@ -59,8 +69,8 @@ public class ReportSystemUi : MonoBehaviour
 
     [SerializeField] private Button reportConfirmButton;
     [SerializeField] private Image reportConfrimImage;
-    [SerializeField] private Sprite dailyConfiirmSprite;
-    [SerializeField] private Sprite weekdlyConfirmSprite;
+    [SerializeField] private Sprite nextDayConfirmSprite;
+    [SerializeField] private Sprite showWeeklyConfirmSprite;
 
     private void Awake()
     {
@@ -76,14 +86,21 @@ public class ReportSystemUi : MonoBehaviour
             dailyReportUiData?.ToggleReport(true);
             weeklyReportUiData?.ToggleReport(false);
             usedReportUiData = dailyReportUiData;
-            reportConfrimImage.sprite = dailyConfiirmSprite;
+            if (reportData.ReportDayPeriod < 7)
+            {
+                reportConfrimImage.sprite = nextDayConfirmSprite;
+            }
+            else
+            {
+                reportConfrimImage.sprite = showWeeklyConfirmSprite;
+            }    
         }
         else if (reportData.ReportType == ReportType.Weekly)
         {
             dailyReportUiData?.ToggleReport(false);
             weeklyReportUiData?.ToggleReport(true);
             usedReportUiData = weeklyReportUiData;
-            reportConfrimImage.sprite = weekdlyConfirmSprite;
+            reportConfrimImage.sprite = nextDayConfirmSprite;
         }
 
         if (usedReportUiData != null)
