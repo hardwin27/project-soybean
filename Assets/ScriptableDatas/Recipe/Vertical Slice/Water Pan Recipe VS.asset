@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: Water Pan Recipe VS
   m_EditorClassIdentifier: 
   cardCombos:
-  - {fileID: 11400000, guid: 9e33862d008158f4bb217a718a769e81, type: 2}
-  - {fileID: 11400000, guid: 697b1a17b11dd6b4987e1ec01fad8963, type: 2}
+  - cardData: {fileID: 11400000, guid: 9e33862d008158f4bb217a718a769e81, type: 2}
+    recipeCardSprite: {fileID: 0}
+  - cardData: {fileID: 11400000, guid: 697b1a17b11dd6b4987e1ec01fad8963, type: 2}
+    recipeCardSprite: {fileID: 1929045350653884025, guid: b5de25305f6d063449c3be04c2a23d2b, type: 3}
   topCardReq: {fileID: 0}
   requiredTools:
   - toolCard: {fileID: 11400000, guid: 697b1a17b11dd6b4987e1ec01fad8963, type: 2}
@@ -30,3 +32,4 @@ MonoBehaviour:
     toolStats:
     - statData: {fileID: 11400000, guid: e828a091bd70cf142b1e44398cc44aab, type: 2}
       statValue: 1
+  recipeTargetSprite: {fileID: 1929045350653884025, guid: b5de25305f6d063449c3be04c2a23d2b, type: 3}

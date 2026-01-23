@@ -122,7 +122,17 @@ public class CardComboManager : Singleton<CardComboManager>
             cardDataOnStack.Add(card.CardData);
         }
 
-        return !cardDataOnStack.Except(recipe.CardCombos).Any() && !recipe.CardCombos.Except(cardDataOnStack).Any();
+        List<CardData> recipeComboCards = new List<CardData>();
+
+        foreach (var recipeCardData in recipe.CardCombos)
+        {
+            if (recipeCardData.CardData != null)
+            {
+                recipeComboCards.Add(recipeCardData.CardData);
+            }
+        }
+
+        return !cardDataOnStack.Except(recipeComboCards).Any() && !recipeComboCards.Except(cardDataOnStack).Any();
     }
 
     private bool CheckTopCardPass(RecipeData recipe, CardController topCard)

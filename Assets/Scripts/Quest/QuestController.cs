@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using ReadOnlyEditor;
 
 // Hardcode quest for now
 public class QuestController : MonoBehaviour
@@ -8,11 +9,13 @@ public class QuestController : MonoBehaviour
     /*[SerializeField] private List<QuestStatus> quests = new List<QuestStatus>();*/
     [SerializeField] private List<QuestChapter> questChapters = new List<QuestChapter>();
 
-    [SerializeField] protected CardComboManager cardComboManager;
-    [SerializeField] protected CardGeneratorManager cardGeneratorManager;
-    [SerializeField] private DeckSellCardController sellDeck;
-    [SerializeField] private DeckBankCardController bankDeck;
+    [SerializeField, ReadOnly] protected CardComboManager cardComboManager;
+    [SerializeField, ReadOnly] protected CardGeneratorManager cardGeneratorManager;
+    [SerializeField] private BuildingDeckSellCardController sellDeck;
+    [SerializeField] private BuildingDeckBankCardController bankDeck;
     [SerializeField] private GameplayUiController gameplayUi;
+
+    [SerializeField, ReadOnly] private List<SellQuestTracker> sellQuestTrackers = new List<SellQuestTracker>();
 
     public Action<QuestStatus> OnQuestAdded;
     public Action<QuestChapter> OnQuestChapterAdded;
@@ -40,6 +43,14 @@ public class QuestController : MonoBehaviour
         foreach (var chapter in questChapters)
         {
             OnQuestChapterAdded?.Invoke(chapter);
+            foreach(var questData in chapter.Quests)
+            {
+                if (questData.QuestData is SellQuestData)
+                {
+                    SellQuestData sellQuestData = questData.QuestData as SellQuestData;
+                    sellQuestTrackers.Add(new SellQuestTracker(sellQuestData));
+                }
+            }
         }
 
         questChapters[questChapters.Count - 1].Quests[questChapters[questChapters.Count - 1].Quests.Count - 1].OnQuestUpdated += () =>
@@ -104,9 +115,14 @@ public class QuestController : MonoBehaviour
                     if (quest.QuestData is SellQuestData)
                     {
                         SellQuestData sellQuestData = (SellQuestData)quest.QuestData;
-                        if (sellQuestData.TargetSoldCard == cardController.CardData)
+                        SellQuestTracker sellQuestTracker = sellQuestTrackers.Find(tracker => tracker.SellQuestData == sellQuestData);
+                        if (sellQuestTracker != null)
                         {
-                            quest.ToggleQuest(true);
+                            sellQuestTracker.AddProgress(1);
+                            if (sellQuestTracker.CurrentProgress >= sellQuestData.TargetSoldAmount)
+                            {
+                                quest.ToggleQuest(true);
+                            }
                         }
                     }
                 }

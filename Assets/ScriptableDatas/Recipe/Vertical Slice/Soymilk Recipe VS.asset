@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: Soymilk Recipe VS
   m_EditorClassIdentifier: 
   cardCombos:
-  - {fileID: 11400000, guid: 57e71ee035a603549bdacab87e50a295, type: 2}
-  - {fileID: 11400000, guid: 84da52d0ec250414b87b60e036985af7, type: 2}
+  - cardData: {fileID: 11400000, guid: 57e71ee035a603549bdacab87e50a295, type: 2}
+    recipeCardSprite: {fileID: 0}
+  - cardData: {fileID: 11400000, guid: 84da52d0ec250414b87b60e036985af7, type: 2}
+    recipeCardSprite: {fileID: 0}
   topCardReq: {fileID: 0}
   requiredTools: []
   processDuration: 1

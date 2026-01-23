@@ -1,19 +1,34 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class RecipeUi : MonoBehaviour
 {
     [SerializeField] private Transform recipeEntryParent;
-    [SerializeField] private GameObject recipeEntryPrefab;
+    [SerializeField] private List<RecipeEntryUi> recipeEntryTemplates = new List<RecipeEntryUi>();
+
+    /*[SerializeField] private GameObject recipeEntryPrefab;
     [SerializeField] private GameObject cardIconUiPrefab;
     [SerializeField] private GameObject equalSignPrefab;
-    [SerializeField] private GameObject plusSignPrefab;
+    [SerializeField] private GameObject plusSignPrefab;*/
 
     private void Start()
     {
         CardComboManager cardComboManager = CardComboManager.Instance;
 
         foreach (var recipe in cardComboManager.Recipes) 
+        {
+            RecipeEntryUi recipeEntryTemplate = recipeEntryTemplates.Find(temp => temp.ReqTileUiCount == recipe.CardCombos.Count);
+            if (recipeEntryTemplate != null ) 
+            {
+                GameObject newRecipeEntryObject = Instantiate(recipeEntryTemplate.gameObject, recipeEntryParent);
+                RecipeEntryUi newRecipeEntryUi = newRecipeEntryObject.GetComponent<RecipeEntryUi>();
+
+                newRecipeEntryUi.AssignRecipe(recipe);
+            }
+        }
+
+        /*foreach (var recipe in cardComboManager.Recipes) 
         {
             if (recipe.GeneratedCard != null)
             {
@@ -29,7 +44,7 @@ public class RecipeUi : MonoBehaviour
 
                 foreach (var card in recipe.CardCombos)
                 {
-                    if (card is ToolCardData toolCard)
+                    if (card.CardData is ToolCardData toolCard)
                     {
                         GameObject toolCardObj = Instantiate(cardIconUiPrefab, newRecipeEntryObj.transform);
                         Image toolCardImage = toolCardObj.GetComponent<Image>();
@@ -41,9 +56,9 @@ public class RecipeUi : MonoBehaviour
                     {
                         GameObject cardObj = Instantiate(cardIconUiPrefab, newRecipeEntryObj.transform);
                         Image cardImage = cardObj.GetComponent<Image>();
-                        cardImage.sprite = card.CardSprite;
+                        cardImage.sprite = card.CardData.CardSprite;
                         SimpleTooltip cardToolTop = cardObj.GetComponent<SimpleTooltip>();
-                        cardToolTop.iconSprite = card.CardSprite;
+                        cardToolTop.iconSprite = card.CardData.CardSprite;
                     }
 
                     if (recipe.CardCombos.IndexOf(card) < recipe.CardCombos.Count - 1)
@@ -52,6 +67,6 @@ public class RecipeUi : MonoBehaviour
                     }
                 }
             }
-        }
+        }*/
     }
 }

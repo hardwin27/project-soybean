@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: Soybean Mixture Recipe VS
   m_EditorClassIdentifier: 
   cardCombos:
-  - {fileID: 11400000, guid: d8ebaa62da27f294b8de92874376e4ed, type: 2}
-  - {fileID: 11400000, guid: 2c0d896ca2568964196702d5d880f374, type: 2}
+  - cardData: {fileID: 11400000, guid: d8ebaa62da27f294b8de92874376e4ed, type: 2}
+    recipeCardSprite: {fileID: 0}
+  - cardData: {fileID: 11400000, guid: 2c0d896ca2568964196702d5d880f374, type: 2}
+    recipeCardSprite: {fileID: 5229556713592434100, guid: a43381c92c1522f40baef5af04b9d580, type: 3}
   topCardReq: {fileID: 0}
   requiredTools:
   - toolCard: {fileID: 11400000, guid: 2c0d896ca2568964196702d5d880f374, type: 2}
@@ -31,3 +33,4 @@ MonoBehaviour:
     toolStats:
     - statData: {fileID: 11400000, guid: e828a091bd70cf142b1e44398cc44aab, type: 2}
       statValue: -1
+  recipeTargetSprite: {fileID: 0}

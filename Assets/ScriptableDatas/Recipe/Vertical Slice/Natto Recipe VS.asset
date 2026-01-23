@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: Natto Recipe VS
   m_EditorClassIdentifier: 
   cardCombos:
-  - {fileID: 11400000, guid: d8ebaa62da27f294b8de92874376e4ed, type: 2}
-  - {fileID: 11400000, guid: f3a3a84ca213451438924a30342bda3f, type: 2}
+  - cardData: {fileID: 11400000, guid: d8ebaa62da27f294b8de92874376e4ed, type: 2}
+    recipeCardSprite: {fileID: 0}
+  - cardData: {fileID: 11400000, guid: f3a3a84ca213451438924a30342bda3f, type: 2}
+    recipeCardSprite: {fileID: 0}
   topCardReq: {fileID: 0}
   requiredTools: []
   processDuration: 5

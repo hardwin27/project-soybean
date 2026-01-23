@@ -56,7 +56,7 @@ public class AutomationMenuUi : MonoBehaviour
 
                 foreach (var card in recipe.CardCombos)
                 {
-                    if (card is ToolCardData toolCard)
+                    if (card.CardData is ToolCardData toolCard)
                     {
                         GameObject toolCardObj = Instantiate(cardIconUiPrefab, newRecipeEntryObj.transform);
                         Image toolCardImage = toolCardObj.GetComponent<Image>();
@@ -68,9 +68,9 @@ public class AutomationMenuUi : MonoBehaviour
                     {
                         GameObject cardObj = Instantiate(cardIconUiPrefab, newRecipeEntryObj.transform);
                         Image cardImage = cardObj.GetComponent<Image>();
-                        cardImage.sprite = card.CardSprite;
+                        cardImage.sprite = card.CardData.CardSprite;
                         SimpleTooltip cardToolTop = cardObj.GetComponent<SimpleTooltip>();
-                        cardToolTop.iconSprite = card.CardSprite;
+                        cardToolTop.iconSprite = card.CardData.CardSprite;
                     }
 
                     if (recipe.CardCombos.IndexOf(card) < recipe.CardCombos.Count - 1)

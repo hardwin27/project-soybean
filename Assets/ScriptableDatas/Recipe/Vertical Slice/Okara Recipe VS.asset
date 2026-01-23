@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: Okara Recipe VS
   m_EditorClassIdentifier: 
   cardCombos:
-  - {fileID: 11400000, guid: 57e71ee035a603549bdacab87e50a295, type: 2}
-  - {fileID: 11400000, guid: 697b1a17b11dd6b4987e1ec01fad8963, type: 2}
+  - cardData: {fileID: 11400000, guid: 57e71ee035a603549bdacab87e50a295, type: 2}
+    recipeCardSprite: {fileID: 0}
+  - cardData: {fileID: 11400000, guid: 697b1a17b11dd6b4987e1ec01fad8963, type: 2}
+    recipeCardSprite: {fileID: 6877505499440387704, guid: 76ae079dc9b6bef43b791be3f987a735, type: 3}
   topCardReq: {fileID: 0}
   requiredTools:
   - toolCard: {fileID: 11400000, guid: 697b1a17b11dd6b4987e1ec01fad8963, type: 2}
@@ -35,3 +37,4 @@ MonoBehaviour:
       statValue: -1
     - statData: {fileID: 11400000, guid: e828a091bd70cf142b1e44398cc44aab, type: 2}
       statValue: -1
+  recipeTargetSprite: {fileID: 0}

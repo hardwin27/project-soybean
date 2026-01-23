@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: Fire Pan Recipe VS
   m_EditorClassIdentifier: 
   cardCombos:
-  - {fileID: 11400000, guid: f0dc9f7386b0aaf40b6f849d08800d92, type: 2}
-  - {fileID: 11400000, guid: 697b1a17b11dd6b4987e1ec01fad8963, type: 2}
+  - cardData: {fileID: 11400000, guid: f0dc9f7386b0aaf40b6f849d08800d92, type: 2}
+    recipeCardSprite: {fileID: 0}
+  - cardData: {fileID: 11400000, guid: 697b1a17b11dd6b4987e1ec01fad8963, type: 2}
+    recipeCardSprite: {fileID: 1929045350653884025, guid: b5de25305f6d063449c3be04c2a23d2b, type: 3}
   topCardReq: {fileID: 0}
   requiredTools:
   - toolCard: {fileID: 11400000, guid: 697b1a17b11dd6b4987e1ec01fad8963, type: 2}
@@ -30,3 +32,4 @@ MonoBehaviour:
     toolStats:
     - statData: {fileID: 11400000, guid: f3420b2ddb0b9c44a810b8bf209ced67, type: 2}
       statValue: 1
+  recipeTargetSprite: {fileID: 10076389395202974, guid: 7f904c2d6d71d524c9e35878f6d37efe, type: 3}

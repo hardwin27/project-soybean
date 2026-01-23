@@ -35,6 +35,9 @@ public class GameplayUiController : MonoBehaviour
             gameTimeManager.OnDayEnded += HandleOnDayEnded;
         }*/
 
+        recipeTab.SetActive(true);
+        questTab.SetActive(true);
+
         gameManager = GameManager.Instance;
         gameManager.OnDayStageStarted += HandleOnDayStageStarted;
         gameManager.OnDayStageEnded += HandleOnDayStageEnded;
@@ -44,7 +47,7 @@ public class GameplayUiController : MonoBehaviour
 
     private void Start()
     {
-        questTab.transform.SetAsLastSibling();
+        CloseMainTab();
 
         questButton.onClick.AddListener(() =>
         {

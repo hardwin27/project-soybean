@@ -131,9 +131,9 @@ public class AutomationCardController : CardController
                 {
                     // A. Check if this tool is in the CardCombos list (Is it an ingredient?)
                     bool isInCombos = false;
-                    foreach (CardData reqData in requiredRecipe.CardCombos)
+                    foreach (RecipeCardData reqData in requiredRecipe.CardCombos)
                     {
-                        if (reqData != null && reqData == toolCandidate.CardData)
+                        if (reqData != null && reqData.CardData != null && reqData.CardData == toolCandidate.CardData)
                         {
                             isInCombos = true;
                             break;
@@ -176,9 +176,9 @@ public class AutomationCardController : CardController
                 // 2. NORMAL CARD LOGIC
                 else if (candidate.CardData != null)
                 {
-                    foreach (CardData reqData in requiredRecipe.CardCombos)
+                    foreach (RecipeCardData reqData in requiredRecipe.CardCombos)
                     {
-                        if (reqData != null && reqData == candidate.CardData)
+                        if (reqData != null && reqData.CardData != null && reqData.CardData == candidate.CardData)
                         {
                             isRequiredType = true;
                             break;

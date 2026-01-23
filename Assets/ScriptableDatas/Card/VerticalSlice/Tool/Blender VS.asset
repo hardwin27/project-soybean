@@ -21,4 +21,4 @@ MonoBehaviour:
   cardSprite: {fileID: -5279246141468636199, guid: 62229516a07f0204da2cdf5ba54df462, type: 3}
   statDatas:
   - {fileID: 11400000, guid: e828a091bd70cf142b1e44398cc44aab, type: 2}
-  withResourceSprite: {fileID: -5279246141468636199, guid: 62229516a07f0204da2cdf5ba54df462, type: 3}
+  withResourceSprite: {fileID: 5229556713592434100, guid: a43381c92c1522f40baef5af04b9d580, type: 3}
