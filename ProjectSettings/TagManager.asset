@@ -53,5 +53,11 @@ TagManager:
   - name: DraggedCard
     uniqueID: 3041302973
     locked: 0
+  - name: UI
+    uniqueID: 130342233
+    locked: 0
+  - name: DraggedUi
+    uniqueID: 1831092455
+    locked: 0
   m_RenderingLayers:
   - Default

@@ -6,5 +6,6 @@ public enum CardType
     Product,
     Tool,
     Deck,
-    Money
+    Money,
+    Decoration
 }

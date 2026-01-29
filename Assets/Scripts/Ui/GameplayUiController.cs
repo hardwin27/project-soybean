@@ -1,5 +1,4 @@
 using System;
-using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +10,9 @@ public class GameplayUiController : MonoBehaviour
 
     [SerializeField] private GameObject recipeTab;
     [SerializeField] private Button recipeButton;
+
+    [SerializeField] private GameObject officeTab;
+    [SerializeField] private Button officeButton;
 
     [SerializeField] private RectTransform mainTabRectTransform;
     [SerializeField] private float openTabXPos;
@@ -66,6 +68,15 @@ public class GameplayUiController : MonoBehaviour
             OnUiTriggered?.Invoke("recipe-tab");
             AudioManager.Instance.PlaySFX("ui_tab_changed");
         });
+
+        officeButton.onClick.AddListener(() =>
+        {
+           CloseAllTab();
+           OpenMainTab();
+           officeTab.SetActive(true);
+           OnUiTriggered?.Invoke("office-tab");
+           AudioManager.Instance.PlaySFX("ui_tab_changed");
+        });
     }
 
     private void HandleOnDayStageStarted()
@@ -82,6 +93,7 @@ public class GameplayUiController : MonoBehaviour
     {
         questTab.SetActive(false);
         recipeTab.SetActive(false);
+        officeTab.SetActive(false);
     }
 
     private void OpenMainTab()

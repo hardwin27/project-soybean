@@ -171,7 +171,7 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         Destroy(gameObject, 3f);
     }
 
-    private System.Collections.IEnumerator DelayedOverlapCheck()
+    protected System.Collections.IEnumerator DelayedOverlapCheck()
     {
         yield return null;
 

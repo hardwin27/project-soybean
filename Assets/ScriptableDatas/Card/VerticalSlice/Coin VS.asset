@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Coin VS
   m_EditorClassIdentifier: 
   cardName: Coin
+  cardPrefab: {fileID: 1610351367016072073, guid: c2546f2a8b98e064ab1c4f16abaeb43b, type: 3}
   buyPrice: 0
   sellPrice: 0
   progressTime: 0

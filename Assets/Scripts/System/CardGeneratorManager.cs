@@ -20,27 +20,13 @@ public class CardListing
 
 public class CardGeneratorManager : Singleton<CardGeneratorManager>
 {
-    [SerializeField] private GameObject BaseCardPrefab;
-    [SerializeField] private GameObject ToolCardPrefab;
-
-    /*[SerializeField, ReadOnly] private List<CardListing> cardListrings = new List<CardListing>();*/
-
     public Action<CardController> OnCardGenerated;
 
-    public void GenerateCard(CardData cardData, Vector3 pos)
+    public CardController GenerateCard(CardData cardData, Vector3 pos)
     {
         GameObject generatedCardObj = null;
 
-        if (cardData.CardType == CardType.Tool)
-        {
-            generatedCardObj = Instantiate(ToolCardPrefab);
-
-        }
-        else
-
-        {
-            generatedCardObj = Instantiate(BaseCardPrefab);
-        }
+        generatedCardObj = Instantiate(cardData.CardPrefab);
 
         if (generatedCardObj != null)
         {
@@ -49,8 +35,11 @@ public class CardGeneratorManager : Singleton<CardGeneratorManager>
             {
                 cardController.AssignCardData(cardData);
                 OnCardGenerated?.Invoke(cardController);
+                return cardController;
             }
         }
+
+        return null;
     }
 
     /*private void AddToListing(CardData newCardData)

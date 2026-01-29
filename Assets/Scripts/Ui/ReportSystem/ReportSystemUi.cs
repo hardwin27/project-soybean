@@ -3,8 +3,6 @@ using UnityEngine.UI;
 using TMPro;
 using ReadOnlyEditor;
 using System.Collections.Generic;
-using UnityEngine.InputSystem.iOS;
-using UnityEngineInternal;
 
 [System.Serializable]
 public class ReportUiData
@@ -34,8 +32,7 @@ public class ReportUiData
 
         foreach( var reportProductEntryData in reportData.ReportProductEntryDatas)
         {
-            GameObject newReportProductEntryUiObject = Object.Instantiate(reportProductEntryUiPrefab);
-            newReportProductEntryUiObject.transform.parent = reportProductListingPanel.transform;
+            GameObject newReportProductEntryUiObject = Object.Instantiate(reportProductEntryUiPrefab, reportProductListingPanel.transform);
             if (newReportProductEntryUiObject.TryGetComponent(out ReportProductEntryUi reportProductEntryUi))
             {
                 reportProductEntryUi.DisplayProductEntryData(reportProductEntryData);

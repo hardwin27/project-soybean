@@ -239,7 +239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d07fcb9a7ab3fb4f9ad40883d21584b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ToolCardVisual
-  isReqSpriteAssg: 1
+  isReqSpriteAssg: 0
   cardNameText: {fileID: 8186825818690524229}
   cardRenderer: {fileID: 6678012089567005891}
   cardRendererSpriteScale: {x: 1, y: 1, z: 1}

@@ -32,10 +32,13 @@ public class CardVisual : MonoBehaviour
     {
         CardData data = cardController.CardData;
 
-        gameObject.name = data.CardName;
-        cardNameText.text = data.CardName;
+        if (data != null)
+        {
+            gameObject.name = data.CardName;
+            cardNameText.text = data.CardName;
 
-        UpdateBaseSprite(data.CardSprite, data.CardType);
+            UpdateBaseSprite(data.CardSprite, data.CardType);   
+        }
     }
 
     protected void DebugUpdateBaseSprite()
