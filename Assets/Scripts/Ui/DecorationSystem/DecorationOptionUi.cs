@@ -12,15 +12,17 @@ public class DecorationOptionUi : MonoBehaviour, IBeginDragHandler, IDragHandler
 
     [SerializeField] private Image decorationIcon;
     [SerializeField] private TextMeshProUGUI decorationNameText;
+    [SerializeField] private GameObject decorationCounterPanel;
+    [SerializeField] private TextMeshProUGUI decorationQtyText;
     [SerializeField] private GameObject lockedPanel;
     [SerializeField] private TextMeshProUGUI lockedDescText;
 
     private Camera mainCam;
-    private CardGeneratorManager cardGeneratorManager;
+    private DecorationManager decorationManager;
 
     private void Awake()
     {
-        cardGeneratorManager = CardGeneratorManager.Instance;
+        decorationManager = DecorationManager.Instance;
     }
 
     private void Start()
@@ -45,12 +47,17 @@ public class DecorationOptionUi : MonoBehaviour, IBeginDragHandler, IDragHandler
             return;
         }
 
+        if (decorationListingData.StockAmount <= 0)
+        {
+            return;
+        }
+
         if (decorationListingData.DecorationCardData == null)
         {
             return;
         }
 
-        if (cardGeneratorManager !=  null) 
+        if (decorationManager !=  null) 
         {
             mainCam = Camera.main;
 
@@ -58,8 +65,7 @@ public class DecorationOptionUi : MonoBehaviour, IBeginDragHandler, IDragHandler
             mousePos.z = -mainCam.transform.position.z;
             Vector3 targetPos = Camera.main.ScreenToWorldPoint(mousePos);
 
-            CardController newCardController = cardGeneratorManager.GenerateCard(decorationListingData.DecorationCardData, targetPos);
-            currentDecorationCard = newCardController as DecorationCardController;
+            currentDecorationCard = decorationManager.GenerateDecorationCard(decorationListingData, targetPos);
 
             /*SpriteRenderer spriteRenderer = newDecorationCardObj.GetComponentInChildren<SpriteRenderer>();
             if (spriteRenderer != null)
@@ -85,17 +91,20 @@ public class DecorationOptionUi : MonoBehaviour, IBeginDragHandler, IDragHandler
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        if (EventSystem.current.IsPointerOverGameObject())
+        if (currentDecorationCard != null)
         {
-            /*Debug.Log($"{decorationListingData.DecorationCardData.CardName} DECOR UI OVERLAP WITH UI");*/
-            currentDecorationCard.gameObject.SetActive(false);
-        }
-        else
-        {
-            currentDecorationCard.StopDraggedByUi();
-        }
+            if (EventSystem.current.IsPointerOverGameObject())
+            {
+                /*Debug.Log($"{decorationListingData.DecorationCardData.CardName} DECOR UI OVERLAP WITH UI");*/
+                currentDecorationCard.gameObject.SetActive(false);
+            }
+            else
+            {
+                currentDecorationCard.StopDraggedByUi();
+            }
 
-        currentDecorationCard = null;
+            currentDecorationCard = null;
+        }
     }
 
     public void AssignDecorationListing(DecorationListingData _decorationListingData)
@@ -107,13 +116,21 @@ public class DecorationOptionUi : MonoBehaviour, IBeginDragHandler, IDragHandler
             decorationIcon.sprite = decorationListingData.DecorationCardData.UiSprite;
             decorationNameText.text = decorationListingData.DecorationCardData.CardName;
             UpdateLockedPanel();
+            UpdateQtyText();
 
             decorationListingData.OnIsUnlockedUpdated += UpdateLockedPanel;
+            decorationListingData.OnStockUpdated += UpdateQtyText;
         } 
     }
 
     private void UpdateLockedPanel()
     {
         lockedPanel.SetActive(!decorationListingData.IsUnlocked);
+        decorationCounterPanel.SetActive(decorationListingData.IsUnlocked);
+    }
+
+    private void UpdateQtyText()
+    {
+        decorationQtyText.text = decorationListingData.StockAmount.ToString();
     }
 }

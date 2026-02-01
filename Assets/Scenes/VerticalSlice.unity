@@ -17587,6 +17587,8 @@ MonoBehaviour:
   currentDecorationCard: {fileID: 0}
   decorationIcon: {fileID: 0}
   decorationNameText: {fileID: 0}
+  decorationCounterPanel: {fileID: 0}
+  decorationQtyText: {fileID: 0}
   lockedPanel: {fileID: 0}
   lockedDescText: {fileID: 0}
 --- !u!1001 &1745459564
@@ -20083,6 +20085,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 42939f0aefa9ed948a805fb5f7130d57, type: 2}
   - {fileID: 11400000, guid: a778c95245aa1fd48b1a29a29866ec38, type: 2}
   decorationListingDatas: []
+  spawnedDecoration: []
 --- !u!1 &2034861577
 GameObject:
   m_ObjectHideFlags: 0
