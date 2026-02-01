@@ -3,14 +3,17 @@ using UnityEngine.UI;
 using ReadOnlyEditor;
 using UnityEngine.EventSystems;
 using TMPro;
+using UnityEngineInternal;
 
 public class DecorationOptionUi : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    [SerializeField] private DecorationCardData decorationCardData;
+    [SerializeField, ReadOnly] private DecorationListingData decorationListingData;
     [SerializeField, ReadOnly] private DecorationCardController currentDecorationCard;
 
     [SerializeField] private Image decorationIcon;
     [SerializeField] private TextMeshProUGUI decorationNameText;
+    [SerializeField] private GameObject lockedPanel;
+    [SerializeField] private TextMeshProUGUI lockedDescText;
 
     private Camera mainCam;
     private CardGeneratorManager cardGeneratorManager;
@@ -23,16 +26,26 @@ public class DecorationOptionUi : MonoBehaviour, IBeginDragHandler, IDragHandler
     private void Start()
     {
         currentDecorationCard = null;
-        if (decorationCardData != null ) 
-        {
-            decorationIcon.sprite = decorationCardData.UiSprite;
-            decorationNameText.text = decorationCardData.CardName;
-        }
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
         if (currentDecorationCard != null)
+        {
+            return;
+        }
+
+        if (decorationListingData == null)
+        {
+            return;
+        }
+
+        if (!decorationListingData.IsUnlocked)
+        {
+            return;
+        }
+
+        if (decorationListingData.DecorationCardData == null)
         {
             return;
         }
@@ -45,7 +58,7 @@ public class DecorationOptionUi : MonoBehaviour, IBeginDragHandler, IDragHandler
             mousePos.z = -mainCam.transform.position.z;
             Vector3 targetPos = Camera.main.ScreenToWorldPoint(mousePos);
 
-            CardController newCardController = cardGeneratorManager.GenerateCard(decorationCardData, mousePos);
+            CardController newCardController = cardGeneratorManager.GenerateCard(decorationListingData.DecorationCardData, targetPos);
             currentDecorationCard = newCardController as DecorationCardController;
 
             /*SpriteRenderer spriteRenderer = newDecorationCardObj.GetComponentInChildren<SpriteRenderer>();
@@ -74,7 +87,7 @@ public class DecorationOptionUi : MonoBehaviour, IBeginDragHandler, IDragHandler
     {
         if (EventSystem.current.IsPointerOverGameObject())
         {
-            Debug.Log($"{decorationCardData.CardName} DECOR UI OVERLAP WITH UI");
+            /*Debug.Log($"{decorationListingData.DecorationCardData.CardName} DECOR UI OVERLAP WITH UI");*/
             currentDecorationCard.gameObject.SetActive(false);
         }
         else
@@ -83,5 +96,24 @@ public class DecorationOptionUi : MonoBehaviour, IBeginDragHandler, IDragHandler
         }
 
         currentDecorationCard = null;
+    }
+
+    public void AssignDecorationListing(DecorationListingData _decorationListingData)
+    {
+        if (_decorationListingData.DecorationCardData != null) 
+        {
+            decorationListingData = _decorationListingData;
+
+            decorationIcon.sprite = decorationListingData.DecorationCardData.UiSprite;
+            decorationNameText.text = decorationListingData.DecorationCardData.CardName;
+            UpdateLockedPanel();
+
+            decorationListingData.OnIsUnlockedUpdated += UpdateLockedPanel;
+        } 
+    }
+
+    private void UpdateLockedPanel()
+    {
+        lockedPanel.SetActive(!decorationListingData.IsUnlocked);
     }
 }

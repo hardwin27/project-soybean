@@ -9,7 +9,7 @@ public class QuestUi : MonoBehaviour
 
     private void Awake()
     {
-        questController.OnQuestAdded += AddQuestEntry;
+        /*questController.OnQuestAdded += AddQuestEntry;*/
         questController.OnQuestChapterAdded += AddQuesChapter;
     }
 

@@ -11,6 +11,8 @@ public class DecorationManager : Singleton<DecorationManager>
 
     public Action OnDecorationListingInitiated;
 
+    public List<DecorationListingData> DecorationListingData { get => decorationListingDatas; }
+
     private void Start()
     {
         decorationListingDatas = new List<DecorationListingData>();
@@ -20,5 +22,14 @@ public class DecorationManager : Singleton<DecorationManager>
             decorationListingDatas.Add(new DecorationListingData(decorationCardData));
         }
         OnDecorationListingInitiated?.Invoke();
+    }
+
+    public void GainDecoration(DecorationCardData gainedDecoration, int gainedAmount)
+    {
+        DecorationListingData selectedDecorationListing = decorationListingDatas.Find(d => d.DecorationCardData == gainedDecoration);
+        if (selectedDecorationListing != null) 
+        {
+            selectedDecorationListing.AddStock(gainedAmount);
+        }
     }
 }

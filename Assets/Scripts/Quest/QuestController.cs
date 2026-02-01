@@ -17,7 +17,7 @@ public class QuestController : MonoBehaviour
 
     [SerializeField, ReadOnly] private List<SellQuestTracker> sellQuestTrackers = new List<SellQuestTracker>();
 
-    public Action<QuestStatus> OnQuestAdded;
+    /*public Action<QuestStatus> OnQuestAdded;*/
     public Action<QuestChapter> OnQuestChapterAdded;
     public Action OnLastQuestCompleted;
 

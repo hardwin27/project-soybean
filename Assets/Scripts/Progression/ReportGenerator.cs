@@ -112,7 +112,7 @@ public class ReportGenerator : MonoBehaviour
             );
             reportProductEntryDatas.Add(reportProductEntryData);
 
-            Debug.Log($"GENERATE REPORT FOR {reportProductEntryData.ProductCardData.CardName}");
+            /*Debug.Log($"GENERATE REPORT FOR {reportProductEntryData.ProductCardData.CardName}");*/
         }
 
         foreach(var productListing in prevProgression.ProductListings)

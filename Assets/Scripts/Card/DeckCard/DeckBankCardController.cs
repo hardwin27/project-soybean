@@ -24,7 +24,7 @@ public class DeckBankCardController : DeckCardController
     protected override void OnMouseUp()
     {
         base.OnMouseUp();
-        Debug.Log($"DECK BANK");
+        /*Debug.Log($"DECK BANK");*/
 
         if (currentMoney > 0)
         {

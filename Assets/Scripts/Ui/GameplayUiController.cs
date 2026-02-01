@@ -39,6 +39,7 @@ public class GameplayUiController : MonoBehaviour
 
         recipeTab.SetActive(true);
         questTab.SetActive(true);
+        officeTab.SetActive(true);
 
         gameManager = GameManager.Instance;
         gameManager.OnDayStageStarted += HandleOnDayStageStarted;

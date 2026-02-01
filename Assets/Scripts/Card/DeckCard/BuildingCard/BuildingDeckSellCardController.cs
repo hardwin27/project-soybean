@@ -23,13 +23,13 @@ public class BuildingDeckSellCardController : BuildingDeckCardController
 
     public override bool CanTakeCard(List<CardController> cardStacks)
     {
-        Debug.Log($"DECKSELL check can sell");
+        /*Debug.Log($"DECKSELL check can sell");*/
 
         foreach (CardController card in cardStacks)
         {
             if (card.CardData.SellPrice <= 0)
             {
-                Debug.Log($"DECKSELL CANNOT SELL {card.CardData.CardName}");
+                /*Debug.Log($"DECKSELL CANNOT SELL {card.CardData.CardName}");*/
                 return false;
             }
         }
@@ -41,7 +41,7 @@ public class BuildingDeckSellCardController : BuildingDeckCardController
     {
         int totalMoney = 0;
 
-        Debug.Log($"DECKSELL stack length: {cardStacks.Count}");
+        /*Debug.Log($"DECKSELL stack length: {cardStacks.Count}");*/
 
         foreach (CardController card in cardStacks)
         {

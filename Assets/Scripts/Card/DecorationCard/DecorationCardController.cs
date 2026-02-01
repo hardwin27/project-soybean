@@ -1,14 +1,10 @@
 using UnityEngine;
 using ReadOnlyEditor;
+using UnityEngine.EventSystems;
 
-public class DecorationCardController : CardController
+public class DecorationCardController : CardController, IPointerClickHandler
 {
     [SerializeField, ReadOnly] private DecorationCardData decorationCardData;
-
-    protected void OnMouseUp()
-    {
-        
-    }
 
     public override void AssignCardData(CardData data)
     {
@@ -16,9 +12,17 @@ public class DecorationCardController : CardController
         decorationCardData = data as DecorationCardData;
     }
 
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (eventData.button == PointerEventData.InputButton.Right)
+        {
+            gameObject.SetActive(false);
+        }
+    }
+
     public void StartDraggedByUi()
     {
-        Debug.Log("StartDraggedByUi");
+        /*Debug.Log("StartDraggedByUi");*/
         cardSorting.sortingLayerName = "DraggedUi";
         cardCollider.enabled = false;
     }

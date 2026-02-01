@@ -110,8 +110,8 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
     public virtual void OnBeginDrag(PointerEventData eventData)
     {
-        Debug.Log($"EventData: {eventData.pointerPressRaycast.gameObject.name}");
-        Debug.Log($"EventData Postion {Camera.main.ScreenToWorldPoint(eventData.position)}");
+        /*Debug.Log($"EventData: {eventData.pointerPressRaycast.gameObject.name}");
+        Debug.Log($"EventData Postion {Camera.main.ScreenToWorldPoint(eventData.position)}");*/
 
         if (!CanBeDragged || IsOnProcess)
         { 
@@ -154,7 +154,7 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
     public void OnDisable()
     {
-        Debug.Log($"{gameObject.name} DESTROYED");
+        /*Debug.Log($"{gameObject.name} DESTROYED");*/
         OnCardDestroyed?.Invoke();
         if (StackedOnCard != null)
         {
@@ -175,7 +175,7 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     {
         yield return null;
 
-        Debug.Log($"DelayedOverlapCheck {gameObject.name}");
+        /*Debug.Log($"DelayedOverlapCheck {gameObject.name}");*/
 
         /*int originalZ = ZOrder;
         ZOrder = 999999;*/
@@ -195,7 +195,7 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
                 if (!cardController.IsDragged)
                 {
                     overlapCardControllers.Add(cardController);
-                    Debug.Log($"DelayedOverlapCheck {gameObject.name} overlap with {cardController.gameObject.name}");
+                    /*Debug.Log($"DelayedOverlapCheck {gameObject.name} overlap with {cardController.gameObject.name}");*/
                     if (ZOrder <= cardController.ZOrder)
                     {
                         ZOrder = cardController.ZOrder + 1;
@@ -207,7 +207,7 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
     public void SetTopCard(CardController card)
     {
-        Debug.Log($"{gameObject.name} assign {card.gameObject.name} as TOPCARD");
+        /*Debug.Log($"{gameObject.name} assign {card.gameObject.name} as TOPCARD");*/
         topCard = card;
         if (topCard == null)
         {
@@ -306,7 +306,7 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
             return;
         }
 
-        Debug.Log($"HandleStackedPosDragged {gameObject.name}");
+        /*Debug.Log($"HandleStackedPosDragged {gameObject.name}");*/
         transform.position = new Vector3(StackedOnCard.StackPoint.position.x, StackedOnCard.StackPoint.position.y, transform.position.z);
         OnCardPosDragged?.Invoke();
     }
@@ -435,13 +435,13 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
                 {
                     if (CanStackWithCard(cardController.TopCard))
                     {
-                        Debug.Log($"Stack To Card: {cardController.TopCard}");
+                        /*Debug.Log($"Stack To Card: {cardController.TopCard}");*/
                         StackWithCard(cardController.TopCard);
                         return;
                     }
                 }
 
-                Debug.LogWarning($"Rejected Form Stack");
+                /*Debug.LogWarning($"Rejected Form Stack");*/
                 SetPos(lastPost);
                 ToggleDragSorting(false, ZOrder);
             }
@@ -455,7 +455,7 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
             }
             else
             {
-                Debug.LogWarning($"Rejected Form Stack");
+                /*Debug.LogWarning($"Rejected Form Stack");*/
                 SetPos(lastPost);
                 ToggleDragSorting(false, ZOrder);
             }

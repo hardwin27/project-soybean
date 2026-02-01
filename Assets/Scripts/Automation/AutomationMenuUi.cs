@@ -82,10 +82,10 @@ public class AutomationMenuUi : MonoBehaviour
                 Button recipeButton = newRecipeEntryObj.GetComponentInChildren<Button>();
                 if (recipeButton != null) 
                 {
-                    Debug.Log($"{gameObject.name} Automation button found");
+                    /*Debug.Log($"{gameObject.name} Automation button found");*/
                     recipeButton.onClick.AddListener(() =>
                     {
-                        Debug.Log($"automation click {recipe.GeneratedCard.name}");
+                        /*Debug.Log($"automation click {recipe.GeneratedCard.name}");*/
                         AutomationManager.Instance.AssignRecipe(recipe);
                         CloseAutomationUi();
                     });
@@ -96,7 +96,7 @@ public class AutomationMenuUi : MonoBehaviour
 
     private void OpenAutomationUi()
     {
-        Debug.Log("OpenAutomationUi");
+        /*Debug.Log("OpenAutomationUi");*/
         automationOptionPanel.gameObject.SetActive(true);
     }
 

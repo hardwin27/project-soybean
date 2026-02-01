@@ -22,4 +22,16 @@ public class DecorationListingData
         isUnlocked = false;
         stockAmount = 0;
     }
+
+    public void AddStock(int addedAmount)
+    { 
+        if (!isUnlocked)
+        {
+            isUnlocked = true;
+            OnIsUnlockedUpdated?.Invoke();
+        }
+
+        stockAmount += addedAmount;
+        OnStockUpdated?.Invoke();
+    }
 }

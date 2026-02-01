@@ -103,7 +103,7 @@ public class CardComboManager : Singleton<CardComboManager>
             }
             else
             {
-                Debug.Log($"No Combo Detected");
+                /*Debug.Log($"No Combo Detected");*/
             }
         }
     }
@@ -149,7 +149,7 @@ public class CardComboManager : Singleton<CardComboManager>
     {
         if (recipe.RequiredTools.Count <= 0)
         {
-            Debug.Log($"{recipe.name} True, No Req Tool");
+            /*Debug.Log($"{recipe.name} True, No Req Tool");*/
             return true;
         }
 

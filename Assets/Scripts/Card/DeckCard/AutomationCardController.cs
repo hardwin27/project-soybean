@@ -60,7 +60,7 @@ public class AutomationCardController : CardController
         if (Input.GetMouseButtonUp(1))
         {
             AutomationManager.Instance.SelectAutomationCard(this);
-            Debug.Log($"{gameObject.name} RIGHT CLICKED");
+            /*Debug.Log($"{gameObject.name} RIGHT CLICKED");*/
         }
     }
 
@@ -201,7 +201,7 @@ public class AutomationCardController : CardController
 
         if (bestCandidate != null)
         {
-            Debug.Log($"[Automation] Found Target: {bestCandidate.name}");
+            /*Debug.Log($"[Automation] Found Target: {bestCandidate.name}");*/
             targetedCard = bestCandidate;
             MoveToPosition(targetedCard.transform.position, moveDuration);
         }
@@ -283,7 +283,7 @@ public class AutomationCardController : CardController
 
             if (dist <= captureRadius)
             {
-                Debug.Log($"[Automation] Captured Target Card: {targetedCard.name}");
+                /*Debug.Log($"[Automation] Captured Target Card: {targetedCard.name}");*/
 
                 targetedCard.StackWithCard(this.TopCard);
 
@@ -296,7 +296,7 @@ public class AutomationCardController : CardController
             }
             else
             {
-                Debug.Log($"[Automation] Target Card too far or moved: {dist} > {captureRadius}");
+                /*Debug.Log($"[Automation] Target Card too far or moved: {dist} > {captureRadius}");*/
                 targetedCard = null; // Clear target so we can try again or find a new one
             }
         }
