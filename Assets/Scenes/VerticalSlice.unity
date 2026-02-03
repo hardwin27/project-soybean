@@ -5035,6 +5035,14 @@ PrefabInstance:
       propertyPath: reportGenerator
       value: 
       objectReference: {fileID: 212902994}
+    - target: {fileID: 6464719923435582831, guid: 1bb99a90f95325847b477eff2b646440, type: 3}
+      propertyPath: nextDayConfirmSprite
+      value: 
+      objectReference: {fileID: 8872368431244694614, guid: dd2e1bb3040dd49478dd3bcc063d405e, type: 3}
+    - target: {fileID: 6464719923435582831, guid: 1bb99a90f95325847b477eff2b646440, type: 3}
+      propertyPath: showWeeklyConfirmSprite
+      value: 
+      objectReference: {fileID: 8872368431244694614, guid: dd2e1bb3040dd49478dd3bcc063d405e, type: 3}
     - target: {fileID: 6605753358462109791, guid: 1bb99a90f95325847b477eff2b646440, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
