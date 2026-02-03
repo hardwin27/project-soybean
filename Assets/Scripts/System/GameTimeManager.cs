@@ -32,9 +32,9 @@ public class GameTimeManager : Singleton<GameTimeManager>
     {
         if (isDayActive)
         {
-            dayTimer -= Time.deltaTime;
+            dayTimer += Time.deltaTime;
 
-            if (dayTimer <= 0)
+            if (dayTimer >= dayDuration)
             {
                 EndDay();
             }
@@ -56,7 +56,7 @@ public class GameTimeManager : Singleton<GameTimeManager>
             currentWeek++;
         }
 
-        dayTimer = dayDuration;
+        dayTimer = 0;
 
         isDayActive = true;
 
