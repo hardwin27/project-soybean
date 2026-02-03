@@ -4842,6 +4842,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4690906053032895164, guid: 54f511373499d554d87623a1203a981e, type: 3}
+      propertyPath: 'recipes.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: ada234950fae91f41a83340f8b09f06d, type: 2}
+    - target: {fileID: 4690906053032895164, guid: 54f511373499d554d87623a1203a981e, type: 3}
+      propertyPath: 'recipes.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 6800bafe12358c04eb6a2a5031dcd6d8, type: 2}
+    - target: {fileID: 4690906053032895164, guid: 54f511373499d554d87623a1203a981e, type: 3}
+      propertyPath: 'recipes.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 63c23f811608b14458fa9ef54219591d, type: 2}
+    - target: {fileID: 4690906053032895164, guid: 54f511373499d554d87623a1203a981e, type: 3}
+      propertyPath: 'recipes.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 55f7deb92700a7f488580fbd78b8e34c, type: 2}
+    - target: {fileID: 4690906053032895164, guid: 54f511373499d554d87623a1203a981e, type: 3}
+      propertyPath: 'recipes.Array.data[4]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 4c90f616440401742be3945af60aefdc, type: 2}
+    - target: {fileID: 4690906053032895164, guid: 54f511373499d554d87623a1203a981e, type: 3}
+      propertyPath: 'recipes.Array.data[5]'
+      value: 
+      objectReference: {fileID: 11400000, guid: e68b3e27d9fe5d942a3fec15e33f8ad4, type: 2}
+    - target: {fileID: 4690906053032895164, guid: 54f511373499d554d87623a1203a981e, type: 3}
+      propertyPath: 'recipes.Array.data[6]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 935480fdfc88d3b439b2b9e431dc941d, type: 2}
+    - target: {fileID: 4690906053032895164, guid: 54f511373499d554d87623a1203a981e, type: 3}
+      propertyPath: 'recipes.Array.data[7]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 93dc890fca03bea449b3b3fee575d752, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
