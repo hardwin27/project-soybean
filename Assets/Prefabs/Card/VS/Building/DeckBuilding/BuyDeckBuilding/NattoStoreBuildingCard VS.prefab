@@ -109,9 +109,21 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3404608956842602035, guid: f8f99388995419647ba387015b2fd5c0, type: 3}
+      propertyPath: m_Size.x
+      value: 5.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3404608956842602035, guid: f8f99388995419647ba387015b2fd5c0, type: 3}
+      propertyPath: m_Size.y
+      value: 5.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3404608956842602035, guid: f8f99388995419647ba387015b2fd5c0, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -6004712983087854423, guid: 28f6c60610f58f4409a6376dc62463e8, type: 3}
+      objectReference: {fileID: 21300000, guid: 28f6c60610f58f4409a6376dc62463e8, type: 3}
+    - target: {fileID: 3404608956842602035, guid: f8f99388995419647ba387015b2fd5c0, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3463375374262054704, guid: f8f99388995419647ba387015b2fd5c0, type: 3}
       propertyPath: m_Name
       value: NattoStoreBuildingCard VS
@@ -254,7 +266,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8413009506977842648, guid: f8f99388995419647ba387015b2fd5c0, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[16].x
-      value: 2.3693192
+      value: 2.7
       objectReference: {fileID: 0}
     - target: {fileID: 8413009506977842648, guid: f8f99388995419647ba387015b2fd5c0, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[16].y
