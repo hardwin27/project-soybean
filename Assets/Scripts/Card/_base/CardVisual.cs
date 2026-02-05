@@ -6,26 +6,42 @@ using System.Threading;
 [RequireComponent(typeof(CardController))]
 public class CardVisual : MonoBehaviour
 {
-    [System.Serializable] 
+    /*[System.Serializable] 
     protected class CardTypeColor
     {
         public CardType CardType;
         public Color Color;
-    }
+    }*/
 
     protected CardController cardController;
 
+    [SerializeField] protected GameObject visualParent;
     [SerializeField] protected bool isReqSpriteAssg = true;
     [SerializeField] protected TextMeshPro cardNameText;
     [SerializeField] protected SpriteRenderer cardRenderer;
     [SerializeField] protected Vector3 cardRendererSpriteScale;
-    [SerializeField] protected List<CardTypeColor> cardTypeColors;
+    /*[SerializeField] protected List<CardTypeColor> cardTypeColors;*/
     /*[SerializeField] protected SimpleTooltip cardToolTip;*/
 
     protected virtual void Awake()
     {
         cardController = GetComponent<CardController>();
         cardController.OnBaseDataUpdated += UpdateBaseVisual;
+    }
+
+    private void Start()
+    {
+        ToggleVisibility(true);
+    }
+
+    public void ToggleVisibility(bool isVisible)
+    {
+        visualParent.SetActive(isVisible);
+    }
+
+    public void TintVisual(Color tintColor)
+    {
+        cardRenderer.color = tintColor;
     }
 
     protected virtual void UpdateBaseVisual()
@@ -67,7 +83,7 @@ public class CardVisual : MonoBehaviour
             cardRenderer.transform.localScale = /*new Vector3(0.3f, 0.3f, 0.3f)*/cardRendererSpriteScale;
             cardNameText.gameObject.SetActive(false);
         }
-        else
+        /*else
         {
             foreach (var cardTypeColor in cardTypeColors)
             {
@@ -77,7 +93,7 @@ public class CardVisual : MonoBehaviour
                     break;
                 }
             }
-        }
+        }*/
 
         /*cardToolTip.iconSprite = cardSprite;*/
     }

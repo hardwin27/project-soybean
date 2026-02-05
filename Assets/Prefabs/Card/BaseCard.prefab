@@ -57,6 +57,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -78,9 +80,11 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &1547522013718126492
 MonoBehaviour:
@@ -140,6 +144,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -279,7 +284,6 @@ Transform:
   m_Children:
   - {fileID: 3208895008169469516}
   - {fileID: 2805741782347152409}
-  - {fileID: 5301430404775400581}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &3214011130424175580
@@ -340,6 +344,7 @@ SortingGroup:
   m_SortingLayer: 1
   m_SortingOrder: 0
   m_SortAtRoot: 0
+  m_Sort3DAs2D: 0
 --- !u!114 &7565457305340144349
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -358,20 +363,15 @@ MonoBehaviour:
   isTopStack: 0
   isDragged: 0
   stackPoint: {fileID: 2805741782347152409}
+  isAllowedToStack: 1
   stackedOnCard: {fileID: 0}
   topCard: {fileID: 0}
   lastPost: {x: 0, y: 0, z: 0}
   dragOffset: {x: 0, y: 0, z: 0}
+  playAreaBoundary: {fileID: 0}
+  shouldBeBounded: 1
   cardDefaultSortName: Card
   cardDraggedSortName: DraggedCard
-  cardWidth: 1.5
-  cardHeight: 2
-  cardBoundary:
-    serializedVersion: 2
-    x: -7.8
-    y: -3.8
-    width: 16
-    height: 11.8
   overlapCardControllers: []
 --- !u!114 &173459824613252619
 MonoBehaviour:
@@ -385,6 +385,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3db022da21252e542a2842fb2f63272b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isReqSpriteAssg: 1
   cardNameText: {fileID: 1547522013718126492}
   cardRenderer: {fileID: 4055919429897701146}
   cardRendererSpriteScale: {x: 0.3, y: 0.3, z: 0.3}
@@ -450,6 +451,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4055919429897701146
 SpriteRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -468,6 +470,8 @@ SpriteRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -489,9 +493,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -501,7 +507,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &5618927657194004943
 GameObject:
@@ -700,7 +705,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8400697501434576642}
-  m_Father: {fileID: 265822607151157709}
+  m_Father: {fileID: 3208895008169469516}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -983,9 +988,10 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3939970206439998424}
   - {fileID: 2380749079838095206}
+  - {fileID: 5301430404775400581}
   m_Father: {fileID: 265822607151157709}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

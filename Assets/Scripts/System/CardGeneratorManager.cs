@@ -2,6 +2,7 @@ using UnityEngine;
 using SingletonSystem;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using ReadOnlyEditor;
 
 /*[System.Serializable]
@@ -20,7 +21,22 @@ public class CardListing
 
 public class CardGeneratorManager : Singleton<CardGeneratorManager>
 {
+    [SerializeField] private Collider2D boundaryCollider;
+    [SerializeField, ReadOnly] private List<CardController> cards = new List<CardController>();
+
+    public List<CardController> Cards { get =>  cards; }
+
     public Action<CardController> OnCardGenerated;
+
+    private void Awake()
+    {
+        cards = FindObjectsByType<CardController>(FindObjectsSortMode.None).ToList();
+        foreach (var card in cards)
+        {
+            Debug.Log($"CARD LOOP {card.CardData.CardName}");
+            card.AssignBoundary(boundaryCollider);
+        }
+    }
 
     public CardController GenerateCard(CardData cardData, Vector3 pos)
     {
@@ -33,7 +49,9 @@ public class CardGeneratorManager : Singleton<CardGeneratorManager>
             generatedCardObj.transform.position = pos;
             if (generatedCardObj.TryGetComponent(out CardController cardController))
             {
+                cards.Add(cardController);
                 cardController.AssignCardData(cardData);
+                cardController.AssignBoundary(boundaryCollider);
                 OnCardGenerated?.Invoke(cardController);
                 return cardController;
             }

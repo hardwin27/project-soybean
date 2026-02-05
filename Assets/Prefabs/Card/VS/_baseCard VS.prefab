@@ -9,6 +9,42 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 173459824613252619, guid: 6ed42a861f27fea44b91d9f1cab9e63b, type: 3}
+      propertyPath: visualParent
+      value: 
+      objectReference: {fileID: 5639423143339655665}
+    - target: {fileID: 173459824613252619, guid: 6ed42a861f27fea44b91d9f1cab9e63b, type: 3}
+      propertyPath: normalCardColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 173459824613252619, guid: 6ed42a861f27fea44b91d9f1cab9e63b, type: 3}
+      propertyPath: normalCardColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 173459824613252619, guid: 6ed42a861f27fea44b91d9f1cab9e63b, type: 3}
+      propertyPath: normalCardColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 173459824613252619, guid: 6ed42a861f27fea44b91d9f1cab9e63b, type: 3}
+      propertyPath: normalCardColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 173459824613252619, guid: 6ed42a861f27fea44b91d9f1cab9e63b, type: 3}
+      propertyPath: tintedCardColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 173459824613252619, guid: 6ed42a861f27fea44b91d9f1cab9e63b, type: 3}
+      propertyPath: tintedCardColor.b
+      value: 0.23921569
+      objectReference: {fileID: 0}
+    - target: {fileID: 173459824613252619, guid: 6ed42a861f27fea44b91d9f1cab9e63b, type: 3}
+      propertyPath: tintedCardColor.g
+      value: 0.23921569
+      objectReference: {fileID: 0}
+    - target: {fileID: 173459824613252619, guid: 6ed42a861f27fea44b91d9f1cab9e63b, type: 3}
+      propertyPath: tintedCardColor.r
+      value: 0.23921569
+      objectReference: {fileID: 0}
+    - target: {fileID: 173459824613252619, guid: 6ed42a861f27fea44b91d9f1cab9e63b, type: 3}
       propertyPath: cardRendererSpriteScale.x
       value: 1
       objectReference: {fileID: 0}
@@ -108,6 +144,22 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3979568814558201477, guid: 6ed42a861f27fea44b91d9f1cab9e63b, type: 3}
+      propertyPath: cardTintWhenProgression.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3979568814558201477, guid: 6ed42a861f27fea44b91d9f1cab9e63b, type: 3}
+      propertyPath: cardTintWhenProgression.b
+      value: 0.27058825
+      objectReference: {fileID: 0}
+    - target: {fileID: 3979568814558201477, guid: 6ed42a861f27fea44b91d9f1cab9e63b, type: 3}
+      propertyPath: cardTintWhenProgression.g
+      value: 0.27058825
+      objectReference: {fileID: 0}
+    - target: {fileID: 3979568814558201477, guid: 6ed42a861f27fea44b91d9f1cab9e63b, type: 3}
+      propertyPath: cardTintWhenProgression.r
+      value: 0.27450982
+      objectReference: {fileID: 0}
     - target: {fileID: 4055919429897701146, guid: 6ed42a861f27fea44b91d9f1cab9e63b, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -123,10 +175,6 @@ PrefabInstance:
     - target: {fileID: 7148365342145140155, guid: 6ed42a861f27fea44b91d9f1cab9e63b, type: 3}
       propertyPath: m_IsActive
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7565457305340144349, guid: 6ed42a861f27fea44b91d9f1cab9e63b, type: 3}
-      propertyPath: shouldBeBounded
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8347156867831986490, guid: 6ed42a861f27fea44b91d9f1cab9e63b, type: 3}
       propertyPath: m_AnchorMax.y
@@ -219,3 +267,8 @@ PolygonCollider2D:
       - {x: -0.040580332, y: -0.079410374}
       - {x: 2.5455632, y: 1.4284427}
   m_UseDelaunayMesh: 1
+--- !u!1 &5639423143339655665 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9186254762713597025, guid: 6ed42a861f27fea44b91d9f1cab9e63b, type: 3}
+  m_PrefabInstance: {fileID: 3548664370104386960}
+  m_PrefabAsset: {fileID: 0}

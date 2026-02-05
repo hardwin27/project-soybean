@@ -303,17 +303,10 @@ MonoBehaviour:
   topCard: {fileID: 0}
   lastPost: {x: 0, y: 0, z: 0}
   dragOffset: {x: 0, y: 0, z: 0}
+  playAreaBoundary: {fileID: 0}
+  shouldBeBounded: 1
   cardDefaultSortName: Card
   cardDraggedSortName: DraggedCard
-  cardWidth: 1.5
-  cardHeight: 2
-  cardBoundary:
-    serializedVersion: 2
-    x: -7.8
-    y: -3.8
-    width: 16
-    height: 11.8
-  shouldBeBounded: 0
   overlapCardControllers: []
   deckCardData: {fileID: 0}
   currentCardIndex: 0
@@ -329,11 +322,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c4f2faa02db97c4dab39e06aa5b4722, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BuildingDeckBuyCardVisual
+  visualParent: {fileID: 7496873784395689288}
   isReqSpriteAssg: 0
   cardNameText: {fileID: 148614283135760053}
   cardRenderer: {fileID: 3404608956842602035}
   cardRendererSpriteScale: {x: 1, y: 1, z: 1}
-  cardTypeColors: []
   cardPriceText: {fileID: 36424107746263282}
 --- !u!4 &3574138178763412784 stripped
 Transform:
@@ -343,5 +336,10 @@ Transform:
 --- !u!4 &4322987214291603301 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8146277918930776014, guid: f93ec2bb14a8b014996d47a324eb5c5a, type: 3}
+  m_PrefabInstance: {fileID: 5400714720809459883}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7496873784395689288 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2520062578710138339, guid: f93ec2bb14a8b014996d47a324eb5c5a, type: 3}
   m_PrefabInstance: {fileID: 5400714720809459883}
   m_PrefabAsset: {fileID: 0}

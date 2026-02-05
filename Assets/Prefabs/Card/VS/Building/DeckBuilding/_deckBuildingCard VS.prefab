@@ -108,17 +108,10 @@ MonoBehaviour:
   topCard: {fileID: 0}
   lastPost: {x: 0, y: 0, z: 0}
   dragOffset: {x: 0, y: 0, z: 0}
+  playAreaBoundary: {fileID: 0}
+  shouldBeBounded: 1
   cardDefaultSortName: Card
   cardDraggedSortName: DraggedCard
-  cardWidth: 1.5
-  cardHeight: 2
-  cardBoundary:
-    serializedVersion: 2
-    x: -7.8
-    y: -3.8
-    width: 16
-    height: 11.8
-  shouldBeBounded: 0
   overlapCardControllers: []
   deckCardData: {fileID: 0}
   currentCardIndex: 0

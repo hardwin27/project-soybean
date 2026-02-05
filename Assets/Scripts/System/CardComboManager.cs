@@ -3,6 +3,7 @@ using System.Linq;
 using SingletonSystem;
 using System.Collections.Generic;
 using System;
+using static UnityEngine.Rendering.GPUSort;
 
 public class CardComboManager : Singleton<CardComboManager>
 {
@@ -18,14 +19,16 @@ public class CardComboManager : Singleton<CardComboManager>
 
     private void Awake()
     {
-        List<CardController> cards = FindObjectsByType<CardController>(FindObjectsSortMode.None).ToList();
-        foreach (var card in cards)
+        cardGeneratorManager = CardGeneratorManager.Instance;
+        cardGeneratorManager.OnCardGenerated += HandleNewCard;
+    }
+
+    private void Start()
+    {
+        foreach (var card in cardGeneratorManager.Cards)
         {
             card.OnCardStacked += CheckStackedCard;
         }
-
-        cardGeneratorManager = CardGeneratorManager.Instance;
-        cardGeneratorManager.OnCardGenerated += HandleNewCard;
     }
 
     private void HandleNewCard(CardController card)

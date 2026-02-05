@@ -1,21 +1,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using ReadOnlyEditor;
 
+[RequireComponent(typeof(CardController))]
+[RequireComponent(typeof(CardVisual))]
 public class CardProcessor : MonoBehaviour
 {
     [SerializeField] private bool isProcessing = false;
     [SerializeField] private Canvas cardCanvas;
     [SerializeField] private Slider progressSlider;
+    [SerializeField] private bool hideStackWhenProgressing = false;
+    [SerializeField] private Color cardTintWhenProgression;
 
-    [SerializeField] private RecipeData processedRecipe;
-    [SerializeField] private List<CardController> processedStack;
+    [SerializeField, ReadOnly] private RecipeData processedRecipe;
+    [SerializeField, ReadOnly] private List<CardController> processedStack;
+
+    private CardController cardController;
+    private CardVisual cardVisual;
 
     private float processDuration;
     private float processTimer;
 
     private void Awake()
     {
+        cardController = GetComponent<CardController>();
+        cardVisual = GetComponent<CardVisual>();
         ResetProcess();
     }
 
@@ -59,15 +69,28 @@ public class CardProcessor : MonoBehaviour
 
         AudioManager.Instance.PlaySFXObject("process_finished");
 
+        if (hideStackWhenProgressing)
+        {
+            cardVisual.TintVisual(Color.white);
+        }
+
         foreach (CardController card in processedStack)
         {
             card.IsOnProcess = false;
+            if (hideStackWhenProgressing)
+            {
+                if (card != cardController)
+                {
+                    if (card.TryGetComponent(out CardVisual visual))
+                    {
+                        visual.ToggleVisibility(true);
+                    }
+                }
+            }
         }
 
         if (processedRecipe.GeneratedCard != null) 
         {
-
-
             for (int i = 0; i < processedRecipe.GeneratedCardAmount; i++)
             {
                 Vector2 randomPos = RandomValue.RandomPosAround(transform.position, 1.5f);
@@ -141,6 +164,22 @@ public class CardProcessor : MonoBehaviour
         foreach (CardController card in processedStack) 
         {
             card.IsOnProcess = true;
+            if (hideStackWhenProgressing)
+            {
+                if (card != cardController)
+                {
+                    if (card.TryGetComponent(out CardVisual visual))
+                    {
+                        visual.ToggleVisibility(false);
+                    }
+                }
+            }
+            
+        }
+
+        if (hideStackWhenProgressing)
+        {
+            cardVisual.TintVisual(cardTintWhenProgression);
         }
 
         progressSlider.gameObject.SetActive(true);

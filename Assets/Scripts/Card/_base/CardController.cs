@@ -5,41 +5,42 @@ using UnityEngine.EventSystems;
 using UnityEngine.Rendering;
 using ReadOnlyEditor;
 
-
-// NOTE: TRY OUT THE GENERIC APPROACH IN THE FUTURE. IT'S ON DISCORD IMPORTANT
 [RequireComponent(typeof(Collider2D), typeof(SortingGroup))]
 public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     protected Collider2D cardCollider;
     protected SortingGroup cardSorting;
 
+    [Header("Data")]
     [SerializeField] protected CardData cardData;
-    [SerializeField] protected bool canBeDragged;
+
+    [Header("State")]
+    [SerializeField] protected bool canBeDragged = true;
     [SerializeField, ReadOnly] protected bool isOnProcess = false;
     [SerializeField, ReadOnly] protected bool isTopStack = false;
     [SerializeField, ReadOnly] protected bool isDragged;
 
+    [Header("Stacking")]
     [SerializeField] protected Transform stackPoint;
-
     [SerializeField] protected bool isAllowedToStack = true;
     [SerializeField, ReadOnly] protected CardController stackedOnCard;
     [SerializeField, ReadOnly] protected CardController topCard;
+
+    [Header("Movement & Boundary")]
     [SerializeField, ReadOnly] protected Vector3 lastPost;
     [SerializeField, ReadOnly] protected Vector3 dragOffset;
 
-    [SerializeField] protected string cardDefaultSortName;
-    [SerializeField] protected string cardDraggedSortName;
-
-    [SerializeField] private float cardWidth = 1f;
-    [SerializeField] private float cardHeight = 1.4f;
-    [SerializeField] private Rect cardBoundary;
+    [Tooltip("Boundary")]
+    [SerializeField, ReadOnly] protected Collider2D playAreaBoundary;
     [SerializeField] private bool shouldBeBounded = true;
 
+    [Header("Visuals")]
+    [SerializeField] protected string cardDefaultSortName;
+    [SerializeField] protected string cardDraggedSortName;
 
     [SerializeField, ReadOnly] List<CardController> overlapCardControllers = new List<CardController>();
 
     public Action OnBaseDataUpdated;
-
     public Action OnCardPosDragged;
     public Action OnCardUnstacked;
     public Action OnCardDestroyed;
@@ -47,15 +48,12 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     public Action OnCardDragEnd;
     public Action<bool, int> OnDragSorted;
 
-    public CardData CardData { get => cardData;  }
-
+    public CardData CardData { get => cardData; }
     public bool CanBeDragged { get => canBeDragged; }
     public bool IsOnProcess { get => isOnProcess; set => isOnProcess = value; }
     public bool IsTopStack { get => isTopStack; set => isTopStack = value; }
     public bool IsDragged { get => isDragged; }
-
     public Transform StackPoint { get => stackPoint; }
-
     public bool IsStacked { get => stackedOnCard != null; }
     public CardController StackedOnCard { get => stackedOnCard; }
     public CardController TopCard { get => topCard; }
@@ -64,36 +62,16 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     {
         protected set
         {
-            if (cardSorting != null)
-            {
-                cardSorting.sortingOrder = value;
-            }
-            transform.position = new Vector3 (transform.position.x, transform.position.y, -value);
+            if (cardSorting != null) cardSorting.sortingOrder = value;
+            transform.position = new Vector3(transform.position.x, transform.position.y, -value);
         }
-        get
-        {
-            if (cardSorting != null)
-            {
-                return cardSorting.sortingOrder;
-            }
-
-            return 0;
-        }
+        get => cardSorting != null ? cardSorting.sortingOrder : 0;
     }
 
     protected virtual void Awake()
     {
         cardCollider = GetComponent<Collider2D>();
         cardSorting = GetComponent<SortingGroup>();
-
-        BoxCollider2D boxCol = cardCollider as BoxCollider2D;
-
-        if (boxCol != null) 
-        {
-            cardWidth = boxCol.size.x;
-            cardHeight = boxCol.size.y;
-        }
-
         isDragged = false;
     }
 
@@ -102,7 +80,6 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         AssignCardData(cardData);
         lastPost = transform.position;
         SetTopCard(this);
-        /*HandleDragEnd();*/
 
         BoundCardPos(transform.position);
         StartCoroutine("DelayedOverlapCheck");
@@ -110,20 +87,13 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
     public virtual void OnBeginDrag(PointerEventData eventData)
     {
-        /*Debug.Log($"EventData: {eventData.pointerPressRaycast.gameObject.name}");
-        Debug.Log($"EventData Postion {Camera.main.ScreenToWorldPoint(eventData.position)}");*/
-
-        if (!CanBeDragged || IsOnProcess)
-        { 
-            return; 
-        }
+        if (!CanBeDragged || IsOnProcess) return;
 
         dragOffset = transform.position - Camera.main.ScreenToWorldPoint(eventData.position);
 
         AudioManager.Instance.PlaySFXObject("card_dragged");
 
         lastPost = transform.position;
-
         transform.SetAsFirstSibling();
 
         SetDragPos(eventData);
@@ -132,41 +102,27 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
     public virtual void OnDrag(PointerEventData eventData)
     {
-        if (!CanBeDragged || IsOnProcess)
-        {
-            return;
-        }
-
-        /*Debug.Log($"Dragging {gameObject.name}");*/
-
+        if (!CanBeDragged || IsOnProcess) return;
         SetDragPos(eventData);
     }
 
     public virtual void OnEndDrag(PointerEventData eventData)
     {
-        if (!CanBeDragged || IsOnProcess)
-        {
-            return;
-        }
-
+        if (!CanBeDragged || IsOnProcess) return;
         HandleDragEnd();
     }
 
     public void OnDisable()
     {
-        /*Debug.Log($"{gameObject.name} DESTROYED");*/
         OnCardDestroyed?.Invoke();
         if (StackedOnCard != null)
         {
             stackedOnCard.SetTopCard(stackedOnCard);
-
-            //Separated Logic
             StackedOnCard.OnCardPosDragged -= HandleStackedPosDragged;
             StackedOnCard.OnDragSorted -= HandleStackedDragSorted;
             StackedOnCard.OnCardDestroyed -= HandleStackedCardDestroyed;
             StackedOnCard.OnCardUnstacked?.Invoke();
             stackedOnCard = null;
-
         }
         Destroy(gameObject, 3f);
     }
@@ -174,18 +130,8 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     protected System.Collections.IEnumerator DelayedOverlapCheck()
     {
         yield return null;
-
-        /*Debug.Log($"DelayedOverlapCheck {gameObject.name}");*/
-
-        /*int originalZ = ZOrder;
-        ZOrder = 999999;*/
-
-        yield return null;
-
         List<Collider2D> overlapColliders = new List<Collider2D>();
         Physics2D.OverlapCollider(cardCollider, new ContactFilter2D().NoFilter(), overlapColliders);
-
-        /*ZOrder = originalZ;*/
 
         overlapCardControllers = new List<CardController>();
         foreach (Collider2D overlapCollider in overlapColliders)
@@ -195,7 +141,6 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
                 if (!cardController.IsDragged)
                 {
                     overlapCardControllers.Add(cardController);
-                    /*Debug.Log($"DelayedOverlapCheck {gameObject.name} overlap with {cardController.gameObject.name}");*/
                     if (ZOrder <= cardController.ZOrder)
                     {
                         ZOrder = cardController.ZOrder + 1;
@@ -207,12 +152,7 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
     public void SetTopCard(CardController card)
     {
-        /*Debug.Log($"{gameObject.name} assign {card.gameObject.name} as TOPCARD");*/
-        topCard = card;
-        if (topCard == null)
-        {
-            topCard = this;
-        }
+        topCard = card ?? this;
         if (stackedOnCard != null && stackedOnCard != this && stackedOnCard != card)
         {
             stackedOnCard.SetTopCard(card);
@@ -221,6 +161,8 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
     protected void HandleStackedCardDestroyed()
     {
+        if (StackedOnCard == null) return;
+
         StackedOnCard.OnCardPosDragged -= HandleStackedPosDragged;
         StackedOnCard.OnDragSorted -= HandleStackedDragSorted;
         StackedOnCard.OnCardDestroyed -= HandleStackedCardDestroyed;
@@ -236,48 +178,36 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
     protected void SetDragPos(PointerEventData eventData)
     {
-        BoundCardPos(Camera.main.ScreenToWorldPoint(eventData.position));
-
-        /*Vector3 dragPos = Camera.main.ScreenToWorldPoint(eventData.position);
-        Vector3 targetPos = new Vector3(dragPos.x + dragOffset.x, dragPos.y + dragOffset.y, transform.position.z);
-
-        // Clamp the position so the card’s edges stay inside the boundary
-        float halfW = cardWidth * 0.5f;
-        float halfH = cardHeight * 0.5f;
-
-        float minX = cardBoundary.xMin + halfW;
-        float maxX = cardBoundary.xMax - halfW;
-        float minY = cardBoundary.yMin + halfH;
-        float maxY = cardBoundary.yMax - halfH;
-
-        float clampedX = Mathf.Clamp(targetPos.x, minX + halfW, maxX - halfW);
-        float clampedY = Mathf.Clamp(targetPos.y, minY + halfH, maxY - halfH);
-
-        transform.position = new Vector3(clampedX, clampedY, targetPos.z);*/
+        Vector3 worldPoint = Camera.main.ScreenToWorldPoint(eventData.position);
+        BoundCardPos(worldPoint);
         OnCardPosDragged?.Invoke();
+    }
+
+    public void AssignBoundary(Collider2D boundaryCol)
+    {
+        playAreaBoundary = boundaryCol;
     }
 
     protected void BoundCardPos(Vector3 posToBound)
     {
         Vector3 targetPos = new Vector3(posToBound.x + dragOffset.x, posToBound.y + dragOffset.y, transform.position.z);
 
-        if (shouldBeBounded)
+        if (shouldBeBounded && playAreaBoundary != null)
         {
-            // Clamp the position so the card’s edges stay inside the boundary
-            float halfW = cardWidth * 0.5f;
-            float halfH = cardHeight * 0.5f;
+            Bounds areaBounds = playAreaBoundary.bounds;
 
-            float minX = cardBoundary.xMin + halfW;
-            float maxX = cardBoundary.xMax - halfW;
-            float minY = cardBoundary.yMin + halfH;
-            float maxY = cardBoundary.yMax - halfH;
+            Vector3 cardHalfSize = cardCollider.bounds.extents;
 
-            float clampedX = Mathf.Clamp(targetPos.x, minX + halfW, maxX - halfW);
-            float clampedY = Mathf.Clamp(targetPos.y, minY + halfH, maxY - halfH);
+            float minX = areaBounds.min.x + cardHalfSize.x;
+            float maxX = areaBounds.max.x - cardHalfSize.x;
+            float minY = areaBounds.min.y + cardHalfSize.y;
+            float maxY = areaBounds.max.y - cardHalfSize.y;
+
+            float clampedX = Mathf.Clamp(targetPos.x, minX, maxX);
+            float clampedY = Mathf.Clamp(targetPos.y, minY, maxY);
 
             transform.position = new Vector3(clampedX, clampedY, targetPos.z);
         }
-
         else
         {
             transform.position = targetPos;
@@ -294,47 +224,35 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     protected void ToggleDragSorting(bool isDrag, int sortingOrder = 0)
     {
         isDragged = isDrag;
-        cardSorting.sortingLayerName = (isDragged) ? cardDraggedSortName : cardDefaultSortName;
+        if (cardSorting != null)
+        {
+            cardSorting.sortingLayerName = (isDragged) ? cardDraggedSortName : cardDefaultSortName;
+        }
         ZOrder = sortingOrder;
         OnDragSorted?.Invoke(isDragged, sortingOrder);
     }
 
     protected void HandleStackedPosDragged()
     {
-        if (StackedOnCard == null && StackedOnCard != this)
-        {
-            return;
-        }
+        if (StackedOnCard == null && StackedOnCard != this) return;
 
-        /*Debug.Log($"HandleStackedPosDragged {gameObject.name}");*/
         transform.position = new Vector3(StackedOnCard.StackPoint.position.x, StackedOnCard.StackPoint.position.y, transform.position.z);
         OnCardPosDragged?.Invoke();
     }
 
     protected void HandleStackedDragSorted(bool isDragged, int sortingOrder)
     {
-        if (StackedOnCard == null)
-        {
-            return;
-        }
-
+        if (StackedOnCard == null) return;
         ToggleDragSorting(isDragged, sortingOrder + 1);
-        /*HandleCardStackPos();*/
     }
 
     public void StackWithCard(CardController cardToStackTo)
     {
-        if (cardToStackTo == this)
-        {
-            return;
-        }
+        if (cardToStackTo == this) return;
 
         if (StackedOnCard != null)
         {
-            if (cardToStackTo == StackedOnCard)
-            {
-                return;
-            }
+            if (cardToStackTo == StackedOnCard) return;
 
             StackedOnCard.OnCardPosDragged -= HandleStackedPosDragged;
             StackedOnCard.OnDragSorted -= HandleStackedDragSorted;
@@ -365,37 +283,17 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
     protected bool CanStackWithCard(CardController cardController)
     {
-        if (cardController == this)
-        {
-            return false;
-        }
+        if (cardController == this || cardController == TopCard) return false;
 
-        if (cardController == TopCard)
-        {
-            return false;
-        }
+        if (StackedOnCard == null) return true;
 
-        if (StackedOnCard == null)
+        CardController parentCard = StackedOnCard;
+        while (parentCard != null)
         {
-            return true;
+            if (parentCard == cardController) return false;
+            parentCard = parentCard.StackedOnCard;
         }
-        else
-        {
-            CardController parentCard = StackedOnCard;
-            while (parentCard != null) 
-            {
-                if (parentCard == cardController)
-                {
-                    return false;
-                }
-                else
-                {
-                    parentCard = parentCard.StackedOnCard;
-                }
-            }
-
-            return true;
-        }
+        return true;
     }
 
     protected void HandleDragEnd()
@@ -435,13 +333,11 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
                 {
                     if (CanStackWithCard(cardController.TopCard))
                     {
-                        /*Debug.Log($"Stack To Card: {cardController.TopCard}");*/
                         StackWithCard(cardController.TopCard);
                         return;
                     }
                 }
 
-                /*Debug.LogWarning($"Rejected Form Stack");*/
                 SetPos(lastPost);
                 ToggleDragSorting(false, ZOrder);
             }
@@ -455,7 +351,6 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
             }
             else
             {
-                /*Debug.LogWarning($"Rejected Form Stack");*/
                 SetPos(lastPost);
                 ToggleDragSorting(false, ZOrder);
             }

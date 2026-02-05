@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 236347913395660834, guid: 00016afbe1d87b84e8c90df8eec0b543, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 246664181721527203, guid: 00016afbe1d87b84e8c90df8eec0b543, type: 3}
       propertyPath: cardData
       value: 
@@ -140,6 +144,14 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4196013889085811815, guid: 00016afbe1d87b84e8c90df8eec0b543, type: 3}
+      propertyPath: hideStackWhenProgressing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4682345347422145325, guid: 00016afbe1d87b84e8c90df8eec0b543, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7977677869518112275, guid: 00016afbe1d87b84e8c90df8eec0b543, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.size
       value: 8
@@ -207,6 +219,18 @@ PrefabInstance:
     - target: {fileID: 7977677869518112275, guid: 00016afbe1d87b84e8c90df8eec0b543, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[7].y
       value: 1.3889828
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760694762826274272, guid: 00016afbe1d87b84e8c90df8eec0b543, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8760694762826274272, guid: 00016afbe1d87b84e8c90df8eec0b543, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 2.88
+      objectReference: {fileID: 0}
+    - target: {fileID: 9139622597664707544, guid: 00016afbe1d87b84e8c90df8eec0b543, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

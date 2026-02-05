@@ -196,6 +196,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 6900828108741208689}
   m_SourcePrefab: {fileID: 100100000, guid: f93ec2bb14a8b014996d47a324eb5c5a, type: 3}
+--- !u!1 &3996090297317800510 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2520062578710138339, guid: f93ec2bb14a8b014996d47a324eb5c5a, type: 3}
+  m_PrefabInstance: {fileID: 1553171655374075869}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5456305276859232146 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6788413212582631503, guid: f93ec2bb14a8b014996d47a324eb5c5a, type: 3}
@@ -245,17 +250,10 @@ MonoBehaviour:
   topCard: {fileID: 0}
   lastPost: {x: 0, y: 0, z: 0}
   dragOffset: {x: 0, y: 0, z: 0}
+  playAreaBoundary: {fileID: 0}
+  shouldBeBounded: 1
   cardDefaultSortName: Card
   cardDraggedSortName: DraggedCard
-  cardWidth: 1.5
-  cardHeight: 2
-  cardBoundary:
-    serializedVersion: 2
-    x: -7.8
-    y: -3.8
-    width: 16
-    height: 11.8
-  shouldBeBounded: 0
   overlapCardControllers: []
   deckCardData: {fileID: 0}
   currentCardIndex: 0
@@ -274,21 +272,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a2d8d943fd961446ab74946b9d74cd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BuildingDeckBankCardVisual
+  visualParent: {fileID: 3996090297317800510}
   isReqSpriteAssg: 1
   cardNameText: {fileID: 6733220022305415619}
   cardRenderer: {fileID: 8088836318012094789}
   cardRendererSpriteScale: {x: 1, y: 1, z: 1}
-  cardTypeColors:
-  - CardType: 0
-    Color: {r: 1, g: 0.8000001, b: 0, a: 1}
-  - CardType: 1
-    Color: {r: 0.38823533, g: 0.6431373, b: 0.1137255, a: 1}
-  - CardType: 2
-    Color: {r: 0.5137255, g: 0.078431375, b: 0.019607844, a: 1}
-  - CardType: 4
-    Color: {r: 0.9725826, g: 1, b: 0, a: 1}
-  - CardType: 3
-    Color: {r: 0, g: 1, b: 0.8895688, a: 1}
 --- !u!212 &8088836318012094789 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 7335423308640636568, guid: f93ec2bb14a8b014996d47a324eb5c5a, type: 3}

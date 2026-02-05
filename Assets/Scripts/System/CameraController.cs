@@ -14,7 +14,7 @@ public class CameraController : MonoBehaviour
     [SerializeField] private float smoothZoomTime = 0.1f;
     
     [Header("Layer Settings")]
-    [SerializeField] private LayerMask blockingLayers = 1;
+    [SerializeField] private LayerMask blockingLayers;
     
     [SerializeField] private Vector3 dragOrigin;
     [SerializeField] private bool isDragging = false;

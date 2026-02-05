@@ -185,6 +185,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 5601290685808562351}
   m_SourcePrefab: {fileID: 100100000, guid: c2546f2a8b98e064ab1c4f16abaeb43b, type: 3}
+--- !u!1 &1988541199728201656 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5639423143339655665, guid: c2546f2a8b98e064ab1c4f16abaeb43b, type: 3}
+  m_PrefabInstance: {fileID: 6186809917406957129}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4864706589596650944 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1610351367016072073, guid: c2546f2a8b98e064ab1c4f16abaeb43b, type: 3}
@@ -213,17 +218,10 @@ MonoBehaviour:
   topCard: {fileID: 0}
   lastPost: {x: 0, y: 0, z: 0}
   dragOffset: {x: 0, y: 0, z: 0}
+  playAreaBoundary: {fileID: 0}
+  shouldBeBounded: 0
   cardDefaultSortName: Card
   cardDraggedSortName: DraggedCard
-  cardWidth: 1.5
-  cardHeight: 2
-  cardBoundary:
-    serializedVersion: 2
-    x: -7.8
-    y: -3.8
-    width: 16
-    height: 11.8
-  shouldBeBounded: 0
   overlapCardControllers: []
   toolCardData: {fileID: 0}
   runtimeStats: []
@@ -239,21 +237,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d07fcb9a7ab3fb4f9ad40883d21584b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ToolCardVisual
+  visualParent: {fileID: 1988541199728201656}
   isReqSpriteAssg: 0
   cardNameText: {fileID: 8186825818690524229}
   cardRenderer: {fileID: 6678012089567005891}
   cardRendererSpriteScale: {x: 1, y: 1, z: 1}
-  cardTypeColors:
-  - CardType: 0
-    Color: {r: 1, g: 0.8000001, b: 0, a: 1}
-  - CardType: 1
-    Color: {r: 0.38823533, g: 0.6431373, b: 0.1137255, a: 1}
-  - CardType: 2
-    Color: {r: 0.5137255, g: 0.078431375, b: 0.019607844, a: 1}
-  - CardType: 4
-    Color: {r: 0.9725826, g: 1, b: 0, a: 1}
-  - CardType: 3
-    Color: {r: 0, g: 1, b: 0.8895688, a: 1}
   toolCardController: {fileID: 0}
   statIndicatorParent: {fileID: 5025983033944832189}
 --- !u!4 &5218788667156901269 stripped
