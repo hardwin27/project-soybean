@@ -18,4 +18,4 @@ MonoBehaviour:
   sellPrice: 2
   progressTime: 1
   cardType: 1
-  cardSprite: {fileID: 5363775597256242677, guid: f0a90b1003860ff4ebe7432e49a530e4, type: 3}
+  cardSprite: {fileID: -3166214526852885200, guid: ada7510fcf002164aace62c8ff64035a, type: 3}
