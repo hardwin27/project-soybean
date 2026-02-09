@@ -122,6 +122,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: _toolCard VS
       objectReference: {fileID: 0}
+    - target: {fileID: 2684607610596628514, guid: c2546f2a8b98e064ab1c4f16abaeb43b, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3643138534353343581, guid: c2546f2a8b98e064ab1c4f16abaeb43b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -190,6 +194,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5639423143339655665, guid: c2546f2a8b98e064ab1c4f16abaeb43b, type: 3}
   m_PrefabInstance: {fileID: 6186809917406957129}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &3477348146849352888 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7321150263022469873, guid: c2546f2a8b98e064ab1c4f16abaeb43b, type: 3}
+  m_PrefabInstance: {fileID: 6186809917406957129}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4864706589596650944 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1610351367016072073, guid: c2546f2a8b98e064ab1c4f16abaeb43b, type: 3}
@@ -242,6 +251,10 @@ MonoBehaviour:
   cardNameText: {fileID: 8186825818690524229}
   cardRenderer: {fileID: 6678012089567005891}
   cardRendererSpriteScale: {x: 1, y: 1, z: 1}
+  hoverUiParent: {fileID: 3477348146849352888}
+  hoverUiTextTemplate: {fileID: 6836281796258691183, guid: 52f7d8aa29a16d84f952ed5ad1cd24d7, type: 3}
+  hoverUiDatas: []
+  hoverUiTexts: []
   toolCardController: {fileID: 0}
   statIndicatorParent: {fileID: 5025983033944832189}
 --- !u!4 &5218788667156901269 stripped

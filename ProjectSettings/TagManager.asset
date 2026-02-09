@@ -47,11 +47,11 @@ TagManager:
   - name: Card
     uniqueID: 3798600075
     locked: 0
-  - name: CardCanvas
-    uniqueID: 105751183
-    locked: 0
   - name: DraggedCard
     uniqueID: 3041302973
+    locked: 0
+  - name: CardCanvas
+    uniqueID: 105751183
     locked: 0
   - name: UI
     uniqueID: 130342233

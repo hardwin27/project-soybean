@@ -4,9 +4,10 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Rendering;
 using ReadOnlyEditor;
+using NUnit.Framework.Constraints;
 
 [RequireComponent(typeof(Collider2D), typeof(SortingGroup))]
-public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
 {
     protected Collider2D cardCollider;
     protected SortingGroup cardSorting;
@@ -47,11 +48,12 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     public Action<CardController> OnCardStacked;
     public Action OnCardDragEnd;
     public Action<bool, int> OnDragSorted;
+    public Action<bool> OnHoverToggled;
 
     public CardData CardData { get => cardData; }
     public bool CanBeDragged { get => canBeDragged; }
     public bool IsOnProcess { get => isOnProcess; set => isOnProcess = value; }
-    public bool IsTopStack { get => isTopStack; set => isTopStack = value; }
+    public bool IsTopStack { get => (TopCard == this); }
     public bool IsDragged { get => isDragged; }
     public Transform StackPoint { get => stackPoint; }
     public bool IsStacked { get => stackedOnCard != null; }
@@ -80,6 +82,7 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         AssignCardData(cardData);
         lastPost = transform.position;
         SetTopCard(this);
+        RequestHoverToggle(false);
 
         BoundCardPos(transform.position);
         StartCoroutine("DelayedOverlapCheck");
@@ -112,6 +115,19 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         HandleDragEnd();
     }
 
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (IsTopStack)
+        {
+            RequestHoverToggle(true);
+        }
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        RequestHoverToggle(false);
+    }
+
     public void OnDisable()
     {
         OnCardDestroyed?.Invoke();
@@ -125,6 +141,11 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
             stackedOnCard = null;
         }
         Destroy(gameObject, 3f);
+    }
+
+    public void RequestHoverToggle(bool isHovered)
+    {
+        OnHoverToggled?.Invoke(isHovered);
     }
 
     protected System.Collections.IEnumerator DelayedOverlapCheck()
@@ -355,5 +376,19 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
                 ToggleDragSorting(false, ZOrder);
             }
         }
+    }
+
+    public List<CardController> GetStackData()
+    {
+        List<CardController> stack = new List<CardController>();
+
+        CardController cardOnStack = TopCard;
+        while (cardOnStack != null) 
+        {
+            stack.Add(cardOnStack);
+            cardOnStack = cardOnStack.StackedOnCard;
+        }
+
+        return stack;
     }
 }

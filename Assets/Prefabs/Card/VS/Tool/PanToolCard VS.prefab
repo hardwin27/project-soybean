@@ -16,10 +16,38 @@ PrefabInstance:
       propertyPath: m_Name
       value: PanToolCard VS
       objectReference: {fileID: 0}
+    - target: {fileID: 5601290685808562351, guid: d93150143e202054da173c5d0de184d2, type: 3}
+      propertyPath: defaultSprite
+      value: 
+      objectReference: {fileID: 1929045350653884025, guid: b5de25305f6d063449c3be04c2a23d2b, type: 3}
+    - target: {fileID: 5601290685808562351, guid: d93150143e202054da173c5d0de184d2, type: 3}
+      propertyPath: multipleResourceFillled
+      value: 
+      objectReference: {fileID: 6877505499440387704, guid: 76ae079dc9b6bef43b791be3f987a735, type: 3}
+    - target: {fileID: 5601290685808562351, guid: d93150143e202054da173c5d0de184d2, type: 3}
+      propertyPath: statIndicators.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5601290685808562351, guid: d93150143e202054da173c5d0de184d2, type: 3}
+      propertyPath: statIndicators.Array.data[0].statData
+      value: 
+      objectReference: {fileID: 11400000, guid: f3420b2ddb0b9c44a810b8bf209ced67, type: 2}
+    - target: {fileID: 5601290685808562351, guid: d93150143e202054da173c5d0de184d2, type: 3}
+      propertyPath: statIndicators.Array.data[1].statData
+      value: 
+      objectReference: {fileID: 11400000, guid: e828a091bd70cf142b1e44398cc44aab, type: 2}
+    - target: {fileID: 5601290685808562351, guid: d93150143e202054da173c5d0de184d2, type: 3}
+      propertyPath: statIndicators.Array.data[0].statSprite
+      value: 
+      objectReference: {fileID: 10076389395202974, guid: 7f904c2d6d71d524c9e35878f6d37efe, type: 3}
+    - target: {fileID: 5601290685808562351, guid: d93150143e202054da173c5d0de184d2, type: 3}
+      propertyPath: statIndicators.Array.data[1].statSprite
+      value: 
+      objectReference: {fileID: 6418955286837810562, guid: 09ae6a55539667b48805f92293c94156, type: 3}
     - target: {fileID: 6678012089567005891, guid: d93150143e202054da173c5d0de184d2, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -5698966402931928475, guid: ffa650d87985c774caac84a6a440877b, type: 3}
+      objectReference: {fileID: 1929045350653884025, guid: b5de25305f6d063449c3be04c2a23d2b, type: 3}
     - target: {fileID: 7445842057925286420, guid: d93150143e202054da173c5d0de184d2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -58,6 +86,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7445842057925286420, guid: d93150143e202054da173c5d0de184d2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8113888606693348971, guid: d93150143e202054da173c5d0de184d2, type: 3}
+      propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

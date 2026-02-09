@@ -102,6 +102,8 @@ public class GameplayUiController : MonoBehaviour
         mainTabRectTransform.anchoredPosition = new Vector2(
                 openTabXPos, mainTabRectTransform.anchoredPosition.y
             );
+
+        closeSideTabButton.gameObject.SetActive(true);
     }
 
     private void CloseMainTab()
@@ -109,5 +111,7 @@ public class GameplayUiController : MonoBehaviour
         mainTabRectTransform.anchoredPosition = new Vector2(
                 closeTabXPos, mainTabRectTransform.anchoredPosition.y
             );
+
+        closeSideTabButton.gameObject.SetActive(false);
     }
 }

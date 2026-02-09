@@ -1,7 +1,28 @@
 using UnityEngine;
 using TMPro;
+using ReadOnlyEditor;
 using System.Collections.Generic;
-using System.Threading;
+
+[System.Serializable]
+public class HoverUiData
+{
+    [SerializeField, ReadOnly] private CardData cardData;
+    [SerializeField, ReadOnly] private int count;
+
+    public CardData CardData { get => cardData; }
+    public int Count { get => count; }
+
+    public HoverUiData(CardData _cardData)
+    {
+        cardData = _cardData;
+        count = 0;
+    }
+
+    public void AddCount(int addedCount)
+    {
+        count += addedCount;
+    }
+}
 
 [RequireComponent(typeof(CardController))]
 public class CardVisual : MonoBehaviour
@@ -22,16 +43,89 @@ public class CardVisual : MonoBehaviour
     [SerializeField] protected Vector3 cardRendererSpriteScale;
     /*[SerializeField] protected List<CardTypeColor> cardTypeColors;*/
     /*[SerializeField] protected SimpleTooltip cardToolTip;*/
+    [Header("Hover Ui")]
+    [SerializeField] protected GameObject hoverUiParent;
+    [SerializeField] protected TextMeshProUGUI hoverUiTextTemplate;
+    [SerializeField, ReadOnly] protected List<HoverUiData> hoverUiDatas = new List<HoverUiData>();
+    [SerializeField, ReadOnly] protected List<TextMeshProUGUI> hoverUiTexts = new List<TextMeshProUGUI>();
+    protected float closeHoverDelay = 0.1f;
+    protected Coroutine closeHoverCoroutine;
 
     protected virtual void Awake()
     {
         cardController = GetComponent<CardController>();
         cardController.OnBaseDataUpdated += UpdateBaseVisual;
+        cardController.OnHoverToggled += ToggleHoverUi;
     }
 
     private void Start()
     {
         ToggleVisibility(true);
+    }
+
+    public void ToggleHoverUi(bool showHoverUi)
+    {
+        if (hoverUiParent != null) 
+        {
+            if (showHoverUi)
+            {
+                if (closeHoverCoroutine != null) 
+                {
+                    StopCoroutine(closeHoverCoroutine);
+                    closeHoverCoroutine = null;
+                }
+
+                hoverUiParent.SetActive(true);
+
+                UpdateHoverDisplay();
+            }
+            else
+            {
+                closeHoverCoroutine = StartCoroutine(DelayedCloseHover());
+            }
+        }
+    }
+
+    protected virtual void UpdateHoverDisplay()
+    {
+        foreach (var hoverUiText in hoverUiTexts)
+        {
+            hoverUiText.gameObject.SetActive(false);
+        }
+
+        hoverUiDatas.Clear();
+
+        foreach (var card in cardController.GetStackData())
+        {
+            HoverUiData hoverUiData = hoverUiDatas.Find(data => data.CardData == card.CardData);
+            if (hoverUiData == null)
+            {
+                hoverUiData = new HoverUiData(card.CardData);
+                hoverUiDatas.Add(hoverUiData);
+            }
+            hoverUiData.AddCount(1);
+        }
+
+        int difference = hoverUiDatas.Count - hoverUiTexts.Count;
+        while (difference-- > 0)
+        {
+            TextMeshProUGUI newText = Instantiate(hoverUiTextTemplate.gameObject,
+                hoverUiParent.transform).GetComponent<TextMeshProUGUI>();
+            hoverUiTexts.Add(newText);
+            newText.gameObject.SetActive(false);
+        }
+
+        for (int x = 0; x < hoverUiDatas.Count; x++)
+        {
+            hoverUiTexts[x].gameObject.SetActive(true);
+            hoverUiTexts[x].text = $"{hoverUiDatas[x].CardData.CardName} ({hoverUiDatas[x].Count})";
+        }
+    }
+
+    protected System.Collections.IEnumerator DelayedCloseHover()
+    {
+        yield return new WaitForSeconds(closeHoverDelay);
+        hoverUiParent.SetActive(false);
     }
 
     public void ToggleVisibility(bool isVisible)

@@ -35,6 +35,8 @@ public class CameraController : MonoBehaviour
         {
             cam = Camera.main;
         }
+
+        cam.orthographicSize = maxZoom;
         
         targetZoom = cam.orthographicSize;
     }

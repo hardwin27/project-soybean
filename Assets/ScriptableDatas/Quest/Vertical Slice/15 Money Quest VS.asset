@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: 15 Money Quest VS
   m_EditorClassIdentifier: 
   questTitle: Deposit 15 Coins into Bank
-  hasReward: 1
+  questDecorationReward:
+    decorationReward: {fileID: 11400000, guid: 42939f0aefa9ed948a805fb5f7130d57, type: 2}
+    rewardAmount: 1
   targetTotalMoney: 15

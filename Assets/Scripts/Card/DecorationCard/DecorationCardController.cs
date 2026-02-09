@@ -2,7 +2,7 @@ using UnityEngine;
 using ReadOnlyEditor;
 using UnityEngine.EventSystems;
 
-public class DecorationCardController : CardController, IPointerClickHandler
+public class DecorationCardController : CardController
 {
     [SerializeField, ReadOnly] private DecorationCardData decorationCardData;
 
@@ -12,12 +12,9 @@ public class DecorationCardController : CardController, IPointerClickHandler
         decorationCardData = data as DecorationCardData;
     }
 
-    public void OnPointerClick(PointerEventData eventData)
+    public void StashDecoration()
     {
-        if (eventData.button == PointerEventData.InputButton.Right)
-        {
-            gameObject.SetActive(false);
-        }
+        gameObject.SetActive(false);
     }
 
     public void StartDraggedByUi()

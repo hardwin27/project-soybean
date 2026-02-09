@@ -32,6 +32,10 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: 2.3275113
       objectReference: {fileID: 0}
+    - target: {fileID: 2684607610596628514, guid: c2546f2a8b98e064ab1c4f16abaeb43b, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3643138534353343581, guid: c2546f2a8b98e064ab1c4f16abaeb43b, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -175,6 +179,10 @@ MonoBehaviour:
   cardNameText: {fileID: 1763334852119262590}
   cardRenderer: {fileID: 3839597534793051640}
   cardRendererSpriteScale: {x: 1, y: 1, z: 1}
+  hoverUiParent: {fileID: 6460388065259580803}
+  hoverUiTextTemplate: {fileID: 6836281796258691183, guid: 52f7d8aa29a16d84f952ed5ad1cd24d7, type: 3}
+  hoverUiDatas: []
+  hoverUiTexts: []
 --- !u!4 &3165617048674080507 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1716043224431049097, guid: c2546f2a8b98e064ab1c4f16abaeb43b, type: 3}
@@ -183,6 +191,11 @@ Transform:
 --- !u!212 &3839597534793051640 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 681985599623660170, guid: c2546f2a8b98e064ab1c4f16abaeb43b, type: 3}
+  m_PrefabInstance: {fileID: 4340937703115599730}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6460388065259580803 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7321150263022469873, guid: c2546f2a8b98e064ab1c4f16abaeb43b, type: 3}
   m_PrefabInstance: {fileID: 4340937703115599730}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &8249849800995810947 stripped

@@ -27,6 +27,10 @@ public class ToolCardController : CardController
         {
             var runtimeStat = new RuntimeStat(stat);
             runtimeStats.Add(runtimeStat);
+            runtimeStat.OnValueUpdated += () =>
+            {
+                OnToolDataUpdated?.Invoke();
+            };
         }
         OnToolDataUpdated?.Invoke();
 
