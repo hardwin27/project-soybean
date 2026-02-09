@@ -16,6 +16,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: TofuMoldToolCard VS
       objectReference: {fileID: 0}
+    - target: {fileID: 5601290685808562351, guid: d93150143e202054da173c5d0de184d2, type: 3}
+      propertyPath: defaultSprite
+      value: 
+      objectReference: {fileID: -9076013197323654667, guid: b15887ef5c330c84d8882025a4c43e08, type: 3}
+    - target: {fileID: 5601290685808562351, guid: d93150143e202054da173c5d0de184d2, type: 3}
+      propertyPath: multipleResourceFillled
+      value: 
+      objectReference: {fileID: -9076013197323654667, guid: b15887ef5c330c84d8882025a4c43e08, type: 3}
     - target: {fileID: 6678012089567005891, guid: d93150143e202054da173c5d0de184d2, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -58,6 +66,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7445842057925286420, guid: d93150143e202054da173c5d0de184d2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8113888606693348971, guid: d93150143e202054da173c5d0de184d2, type: 3}
+      propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
