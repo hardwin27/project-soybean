@@ -89,9 +89,23 @@ public class CardProcessor : MonoBehaviour
             }
         }
 
-        if (processedRecipe.GeneratedCard != null) 
+        if (processedRecipe.GeneratedCards.Count > 0) 
         {
-            for (int i = 0; i < processedRecipe.GeneratedCardAmount; i++)
+            foreach (var generatedCardData in  processedRecipe.GeneratedCards) 
+            {
+                int genCount = generatedCardData.GeneratedQty;
+                while(genCount-- > 0) 
+                {
+                    Vector2 randomPos = RandomValue.RandomPosAround(transform.position, 1.5f);
+
+                    CardGeneratorManager.Instance.GenerateCard(
+                       generatedCardData.CardData,
+                       new Vector3(randomPos.x, randomPos.y, transform.position.z)
+                   );
+                }
+            }
+
+            /*for (int i = 0; i < processedRecipe.GeneratedCardAmount; i++)
             {
                 Vector2 randomPos = RandomValue.RandomPosAround(transform.position, 1.5f);
 
@@ -101,7 +115,7 @@ public class CardProcessor : MonoBehaviour
                );
 
 
-            }
+            }*/
         }
 
         if (processedRecipe.DestroyedCards.Count > 0)

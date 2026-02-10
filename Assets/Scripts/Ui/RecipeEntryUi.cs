@@ -4,8 +4,16 @@ using UnityEngine.UI;
 
 public class RecipeEntryUi : MonoBehaviour
 {
-    [SerializeField] private RecipeTileUi recipeTargetTileUi;
+    [SerializeField] private List<RecipeTileUi> targetTileUis = new List<RecipeTileUi>();
     [SerializeField] private List<RecipeTileUi> reqTileUis= new List<RecipeTileUi>();
+
+    public int TargetTileUiCount
+    {
+        get
+        {
+            return (targetTileUis == null) ? 0 : targetTileUis.Count;
+        }
+    }
 
     public int ReqTileUiCount
     {
@@ -17,24 +25,30 @@ public class RecipeEntryUi : MonoBehaviour
 
     public void AssignRecipe(RecipeData recipeData)
     {
-        if (recipeData.GeneratedCard != null)
+        if (targetTileUis.Count <= 0 ||  reqTileUis.Count <= 0) return;
+
+        if (recipeData.GeneratedCards.Count > 0)
         {
-            recipeTargetTileUi.TIleIconImage.sprite = recipeData.GeneratedCard.CardSprite;
-            recipeTargetTileUi.TileNameText.text = recipeData.GeneratedCard.CardName;
+            for (int x = 0; x < recipeData.GeneratedCards.Count; x++)
+            {
+                targetTileUis[x].TIleIconImage.sprite = 
+                    (recipeData.GeneratedCards[x].GeneratedCardSprite == null) ?
+                    recipeData.GeneratedCards[x].CardData.CardSprite :
+                    recipeData.GeneratedCards[x].GeneratedCardSprite;
+                targetTileUis[x].TileNameText.text = 
+                    (string.IsNullOrEmpty(recipeData.GeneratedCards[x].GeneratedCardName)) ?
+                    recipeData.GeneratedCards[x].CardData.CardName :
+                    recipeData.GeneratedCards[x].GeneratedCardName;
+            }
         }
         else if (recipeData.ToolChanges != null)
         {
-            recipeTargetTileUi.TIleIconImage.sprite = recipeData.ToolChanges[0].ToolCard.CardSprite;
-            recipeTargetTileUi.TileNameText.text = recipeData.ToolChanges[0].ToolCard.CardName;
+            targetTileUis[0].TIleIconImage.sprite = recipeData.ToolChanges[0].ToolCard.CardSprite;
+            targetTileUis[0].TileNameText.text = recipeData.ToolChanges[0].ToolCard.CardName;
         }
         else
         {
             return;
-        }
-
-        if (recipeData.RecipeTargetSprite != null)
-        {
-            recipeTargetTileUi.TIleIconImage.sprite = recipeData.RecipeTargetSprite;
         }
 
         for (int x = 0; x < recipeData.CardCombos.Count; x++)
@@ -48,7 +62,9 @@ public class RecipeEntryUi : MonoBehaviour
                 recipeData.CardCombos[x].CardData.CardSprite :
                 recipeData.CardCombos[x].RecipeCardSprite;
 
-            reqTileUis[x].TileNameText.text = recipeData.CardCombos[x].CardData.CardName;
+            reqTileUis[x].TileNameText.text = (string.IsNullOrEmpty(recipeData.CardCombos[x].RecipeCardName)) ?
+                recipeData.CardCombos[x].CardData.CardName :
+                recipeData.CardCombos[x].RecipeCardName;
         }
     }
 }

@@ -42,15 +42,15 @@ public class AutomationMenuUi : MonoBehaviour
 
         foreach (var recipe in cardComboManager.Recipes)
         {
-            if (recipe.GeneratedCard != null)
+            if (recipe.GeneratedCards.Count > 0 )
             {
                 GameObject newRecipeEntryObj = Instantiate(recipeEntryPrefab, recipeEntryParent);
                 GameObject targetCardObj = Instantiate(cardIconUiPrefab, newRecipeEntryObj.transform);
                 Image targetCardImage = targetCardObj.GetComponent<Image>();
-                targetCardImage.sprite = recipe.GeneratedCard.CardSprite;
+                /*targetCardImage.sprite = recipe.GeneratedCards[0].CardSprite;*/
 
                 SimpleTooltip targetCardToolTip = targetCardObj.GetComponent<SimpleTooltip>();
-                targetCardToolTip.iconSprite = recipe.GeneratedCard.CardSprite;
+                /*targetCardToolTip.iconSprite = recipe.GeneratedCards[0].CardSprite;*/
 
                 Instantiate(equalSignPrefab, newRecipeEntryObj.transform);
 
