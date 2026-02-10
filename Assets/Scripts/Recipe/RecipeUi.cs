@@ -18,7 +18,8 @@ public class RecipeUi : MonoBehaviour
 
         foreach (var recipe in cardComboManager.Recipes) 
         {
-            RecipeEntryUi recipeEntryTemplate = recipeEntryTemplates.Find(temp => temp.ReqTileUiCount == recipe.CardCombos.Count);
+            Debug.Log($"RECIPE CHECK {recipe.name} recipe.RecipeTargetCount: {recipe.RecipeTargetCount}");
+            RecipeEntryUi recipeEntryTemplate = recipeEntryTemplates.Find(temp => temp.TargetTileUiCount == recipe.RecipeTargetCount && temp.ReqTileUiCount == recipe.CardCombos.Count);
             if (recipeEntryTemplate != null ) 
             {
                 GameObject newRecipeEntryObject = Instantiate(recipeEntryTemplate.gameObject, recipeEntryParent);

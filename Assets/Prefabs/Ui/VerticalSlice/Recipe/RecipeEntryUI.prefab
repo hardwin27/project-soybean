@@ -92,7 +92,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d4dae007aa3a834fbe8158651c518ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RecipeEntryUi
-  recipeTargetTileUi: {fileID: 526948088652555397}
+  targetTileUis:
+  - {fileID: 526948088652555397}
   reqTileUis:
   - {fileID: 2448298124930333901}
   - {fileID: 9006960600338374505}

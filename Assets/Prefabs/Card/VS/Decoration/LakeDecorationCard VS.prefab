@@ -100,6 +100,10 @@ PrefabInstance:
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[10].y
       value: -0.08727604
       objectReference: {fileID: 0}
+    - target: {fileID: 3615649590002404670, guid: 9374e4509092cba48a2b5c38c1ba265e, type: 3}
+      propertyPath: cardData
+      value: 
+      objectReference: {fileID: 11400000, guid: a778c95245aa1fd48b1a29a29866ec38, type: 2}
     - target: {fileID: 4678167776921584155, guid: 9374e4509092cba48a2b5c38c1ba265e, type: 3}
       propertyPath: m_Name
       value: LakeDecorationCard VS

@@ -4,6 +4,8 @@ using UnityEngine.UI;
 
 public class GameplayUiController : MonoBehaviour
 {
+    [SerializeField] private Sprite tabSelectedSprite;
+    [SerializeField] private Sprite tabUnselectedSprite;
     [Header("Tab Collection")]
     [SerializeField] private GameObject questTab;
     [SerializeField] private Button questButton;
@@ -57,6 +59,7 @@ public class GameplayUiController : MonoBehaviour
             CloseAllTab();
             OpenMainTab();
             questTab.SetActive(true);
+            questButton.image.sprite = tabSelectedSprite;
             OnUiTriggered?.Invoke("quest-tab");
             AudioManager.Instance.PlaySFX("ui_tab_changed");
         });
@@ -66,6 +69,7 @@ public class GameplayUiController : MonoBehaviour
             CloseAllTab();
             OpenMainTab();
             recipeTab.SetActive(true);
+            recipeButton.image.sprite = tabSelectedSprite;
             OnUiTriggered?.Invoke("recipe-tab");
             AudioManager.Instance.PlaySFX("ui_tab_changed");
         });
@@ -75,6 +79,7 @@ public class GameplayUiController : MonoBehaviour
            CloseAllTab();
            OpenMainTab();
            officeTab.SetActive(true);
+           officeButton.image.sprite = tabSelectedSprite;
            OnUiTriggered?.Invoke("office-tab");
            AudioManager.Instance.PlaySFX("ui_tab_changed");
         });
@@ -95,6 +100,10 @@ public class GameplayUiController : MonoBehaviour
         questTab.SetActive(false);
         recipeTab.SetActive(false);
         officeTab.SetActive(false);
+
+        questButton.image.sprite = tabUnselectedSprite;
+        recipeButton.image.sprite = tabUnselectedSprite;
+        officeButton.image.sprite = tabUnselectedSprite;
     }
 
     private void OpenMainTab()
@@ -113,5 +122,6 @@ public class GameplayUiController : MonoBehaviour
             );
 
         closeSideTabButton.gameObject.SetActive(false);
+        CloseAllTab();
     }
 }

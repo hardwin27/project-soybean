@@ -15,12 +15,16 @@ MonoBehaviour:
   cardCombos:
   - cardData: {fileID: 11400000, guid: cdedb379c0feb7847891bb1c7e6249e7, type: 2}
     recipeCardSprite: {fileID: 0}
+    recipeCardName: 
   - cardData: {fileID: 11400000, guid: d60705397d1f77549b25e694f8bb6088, type: 2}
     recipeCardSprite: {fileID: 0}
+    recipeCardName: 
   - cardData: {fileID: 11400000, guid: 697b1a17b11dd6b4987e1ec01fad8963, type: 2}
     recipeCardSprite: {fileID: 6877505499440387704, guid: 76ae079dc9b6bef43b791be3f987a735, type: 3}
+    recipeCardName: Pan with Fire and Water
   - cardData: {fileID: 11400000, guid: 56eb9186cc5e3c54ba57a0ead92e8f6e, type: 2}
     recipeCardSprite: {fileID: 0}
+    recipeCardName: 
   topCardReq: {fileID: 0}
   requiredTools:
   - toolCard: {fileID: 11400000, guid: 697b1a17b11dd6b4987e1ec01fad8963, type: 2}
@@ -31,6 +35,11 @@ MonoBehaviour:
       statValue: 1
   processDuration: 1
   generatedCard: {fileID: 11400000, guid: 3d1f454f3d664dc4895df7548171f058, type: 2}
+  generatedCards:
+  - cardData: {fileID: 11400000, guid: 3d1f454f3d664dc4895df7548171f058, type: 2}
+    generatedQty: 1
+    generatedCardSprite: {fileID: 0}
+    generatedCardName: 
   generatedCardAmount: 3
   destroyedCards:
   - {fileID: 11400000, guid: cdedb379c0feb7847891bb1c7e6249e7, type: 2}

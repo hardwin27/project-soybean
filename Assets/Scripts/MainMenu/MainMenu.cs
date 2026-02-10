@@ -9,8 +9,8 @@ public class MainMenu : MonoBehaviour
 
     public void Awake()
     { 
-        mainmenu.SetActive(false);
-        customsplash.gameObject.SetActive(true);
+        mainmenu.SetActive(true);
+        customsplash.gameObject.SetActive(false);
 
         customsplash.loopPointReached += MenuAppear; 
 

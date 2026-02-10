@@ -227,6 +227,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8055579548702786209, guid: 936b9a10d31af824a82cb3bf6e90dea2, type: 3}
   m_PrefabInstance: {fileID: 3348209475671126944}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5025550077018200294 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7766859894558436166, guid: 936b9a10d31af824a82cb3bf6e90dea2, type: 3}
+  m_PrefabInstance: {fileID: 3348209475671126944}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb3c2716ad8bc004794ba1ea7f10ce6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RecipeTileUi
 --- !u!1001 &6458943777609700085
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -333,7 +344,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2987858629340424371, guid: af1fae260fd87c94486c033d01f53290, type: 3}
       propertyPath: m_Name
-      value: RecipeEntryAlt2 (1)
+      value: RecipeEntry(2-3)
       objectReference: {fileID: 0}
     - target: {fileID: 3512036651426177079, guid: af1fae260fd87c94486c033d01f53290, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -349,12 +360,20 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 37824b027ecbd1f48ac8904b9a19c583, type: 3}
     - target: {fileID: 6432122546225118294, guid: af1fae260fd87c94486c033d01f53290, type: 3}
       propertyPath: reqTileUis.Array.size
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6432122546225118294, guid: af1fae260fd87c94486c033d01f53290, type: 3}
       propertyPath: 'reqTileUis.Array.data[2]'
       value: 
       objectReference: {fileID: 9182580338566161911}
+    - target: {fileID: 6432122546225118294, guid: af1fae260fd87c94486c033d01f53290, type: 3}
+      propertyPath: targetTileUis.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6432122546225118294, guid: af1fae260fd87c94486c033d01f53290, type: 3}
+      propertyPath: 'targetTileUis.Array.data[1]'
+      value: 
+      objectReference: {fileID: 5025550077018200294}
     - target: {fileID: 8718232166308083342, guid: af1fae260fd87c94486c033d01f53290, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 57.600006

@@ -15,14 +15,22 @@ MonoBehaviour:
   cardCombos:
   - cardData: {fileID: 11400000, guid: d8ebaa62da27f294b8de92874376e4ed, type: 2}
     recipeCardSprite: {fileID: 0}
+    recipeCardName: 
   - cardData: {fileID: 11400000, guid: f3a3a84ca213451438924a30342bda3f, type: 2}
     recipeCardSprite: {fileID: 0}
+    recipeCardName: 
   topCardReq: {fileID: 0}
   requiredTools: []
   processDuration: 5
   generatedCard: {fileID: 11400000, guid: d643432b350ed9d4588e31c5e93bef05, type: 2}
+  generatedCards:
+  - cardData: {fileID: 11400000, guid: d643432b350ed9d4588e31c5e93bef05, type: 2}
+    generatedQty: 2
+    generatedCardSprite: {fileID: 0}
+    generatedCardName: 
   generatedCardAmount: 2
   destroyedCards:
   - {fileID: 11400000, guid: d8ebaa62da27f294b8de92874376e4ed, type: 2}
   - {fileID: 11400000, guid: f3a3a84ca213451438924a30342bda3f, type: 2}
   toolChanges: []
+  recipeTargetSprite: {fileID: 0}

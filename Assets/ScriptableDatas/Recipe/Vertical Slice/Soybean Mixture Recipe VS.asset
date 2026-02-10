@@ -15,8 +15,10 @@ MonoBehaviour:
   cardCombos:
   - cardData: {fileID: 11400000, guid: d8ebaa62da27f294b8de92874376e4ed, type: 2}
     recipeCardSprite: {fileID: 0}
+    recipeCardName: 
   - cardData: {fileID: 11400000, guid: 2c0d896ca2568964196702d5d880f374, type: 2}
     recipeCardSprite: {fileID: 5229556713592434100, guid: a43381c92c1522f40baef5af04b9d580, type: 3}
+    recipeCardName: Blender with Water
   topCardReq: {fileID: 0}
   requiredTools:
   - toolCard: {fileID: 11400000, guid: 2c0d896ca2568964196702d5d880f374, type: 2}
@@ -25,6 +27,11 @@ MonoBehaviour:
       statValue: 1
   processDuration: 1
   generatedCard: {fileID: 11400000, guid: 57e71ee035a603549bdacab87e50a295, type: 2}
+  generatedCards:
+  - cardData: {fileID: 11400000, guid: 57e71ee035a603549bdacab87e50a295, type: 2}
+    generatedQty: 1
+    generatedCardSprite: {fileID: 0}
+    generatedCardName: 
   generatedCardAmount: 1
   destroyedCards:
   - {fileID: 11400000, guid: d8ebaa62da27f294b8de92874376e4ed, type: 2}

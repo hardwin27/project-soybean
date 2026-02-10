@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71a682ff1d2953842b1a96cd3cb26fb5, type: 3}
+  m_Name: Fence VS
+  m_EditorClassIdentifier: Assembly-CSharp::DecorationCardData
+  cardName: Fence
+  cardPrefab: {fileID: 1406725294305177133, guid: 988f1db432437c04aacad03bdc7ac7a5, type: 3}
+  buyPrice: 1
+  sellPrice: 0
+  progressTime: 0
+  cardType: 5
+  cardSprite: {fileID: 21300000, guid: 1dca2e98d0487cd4681fb0520ded9fe1, type: 3}
+  uiSprite: {fileID: -9189499345778486476, guid: f0166584c4fff1b4e92e7dd1b4d78076, type: 3}

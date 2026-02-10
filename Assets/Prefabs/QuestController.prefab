@@ -65,13 +65,13 @@ MonoBehaviour:
       isCompleted: 0
     - questData: {fileID: 11400000, guid: 2061bc34cd193644d87a5a07d7a0a5b9, type: 2}
       isCompleted: 0
-    - questData: {fileID: 11400000, guid: 2061bc34cd193644d87a5a07d7a0a5b9, type: 2}
+    - questData: {fileID: 11400000, guid: c759217de92e1164e8ff75d7610019a4, type: 2}
       isCompleted: 0
     - questData: {fileID: 11400000, guid: 555e8714d8bef1043afad25e9cb8118a, type: 2}
       isCompleted: 0
-    - questData: {fileID: 11400000, guid: 555e8714d8bef1043afad25e9cb8118a, type: 2}
+    - questData: {fileID: 11400000, guid: 90bfec0c2b8eca64384a45dcad74b695, type: 2}
       isCompleted: 0
-    - questData: {fileID: 11400000, guid: 555e8714d8bef1043afad25e9cb8118a, type: 2}
+    - questData: {fileID: 11400000, guid: e59a82802bbf2014c8e926d377703837, type: 2}
       isCompleted: 0
   cardComboManager: {fileID: 0}
   cardGeneratorManager: {fileID: 0}

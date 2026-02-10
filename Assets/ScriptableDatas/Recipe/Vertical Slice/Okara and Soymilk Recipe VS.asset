@@ -10,13 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2040d34e3ada00447a716f803309cee1, type: 3}
-  m_Name: Okara Recipe VS
+  m_Name: Okara and Soymilk Recipe VS
   m_EditorClassIdentifier: 
   cardCombos:
   - cardData: {fileID: 11400000, guid: 57e71ee035a603549bdacab87e50a295, type: 2}
     recipeCardSprite: {fileID: 0}
+    recipeCardName: 
   - cardData: {fileID: 11400000, guid: 697b1a17b11dd6b4987e1ec01fad8963, type: 2}
     recipeCardSprite: {fileID: 6877505499440387704, guid: 76ae079dc9b6bef43b791be3f987a735, type: 3}
+    recipeCardName: Pan with Fire and Water
+  - cardData: {fileID: 11400000, guid: 84da52d0ec250414b87b60e036985af7, type: 2}
+    recipeCardSprite: {fileID: 0}
+    recipeCardName: 
   topCardReq: {fileID: 0}
   requiredTools:
   - toolCard: {fileID: 11400000, guid: 697b1a17b11dd6b4987e1ec01fad8963, type: 2}
@@ -27,6 +32,15 @@ MonoBehaviour:
       statValue: 1
   processDuration: 1
   generatedCard: {fileID: 11400000, guid: 700954c58d112c94aa5b265154abc5a3, type: 2}
+  generatedCards:
+  - cardData: {fileID: 11400000, guid: 700954c58d112c94aa5b265154abc5a3, type: 2}
+    generatedQty: 1
+    generatedCardSprite: {fileID: 0}
+    generatedCardName: 
+  - cardData: {fileID: 11400000, guid: cdedb379c0feb7847891bb1c7e6249e7, type: 2}
+    generatedQty: 2
+    generatedCardSprite: {fileID: 0}
+    generatedCardName: 
   generatedCardAmount: 1
   destroyedCards:
   - {fileID: 11400000, guid: 57e71ee035a603549bdacab87e50a295, type: 2}

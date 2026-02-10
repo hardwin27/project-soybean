@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem.iOS;
 
 [System.Serializable]
 public class RecipeCardData
@@ -66,4 +65,6 @@ public class RecipeData : ScriptableObject
     public List<CardData> DestroyedCards { get => destroyedCards; }
     public List<RecipeToolReq> ToolChanges { get => toolChanges; }
     public Sprite RecipeTargetSprite { get => recipeTargetSprite; }
+
+    public int RecipeTargetCount => (GeneratedCards.Count > 0) ? GeneratedCards.Count : 1;
 }

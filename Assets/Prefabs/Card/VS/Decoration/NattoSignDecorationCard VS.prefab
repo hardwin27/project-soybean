@@ -132,6 +132,10 @@ PrefabInstance:
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[14].y
       value: 0.10380286
       objectReference: {fileID: 0}
+    - target: {fileID: 3615649590002404670, guid: 9374e4509092cba48a2b5c38c1ba265e, type: 3}
+      propertyPath: cardData
+      value: 
+      objectReference: {fileID: 11400000, guid: 12b093b6bdbf26648bbe7b59a596ba2f, type: 2}
     - target: {fileID: 4678167776921584155, guid: 9374e4509092cba48a2b5c38c1ba265e, type: 3}
       propertyPath: m_Name
       value: NattoSignDecorationCard VS

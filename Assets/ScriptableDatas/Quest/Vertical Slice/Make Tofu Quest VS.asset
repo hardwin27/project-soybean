@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: Make Tofu Quest VS
   m_EditorClassIdentifier: 
   questTitle: Make the first Tofu
-  hasReward: 1
+  questDecorationReward:
+    decorationReward: {fileID: 11400000, guid: 333bfac6db4884542be5dc757e47ece9, type: 2}
+    rewardAmount: 3
   targetGeneratedCard: {fileID: 11400000, guid: 3d1f454f3d664dc4895df7548171f058, type: 2}
