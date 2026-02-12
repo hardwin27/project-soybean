@@ -1,34 +1,69 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using UnityEngine.Video;
 
 public class MainMenu : MonoBehaviour
 {
-    public VideoPlayer customsplash;
-    public GameObject mainmenu;
+    [SerializeField] private string splashScreenVidPath;
+    [SerializeField] private VideoPlayer customSplashPlayer;
+    [SerializeField] private GameObject customSplashImage;
+    [SerializeField] private GameObject webPlatformPanel;
+    [SerializeField] GameObject mainMenuObj;
+
+    [SerializeField] private Button startGameBtn;
+    [SerializeField] private Button quitGameBtn;
+    [SerializeField] private Button webPlaytBtn;
 
     public void Awake()
-    { 
-        mainmenu.SetActive(true);
-        customsplash.gameObject.SetActive(false);
+    {
+        mainMenuObj.SetActive(false);
+        webPlatformPanel.SetActive(false);
+        customSplashImage.SetActive(true);
+        customSplashPlayer.loopPointReached += MenuAppear;
+        startGameBtn.onClick.AddListener(StartGame);
+        quitGameBtn.onClick.AddListener(QuitGame);
 
-        customsplash.loopPointReached += MenuAppear; 
-
+        customSplashPlayer.source = VideoSource.Url;
+        customSplashPlayer.url = $"{Application.streamingAssetsPath + splashScreenVidPath}";
     }
 
-    public void MenuAppear(VideoPlayer var)
+    private void Start()
     {
-        mainmenu.SetActive(true);
-        customsplash.gameObject.SetActive(false);
+/*#if UNITY_WEBGL
+        webPlaytBtn.onClick.AddListener(() => {
+            webPlatformPanel.SetActive(false);
+            StartCoroutine(PlaySplashScreen());
+        });
+        webPlatformPanel.SetActive(true);
+#else
+        StartCoroutine(PlaySplashScreen());
+#endif*/
+
+        StartCoroutine(PlaySplashScreen());
+    }
+
+    private IEnumerator PlaySplashScreen()
+    {
+        yield return new WaitForEndOfFrame();
+        customSplashImage.SetActive(true);
+        customSplashPlayer.Play();
+    }
+
+    private void MenuAppear(VideoPlayer var)
+    {
+        mainMenuObj.SetActive(true);
+        customSplashImage.SetActive(false);
     }
 
     
-    public void StartGame()
+    private void StartGame()
     {
         SceneManager.LoadSceneAsync("VerticalSlice");
     }
 
-    public void QuitGame()
+    private void QuitGame()
     { 
         Application.Quit();
     }
