@@ -38,6 +38,7 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     [Header("Visuals")]
     [SerializeField] protected string cardDefaultSortName;
     [SerializeField] protected string cardDraggedSortName;
+    [SerializeField] protected bool isInitiallyFlipped;
 
     [SerializeField, ReadOnly] List<CardController> overlapCardControllers = new List<CardController>();
 
@@ -83,6 +84,10 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         lastPost = transform.position;
         SetTopCard(this);
         RequestHoverToggle(false);
+        if (isInitiallyFlipped)
+        {
+            FlipCollider();
+        }
 
         BoundCardPos(transform.position);
         StartCoroutine("DelayedOverlapCheck");
@@ -94,7 +99,7 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
         dragOffset = transform.position - Camera.main.ScreenToWorldPoint(eventData.position);
 
-        AudioManager.Instance.PlaySFXObject("card_dragged");
+        AudioManager.Instance.PlaySFXObject("tile_on_click");
 
         lastPost = transform.position;
         transform.SetAsFirstSibling();
@@ -141,6 +146,27 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
             stackedOnCard = null;
         }
         Destroy(gameObject, 3f);
+    }
+
+    public void FlipCollider()
+    {
+        if (cardCollider is PolygonCollider2D poly)
+        {
+            List<Vector2> currentPoints = new List<Vector2>();
+
+            int pathCount = poly.GetPath(0, currentPoints);
+
+            for (int i = 0; i < currentPoints.Count; i++)
+            {
+                float x = Mathf.Abs(currentPoints[i].x);
+                Vector2 newPoint = currentPoints[i];
+                newPoint.x = -1f * newPoint.x;
+                currentPoints[i] = newPoint;
+            }
+
+            // 3. Set the path back
+            poly.SetPath(0, currentPoints);
+        }
     }
 
     public void RequestHoverToggle(bool isHovered)

@@ -1,12 +1,27 @@
 using System;
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+
+[System.Serializable]
+public class SideTabData
+{
+    [SerializeField] private string tabName;
+    [SerializeField] private GameObject tabPanel;
+    [SerializeField] private int tabButton;
+    [SerializeField] private TextMeshProUGUI tabNameText;
+    [SerializeField] private string tabEventCode;
+
+    public string TabName => tabName;
+}
 
 public class GameplayUiController : MonoBehaviour
 {
     [SerializeField] private Sprite tabSelectedSprite;
     [SerializeField] private Sprite tabUnselectedSprite;
     [Header("Tab Collection")]
+    [SerializeField] private List<SideTabData> tabs;
     [SerializeField] private GameObject questTab;
     [SerializeField] private Button questButton;
 
@@ -15,6 +30,12 @@ public class GameplayUiController : MonoBehaviour
 
     [SerializeField] private GameObject officeTab;
     [SerializeField] private Button officeButton;
+
+    [SerializeField] private GameObject employeeTab;
+    [SerializeField] private Button employeeButton;
+
+    [SerializeField] private GameObject eventTab;
+    [SerializeField] private Button eventButton;
 
     [SerializeField] private RectTransform mainTabRectTransform;
     [SerializeField] private float openTabXPos;
@@ -39,6 +60,11 @@ public class GameplayUiController : MonoBehaviour
             gameTimeManager.OnDayEnded += HandleOnDayEnded;
         }*/
 
+        foreach(var tab in tabs) 
+        {
+            
+        }
+
         recipeTab.SetActive(true);
         questTab.SetActive(true);
         officeTab.SetActive(true);
@@ -61,7 +87,7 @@ public class GameplayUiController : MonoBehaviour
             questTab.SetActive(true);
             questButton.image.sprite = tabSelectedSprite;
             OnUiTriggered?.Invoke("quest-tab");
-            AudioManager.Instance.PlaySFX("ui_tab_changed");
+            AudioManager.Instance.PlaySFXObject("ui_tab_changed");
         });
 
         recipeButton.onClick.AddListener(() =>
@@ -71,7 +97,7 @@ public class GameplayUiController : MonoBehaviour
             recipeTab.SetActive(true);
             recipeButton.image.sprite = tabSelectedSprite;
             OnUiTriggered?.Invoke("recipe-tab");
-            AudioManager.Instance.PlaySFX("ui_tab_changed");
+            AudioManager.Instance.PlaySFXObject("ui_tab_changed");
         });
 
         officeButton.onClick.AddListener(() =>
@@ -81,8 +107,10 @@ public class GameplayUiController : MonoBehaviour
            officeTab.SetActive(true);
            officeButton.image.sprite = tabSelectedSprite;
            OnUiTriggered?.Invoke("office-tab");
-           AudioManager.Instance.PlaySFX("ui_tab_changed");
+           AudioManager.Instance.PlaySFXObject("ui_tab_changed");
         });
+
+
     }
 
     private void HandleOnDayStageStarted()

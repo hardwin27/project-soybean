@@ -23,9 +23,16 @@ public class AudioManager : Singleton<AudioManager>
         }
         else
         {
-            musicSource.clip = s.Clip;
-            musicSource.volume = s.Volume;
-            musicSource.Play();
+            if (s.Clip != null)
+            {
+                musicSource.clip = s.Clip;
+                musicSource.volume = s.Volume;
+                musicSource.Play();
+            }
+            else
+            {
+                Debug.Log($"{s.Name} Music have no clip");
+            }
         }
     }
 
@@ -43,9 +50,16 @@ public class AudioManager : Singleton<AudioManager>
         }
         else
         {
-            sfxSource.clip = s.Clip;
-            sfxSource.volume = s.Volume;
-            sfxSource.Play();
+            if (s.Clip != null)
+            {
+                sfxSource.clip = s.Clip;
+                sfxSource.volume = s.Volume;
+                sfxSource.Play();
+            }
+            else
+            {
+                Debug.Log($"{s.Name} SFX have no clip");
+            }
         }
     }
 
@@ -58,7 +72,14 @@ public class AudioManager : Singleton<AudioManager>
         }
         else
         {
-            sfxManager.PlaySFXClip(s.Clip, s.Volume);
+            if (s.Clip != null)
+            {
+                sfxManager.PlaySFXClip(s.Clip, s.Volume);
+            }
+            else
+            {
+                Debug.Log($"{s.Name} SFX have no clip");
+            }
         }
     }
 }

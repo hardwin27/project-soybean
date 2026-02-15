@@ -321,25 +321,61 @@ MonoBehaviour:
   musicSounds:
   - Name: main_bgm
     Clip: {fileID: 8300000, guid: 316a18d4c9c72d043a15b77dd748c6fc, type: 3}
-    Volume: 0.5
+    Volume: 0.4
   sfxSounds:
-  - Name: card_dragged
-    Clip: {fileID: 8300000, guid: 42a2e86a8de346e43bc57627b3737c29, type: 3}
+  - Name: ui_on_click
+    Clip: {fileID: 8300000, guid: a708eb500728f6a48a4f8ccc2457da97, type: 3}
     Volume: 1
-  - Name: ui_tab_changed
-    Clip: {fileID: 8300000, guid: 2d1bfac8eb031414298288f221e246e8, type: 3}
-    Volume: 0.8
-  - Name: process_started
-    Clip: {fileID: 8300000, guid: 6c33ab34c126ced469d4fbb09e5d7c9c, type: 3}
+  - Name: tile_on_click
+    Clip: {fileID: 8300000, guid: e2507dc63a08a54438788d5400e1fdec, type: 3}
     Volume: 1
-  - Name: process_finished
-    Clip: {fileID: 8300000, guid: 253fb61394709ec4f95954e87c42ab08, type: 3}
-    Volume: 0.8
-  - Name: give_money
-    Clip: {fileID: 8300000, guid: 0117fbc4a569a3641a184e7425baece7, type: 3}
+  - Name: tile_on_release
+    Clip: {fileID: 0}
     Volume: 1
-  - Name: get_money
-    Clip: {fileID: 8300000, guid: e0c70649840efc14a84100d10346ee2f, type: 3}
+  - Name: tile_on_combo_generate_tile
+    Clip: {fileID: 8300000, guid: b0ead25a1be7fa74aa70f6e01943ddb2, type: 3}
+    Volume: 1
+  - Name: bank_on_deposit
+    Clip: {fileID: 8300000, guid: bbd74aa2cafb02043be23a43373442b3, type: 3}
+    Volume: 1
+  - Name: bank_on_withdraw
+    Clip: {fileID: 8300000, guid: de7eb66862e2bf5418d32e58dda99145, type: 3}
+    Volume: 1
+  - Name: shop_on_purchase
+    Clip: {fileID: 0}
+    Volume: 1
+  - Name: building_on_click
+    Clip: {fileID: 8300000, guid: 0fba48ffba0c1104a9af5d0e7415e23b, type: 3}
+    Volume: 1
+  - Name: building_on_release
+    Clip: {fileID: 8300000, guid: bbc7f345e63e5364d81fc175cbea8c16, type: 3}
+    Volume: 1
+  - Name: decoration_on_placed
+    Clip: {fileID: 0}
+    Volume: 1
+  - Name: decoration_on_flipped
+    Clip: {fileID: 0}
+    Volume: 1
+  - Name: decoration_on_stashed
+    Clip: {fileID: 0}
+    Volume: 1
+  - Name: ui_start_button
+    Clip: {fileID: 0}
+    Volume: 1
+  - Name: ui_quit_button
+    Clip: {fileID: 0}
+    Volume: 1
+  - Name: ui_tab_button
+    Clip: {fileID: 0}
+    Volume: 1
+  - Name: ui_on_side_panel_closed
+    Clip: {fileID: 0}
+    Volume: 1
+  - Name: quest_on_gain_reward
+    Clip: {fileID: 0}
+    Volume: 1
+  - Name: day_on_end
+    Clip: {fileID: 0}
     Volume: 1
   musicSource: {fileID: 4196763752996154048}
   sfxSource: {fileID: 3720630105276771204}

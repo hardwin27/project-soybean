@@ -19,7 +19,7 @@ public class QuestEntryUi : MonoBehaviour
     {
         questStatus = quest;
         questTitleText.text = questStatus.QuestData.QuestTitle;
-        rewardIndicatorImage.gameObject.SetActive(questStatus.QuestData.HasReward);
+        rewardIndicatorImage.color = (questStatus.QuestData.HasReward) ? new Color(1f, 1f, 1f, 1f) : new Color(1f, 1f, 1f, 0f);
         questStatus.OnQuestUpdated += UpdateUi;
 
         questTitleText.ForceMeshUpdate();
@@ -34,5 +34,6 @@ public class QuestEntryUi : MonoBehaviour
     public void UpdateUi()
     {
         questIndicatorImage.sprite = (questStatus.IsCompleted) ? questCompleteSprite : questIncompleteSprite;
+        /*autoSizeText.UpdateHeight();*/
     }
 }
