@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d62fbe15ffeff4944ab9b60c17d503a0, type: 3}
+  m_Name: 18 30 Money Quest VS
+  m_EditorClassIdentifier: 
+  questTitle: Deposit 30 Coins into Bank
+  questDecorationReward:
+    decorationReward: {fileID: 0}
+    rewardAmount: 0
+  targetTotalMoney: 30
