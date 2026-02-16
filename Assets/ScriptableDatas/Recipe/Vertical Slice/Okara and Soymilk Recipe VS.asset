@@ -30,7 +30,7 @@ MonoBehaviour:
       statValue: 1
     - statData: {fileID: 11400000, guid: e828a091bd70cf142b1e44398cc44aab, type: 2}
       statValue: 1
-  processDuration: 1
+  processDuration: 50
   generatedCard: {fileID: 11400000, guid: 700954c58d112c94aa5b265154abc5a3, type: 2}
   generatedCards:
   - cardData: {fileID: 11400000, guid: 700954c58d112c94aa5b265154abc5a3, type: 2}

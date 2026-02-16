@@ -15,7 +15,7 @@ MonoBehaviour:
   cardName: Mature Soybean
   cardPrefab: {fileID: 1610351367016072073, guid: c2546f2a8b98e064ab1c4f16abaeb43b, type: 3}
   buyPrice: 1
-  sellPrice: 2
+  sellPrice: 1
   progressTime: 1
   cardType: 1
   cardSprite: {fileID: 856664148704610027, guid: 041054dddb24d984ca75624fcb320ec2, type: 3}

@@ -21,7 +21,7 @@ MonoBehaviour:
     recipeCardName: 
   topCardReq: {fileID: 0}
   requiredTools: []
-  processDuration: 5
+  processDuration: 30
   generatedCard: {fileID: 11400000, guid: d643432b350ed9d4588e31c5e93bef05, type: 2}
   generatedCards:
   - cardData: {fileID: 11400000, guid: d643432b350ed9d4588e31c5e93bef05, type: 2}

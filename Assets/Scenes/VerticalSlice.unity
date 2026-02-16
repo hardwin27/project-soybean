@@ -1001,7 +1001,7 @@ MonoBehaviour:
   currentWeek: 1
   dayTimer: 0
   isDayActive: 0
-  dayDuration: 600
+  dayDuration: 120
 --- !u!1 &568156471
 GameObject:
   m_ObjectHideFlags: 0

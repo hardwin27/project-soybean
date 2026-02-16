@@ -15,7 +15,7 @@ MonoBehaviour:
   cardName: Nigari
   cardPrefab: {fileID: 1610351367016072073, guid: c2546f2a8b98e064ab1c4f16abaeb43b, type: 3}
   buyPrice: 1
-  sellPrice: 2
+  sellPrice: 1
   progressTime: 1
   cardType: 1
   cardSprite: {fileID: 897694071405978804, guid: 3cd1cbb15ff004447870a54381bb3670, type: 3}
