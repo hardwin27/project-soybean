@@ -25,7 +25,7 @@ MonoBehaviour:
     toolStats:
     - statData: {fileID: 11400000, guid: e828a091bd70cf142b1e44398cc44aab, type: 2}
       statValue: 1
-  processDuration: 1
+  processDuration: 30
   generatedCard: {fileID: 11400000, guid: 57e71ee035a603549bdacab87e50a295, type: 2}
   generatedCards:
   - cardData: {fileID: 11400000, guid: 57e71ee035a603549bdacab87e50a295, type: 2}
