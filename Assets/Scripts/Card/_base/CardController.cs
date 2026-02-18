@@ -135,6 +135,8 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
     public void OnDisable()
     {
+        Debug.Log($"{gameObject.name} is DISABLED");
+
         OnCardDestroyed?.Invoke();
         if (StackedOnCard != null)
         {

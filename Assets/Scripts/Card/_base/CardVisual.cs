@@ -118,8 +118,26 @@ public class CardVisual : MonoBehaviour
         for (int x = 0; x < hoverUiDatas.Count; x++)
         {
             hoverUiTexts[x].gameObject.SetActive(true);
-            hoverUiTexts[x].text = $"{hoverUiDatas[x].CardData.CardName} ({hoverUiDatas[x].Count})";
+            hoverUiTexts[x].text = $"{hoverUiDatas[x].CardData.CardName}";
+            if (hoverUiDatas[x].Count > 1)
+            {
+                hoverUiTexts[x].text += $" ({hoverUiDatas[x].Count})";
+            }
         }
+
+        /*if (hoverUiDatas.Count == 1) 
+        {
+            hoverUiTexts[0].gameObject.SetActive(true);
+            hoverUiTexts[0].text = $"{hoverUiDatas[0].CardData.CardName}";
+        }
+        else
+        {
+            for (int x = 0; x < hoverUiDatas.Count; x++)
+            {
+                hoverUiTexts[x].gameObject.SetActive(true);
+                hoverUiTexts[x].text = $"{hoverUiDatas[x].CardData.CardName} ({hoverUiDatas[x].Count})";
+            }
+        }*/
     }
 
     protected System.Collections.IEnumerator DelayedCloseHover()

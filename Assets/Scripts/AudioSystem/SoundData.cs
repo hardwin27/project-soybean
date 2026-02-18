@@ -5,5 +5,5 @@ public class SoundData
 {
     public string Name;
     public AudioClip Clip;
-    public float Volume;
+    [Range(0f, 1f)] public float Volume;
 }
