@@ -59,6 +59,6 @@ public class BuildingDeckSellCardController : BuildingDeckCardController
             card.gameObject.SetActive(false);
         }
 
-        AudioManager.Instance.PlaySFXObject("get_money");
+        AudioManager.Instance.PlaySFXObject("market_on_sell");
     }
 }

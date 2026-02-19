@@ -251,6 +251,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6050132316422385443, guid: f93ec2bb14a8b014996d47a324eb5c5a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 6050132316422385443, guid: f93ec2bb14a8b014996d47a324eb5c5a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 6788413212582631503, guid: f93ec2bb14a8b014996d47a324eb5c5a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -410,6 +418,9 @@ MonoBehaviour:
   shouldBeBounded: 1
   cardDefaultSortName: Card
   cardDraggedSortName: DraggedCard
+  isInitiallyFlipped: 0
+  cardDraggedAudioCode: building_on_click
+  cardDroppedAudioCode: building_on_release
   overlapCardControllers: []
   deckCardData: {fileID: 0}
   currentCardIndex: 0

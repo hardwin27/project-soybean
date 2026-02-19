@@ -19,6 +19,9 @@ MonoBehaviour:
   progressTime: 0
   cardType: 3
   cardSprite: {fileID: -4503483081389778493, guid: adae8d6ca2b9a1645b659e0b275b1146, type: 3}
+  useCustomHover: 1
+  customHoverMsg: This is The Bank This is The Bank This is The BankThis is The BankThis
+    is The Bank
   cardsOnDeck: []
   isLimited: 0
   instructionColor: {r: 0, g: 0, b: 0, a: 0}

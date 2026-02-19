@@ -47,31 +47,13 @@ MonoBehaviour:
   questChapters:
   - chapterName: 
     quests:
-    - questData: {fileID: 11400000, guid: 2a85fdd01d5781f4dbdec0c766ae6d99, type: 2}
+    - questData: {fileID: 11400000, guid: 1e18335d30cfeb4418de587deaa68871, type: 2}
       isCompleted: 0
-    - questData: {fileID: 11400000, guid: 372106c6a4746314586404da846a8e3d, type: 2}
+    - questData: {fileID: 11400000, guid: d61680429a19a664bbbc06dc609692d4, type: 2}
       isCompleted: 0
-    - questData: {fileID: 11400000, guid: 456c2bc5a1f838043b0f26d0d8df0a48, type: 2}
+    - questData: {fileID: 11400000, guid: 3bced6f5d794beb4f9476d9b3d8e38c1, type: 2}
       isCompleted: 0
-    - questData: {fileID: 11400000, guid: 4f447ffd7bfe8e24b9c7639f84dd526f, type: 2}
-      isCompleted: 0
-    - questData: {fileID: 11400000, guid: 96c63d43a1bed594fa2c80ed9446683b, type: 2}
-      isCompleted: 0
-    - questData: {fileID: 11400000, guid: c65a5980b763c0440b0b2203366fd0c6, type: 2}
-      isCompleted: 0
-    - questData: {fileID: 11400000, guid: 0920f45acacb4304ea7ff5ba951070ba, type: 2}
-      isCompleted: 0
-    - questData: {fileID: 11400000, guid: 92ea4daf2b8ff364099bfe31c53a067b, type: 2}
-      isCompleted: 0
-    - questData: {fileID: 11400000, guid: 2061bc34cd193644d87a5a07d7a0a5b9, type: 2}
-      isCompleted: 0
-    - questData: {fileID: 11400000, guid: c759217de92e1164e8ff75d7610019a4, type: 2}
-      isCompleted: 0
-    - questData: {fileID: 11400000, guid: 555e8714d8bef1043afad25e9cb8118a, type: 2}
-      isCompleted: 0
-    - questData: {fileID: 11400000, guid: 90bfec0c2b8eca64384a45dcad74b695, type: 2}
-      isCompleted: 0
-    - questData: {fileID: 11400000, guid: e59a82802bbf2014c8e926d377703837, type: 2}
+    - questData: {fileID: 11400000, guid: 0997010371af4c4468f351e709bcbf57, type: 2}
       isCompleted: 0
   cardComboManager: {fileID: 0}
   cardGeneratorManager: {fileID: 0}

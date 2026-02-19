@@ -12,6 +12,9 @@ public class CardData : ScriptableObject
     [SerializeField] protected CardType cardType;
     [SerializeField] protected Sprite cardSprite;
 
+    [SerializeField] protected bool useCustomHover;
+    [SerializeField, TextArea] protected string customHoverMsg;
+
     public string CardName { get => cardName; }
     public GameObject CardPrefab { get => cardPrefab; }
     public int BuyPrice { get => buyPrice; }
@@ -20,4 +23,6 @@ public class CardData : ScriptableObject
 
     public CardType CardType { get => cardType; }
     public Sprite CardSprite { get => cardSprite; }
+    public bool UseCustomHover { get => useCustomHover; }
+    public string CustomHoverMsg { get => customHoverMsg; }
 }

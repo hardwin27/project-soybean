@@ -311,6 +311,9 @@ MonoBehaviour:
   shouldBeBounded: 1
   cardDefaultSortName: Card
   cardDraggedSortName: DraggedCard
+  isInitiallyFlipped: 0
+  cardDraggedAudioCode: building_on_click
+  cardDroppedAudioCode: building_on_release
   overlapCardControllers: []
   deckCardData: {fileID: 0}
   currentCardIndex: 0

@@ -106,22 +106,46 @@ public class CardVisual : MonoBehaviour
             hoverUiData.AddCount(1);
         }
 
-        int difference = hoverUiDatas.Count - hoverUiTexts.Count;
-        while (difference-- > 0)
+        if (cardController.CardData.UseCustomHover)
         {
-            TextMeshProUGUI newText = Instantiate(hoverUiTextTemplate.gameObject,
-                hoverUiParent.transform).GetComponent<TextMeshProUGUI>();
-            hoverUiTexts.Add(newText);
-            newText.gameObject.SetActive(false);
-        }
-
-        for (int x = 0; x < hoverUiDatas.Count; x++)
-        {
-            hoverUiTexts[x].gameObject.SetActive(true);
-            hoverUiTexts[x].text = $"{hoverUiDatas[x].CardData.CardName}";
-            if (hoverUiDatas[x].Count > 1)
+            if (hoverUiTexts.Count < 2)
             {
-                hoverUiTexts[x].text += $" ({hoverUiDatas[x].Count})";
+                TextMeshProUGUI newText = Instantiate(hoverUiTextTemplate.gameObject,
+                    hoverUiParent.transform).GetComponent<TextMeshProUGUI>();
+                hoverUiTexts.Add(newText);
+                newText.gameObject.SetActive(false);
+
+                newText = Instantiate(hoverUiTextTemplate.gameObject,
+                    hoverUiParent.transform).GetComponent<TextMeshProUGUI>();
+                hoverUiTexts.Add(newText);
+                newText.gameObject.SetActive(false);
+            }
+
+            hoverUiTexts[0].gameObject.SetActive(true);
+            hoverUiTexts[0].text = $"{cardController.CardData.CardName}";
+
+            hoverUiTexts[1].gameObject.SetActive(true);
+            hoverUiTexts[1].text = $"{cardController.CardData.CustomHoverMsg}";
+        }
+        else
+        {
+            int difference = hoverUiDatas.Count - hoverUiTexts.Count;
+            while (difference-- > 0)
+            {
+                TextMeshProUGUI newText = Instantiate(hoverUiTextTemplate.gameObject,
+                    hoverUiParent.transform).GetComponent<TextMeshProUGUI>();
+                hoverUiTexts.Add(newText);
+                newText.gameObject.SetActive(false);
+            }
+
+            for (int x = 0; x < hoverUiDatas.Count; x++)
+            {
+                hoverUiTexts[x].gameObject.SetActive(true);
+                hoverUiTexts[x].text = $"{hoverUiDatas[x].CardData.CardName}";
+                if (hoverUiDatas[x].Count > 1)
+                {
+                    hoverUiTexts[x].text += $" ({hoverUiDatas[x].Count})";
+                }
             }
         }
 

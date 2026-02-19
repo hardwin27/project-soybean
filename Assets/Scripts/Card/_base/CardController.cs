@@ -40,6 +40,10 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     [SerializeField] protected string cardDraggedSortName;
     [SerializeField] protected bool isInitiallyFlipped;
 
+    [Header("Audio")]
+    [SerializeField] protected string cardDraggedAudioCode;
+    [SerializeField] protected string cardDroppedAudioCode;
+
     [SerializeField, ReadOnly] List<CardController> overlapCardControllers = new List<CardController>();
 
     public Action OnBaseDataUpdated;
@@ -97,9 +101,9 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     {
         if (!CanBeDragged || IsOnProcess) return;
 
-        dragOffset = transform.position - Camera.main.ScreenToWorldPoint(eventData.position);
+        AudioManager.Instance.PlaySFXObject(cardDraggedAudioCode);
 
-        AudioManager.Instance.PlaySFXObject("tile_on_click");
+        dragOffset = transform.position - Camera.main.ScreenToWorldPoint(eventData.position);
 
         lastPost = transform.position;
         transform.SetAsFirstSibling();
@@ -118,6 +122,7 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     {
         if (!CanBeDragged || IsOnProcess) return;
         HandleDragEnd();
+        AudioManager.Instance.PlaySFXObject(cardDroppedAudioCode);
     }
 
     public void OnPointerEnter(PointerEventData eventData)

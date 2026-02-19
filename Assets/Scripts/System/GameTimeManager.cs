@@ -73,6 +73,8 @@ public class GameTimeManager : Singleton<GameTimeManager>
         dayTimer = 0;
         OnDayEnded?.Invoke();
 
+        AudioManager.Instance.PlaySFXObject("day_on_end");
+
         Debug.Log("Day Ended");
     }
 }

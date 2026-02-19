@@ -12,6 +12,7 @@ public class CardProcessor : MonoBehaviour
     [SerializeField] private Slider progressSlider;
     [SerializeField] private bool hideStackWhenProgressing = false;
     [SerializeField] private Color cardTintWhenProgression;
+    [SerializeField] private Transform fixedSpawnPoint;
 
     [SerializeField, ReadOnly] private RecipeData processedRecipe;
     [SerializeField, ReadOnly] private List<CardController> processedStack;
@@ -67,7 +68,7 @@ public class CardProcessor : MonoBehaviour
     {
         isProcessing = false;
 
-        AudioManager.Instance.PlaySFXObject("process_finished");
+        AudioManager.Instance.PlaySFXObject("tile_on_combo_generate_tile");
 
         if (hideStackWhenProgressing)
         {
@@ -96,11 +97,20 @@ public class CardProcessor : MonoBehaviour
                 int genCount = generatedCardData.GeneratedQty;
                 while(genCount-- > 0) 
                 {
-                    Vector2 randomPos = RandomValue.RandomPosAround(transform.position, 1.5f);
+                    Vector3 spawnPos;
+                    if (fixedSpawnPoint == null)
+                    {
+                        Vector2 randomPos = RandomValue.RandomPosAround(transform.position, 1.5f);
+                        spawnPos = new Vector3(randomPos.x, randomPos.y, transform.position.z);
+                    }
+                    else
+                    {
+                        spawnPos = fixedSpawnPoint.position;
+                    }
 
                     CardGeneratorManager.Instance.GenerateCard(
                        generatedCardData.CardData,
-                       new Vector3(randomPos.x, randomPos.y, transform.position.z)
+                       spawnPos
                    );
                 }
             }

@@ -74,6 +74,8 @@ public class DecorationOptionUi : MonoBehaviour, IBeginDragHandler, IDragHandler
             }*/
 
             currentDecorationCard.StartDraggedByUi();
+
+            AudioManager.Instance?.PlayDefaultUiClick();
         }
     }
 
@@ -101,6 +103,7 @@ public class DecorationOptionUi : MonoBehaviour, IBeginDragHandler, IDragHandler
             else
             {
                 currentDecorationCard.StopDraggedByUi();
+                AudioManager.Instance?.PlaySFXObject("decoration_on_placed");
             }
 
             currentDecorationCard = null;

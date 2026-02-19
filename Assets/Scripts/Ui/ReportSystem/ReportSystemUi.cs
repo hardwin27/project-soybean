@@ -106,6 +106,7 @@ public class ReportSystemUi : MonoBehaviour
             reportConfirmButton.onClick.RemoveAllListeners();
             reportConfirmButton.onClick.AddListener(() =>
             {
+                AudioManager.Instance.PlayDefaultUiClick();
                 reportGenerator.ConfirmReport(reportData.ReportType);
             });
         }

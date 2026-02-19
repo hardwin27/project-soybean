@@ -59,7 +59,7 @@ public class BuildingDeckBuyCardController : BuildingDeckCardController
     {
         base.TakeCard(cardStacks);
 
-        AudioManager.Instance.PlaySFXObject("give_money");
+        AudioManager.Instance.PlaySFXObject("shop_on_purchase");
 
         int reqMoney = CurrentCardOnDeck.CardData.BuyPrice;
 

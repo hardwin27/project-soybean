@@ -330,7 +330,7 @@ MonoBehaviour:
     Clip: {fileID: 8300000, guid: e2507dc63a08a54438788d5400e1fdec, type: 3}
     Volume: 1
   - Name: tile_on_release
-    Clip: {fileID: 0}
+    Clip: {fileID: 8300000, guid: 900c1157c34ed16488c1188d43bcbeb4, type: 3}
     Volume: 1
   - Name: tile_on_combo_generate_tile
     Clip: {fileID: 8300000, guid: b0ead25a1be7fa74aa70f6e01943ddb2, type: 3}
@@ -342,13 +342,16 @@ MonoBehaviour:
     Clip: {fileID: 8300000, guid: de7eb66862e2bf5418d32e58dda99145, type: 3}
     Volume: 1
   - Name: shop_on_purchase
-    Clip: {fileID: 0}
+    Clip: {fileID: 8300000, guid: e0c70649840efc14a84100d10346ee2f, type: 3}
     Volume: 1
   - Name: building_on_click
     Clip: {fileID: 8300000, guid: 0fba48ffba0c1104a9af5d0e7415e23b, type: 3}
     Volume: 1
   - Name: building_on_release
     Clip: {fileID: 8300000, guid: bbc7f345e63e5364d81fc175cbea8c16, type: 3}
+    Volume: 1
+  - Name: market_on_sell
+    Clip: {fileID: 8300000, guid: e967d022a18d2cd498aec71f97c8c071, type: 3}
     Volume: 1
   - Name: decoration_on_placed
     Clip: {fileID: 0}
@@ -379,3 +382,4 @@ MonoBehaviour:
     Volume: 1
   musicSource: {fileID: 4196763752996154048}
   sfxSource: {fileID: 3720630105276771204}
+  defaultUiClick: ui_on_click

@@ -34,7 +34,7 @@ public class BuildingDeckBankCardController : BuildingDeckCardController
             OnDeckBankDatUpdated.Invoke();
         }
 
-        AudioManager.Instance.PlaySFXObject("get_money");
+        AudioManager.Instance.PlaySFXObject("bank_on_withdraw");
     }
 
     public override bool CanTakeCard(List<CardController> cardStacks)
@@ -77,6 +77,6 @@ public class BuildingDeckBankCardController : BuildingDeckCardController
 
         OnDeckBankDatUpdated?.Invoke();
 
-        AudioManager.Instance.PlaySFXObject("give_money");
+        AudioManager.Instance.PlaySFXObject("bank_on_deposit");
     }
 }

@@ -29,5 +29,6 @@ public class DecorationCardVisual : CardVisual
     protected void FlipVisual()
     {
         cardRenderer.flipX = !cardRenderer.flipX;
+        AudioManager.Instance?.PlaySFXObject("decoration_on_flipped");
     }
 }

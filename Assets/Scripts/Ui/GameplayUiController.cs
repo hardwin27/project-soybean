@@ -59,7 +59,7 @@ public class GameplayUiController : MonoBehaviour
                 tab.TabPanel.SetActive(true);
                 tab.TabButton.image.sprite = tabSelectedSprite;
                 OnUiTriggered?.Invoke(tab.TabEventCode);
-                AudioManager.Instance.PlaySFXObject("ui_tab_changed");
+                AudioManager.Instance.PlaySFXObject("ui_tab_button");
             });
         }
     }
@@ -105,5 +105,7 @@ public class GameplayUiController : MonoBehaviour
 
         closeSideTabButton.gameObject.SetActive(false);
         CloseAllTab();
+
+        AudioManager.Instance.PlaySFXObject("ui_on_side_panel_closed");
     }
 }

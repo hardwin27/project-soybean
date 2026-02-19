@@ -60,11 +60,13 @@ public class MainMenu : MonoBehaviour
     
     private void StartGame()
     {
+        AudioManager.Instance?.PlaySFXObject("ui_start_button");
         SceneManager.LoadSceneAsync("VerticalSlice");
     }
 
     private void QuitGame()
-    { 
+    {
+        AudioManager.Instance?.PlaySFXObject("ui_quit_button");
         Application.Quit();
     }
 }

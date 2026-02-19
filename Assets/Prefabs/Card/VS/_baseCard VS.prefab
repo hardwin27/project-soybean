@@ -322,6 +322,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7565457305340144349, guid: 6ed42a861f27fea44b91d9f1cab9e63b, type: 3}
+      propertyPath: cardDraggedAudioCode
+      value: tile_on_click
+      objectReference: {fileID: 0}
+    - target: {fileID: 7565457305340144349, guid: 6ed42a861f27fea44b91d9f1cab9e63b, type: 3}
+      propertyPath: cardDroppedAudioCode
+      value: tile_on_release
+      objectReference: {fileID: 0}
     - target: {fileID: 8347156867831986490, guid: 6ed42a861f27fea44b91d9f1cab9e63b, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

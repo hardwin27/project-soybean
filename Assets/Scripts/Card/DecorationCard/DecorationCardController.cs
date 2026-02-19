@@ -14,6 +14,7 @@ public class DecorationCardController : CardController
 
     public void StashDecoration()
     {
+        AudioManager.Instance?.PlaySFXObject("decoration_on_stashed");
         gameObject.SetActive(false);
     }
 

@@ -7,6 +7,8 @@ public class AudioManager : Singleton<AudioManager>
     public SoundData[] musicSounds, sfxSounds;
     public AudioSource musicSource, sfxSource;
 
+    [SerializeField] private string defaultUiClick;
+
     private SFXManager sfxManager;
 
     private void Start()
@@ -81,5 +83,10 @@ public class AudioManager : Singleton<AudioManager>
                 Debug.Log($"{s.Name} SFX have no clip");
             }
         }
+    }
+
+    public void PlayDefaultUiClick()
+    {
+        PlaySFXObject(defaultUiClick);
     }
 }
