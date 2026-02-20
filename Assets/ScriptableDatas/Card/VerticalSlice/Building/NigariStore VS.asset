@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df4f39c351627cb408d9b81f308cbe56, type: 3}
   m_Name: NigariStore VS
   m_EditorClassIdentifier: Assembly-CSharp::DeckCardData
-  cardName: Nigari Store
+  cardName: NIGARI STORE
   cardPrefab: {fileID: 4761039063977307064, guid: 26f948455f7381440b1e08fbd60e1fad, type: 3}
   buyPrice: 0
   sellPrice: 0
   progressTime: 0
   cardType: 3
-  cardSprite: {fileID: 21300000, guid: d2e851dea6f2e354ba9b69fbc3f5b88d, type: 3}
-  useCustomHover: 0
-  customHoverMsg: 
+  cardSprite: {fileID: 1938997569129587823, guid: 19785f1303f00814ea9f6d8364644bc0, type: 3}
+  useCustomHover: 1
+  customHoverMsg: Best Nigari in town for 2 0x0001FA99 each!
   cardsOnDeck:
   - cardData: {fileID: 11400000, guid: d60705397d1f77549b25e694f8bb6088, type: 2}
     cardOnDeckSprite: {fileID: 0}

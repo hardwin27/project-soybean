@@ -55,6 +55,34 @@ MonoBehaviour:
       isCompleted: 0
     - questData: {fileID: 11400000, guid: 0997010371af4c4468f351e709bcbf57, type: 2}
       isCompleted: 0
+    - questData: {fileID: 11400000, guid: b1a0e44b6319ff74aabc3f553ece2696, type: 2}
+      isCompleted: 0
+    - questData: {fileID: 11400000, guid: 81bdf79936902ed4283c03d21b508c7c, type: 2}
+      isCompleted: 0
+    - questData: {fileID: 11400000, guid: 4acfa3cc9746a3442ae1954a6a990337, type: 2}
+      isCompleted: 0
+    - questData: {fileID: 11400000, guid: de17a200a4ce278438471544068417bc, type: 2}
+      isCompleted: 0
+    - questData: {fileID: 11400000, guid: 97ab1b6d7f98bf94ca9cd2e6f1cea1db, type: 2}
+      isCompleted: 0
+    - questData: {fileID: 11400000, guid: fc774937ff149f540931de6cd0623e63, type: 2}
+      isCompleted: 0
+    - questData: {fileID: 11400000, guid: de249abf0be71814a9ba60ace09222b2, type: 2}
+      isCompleted: 0
+    - questData: {fileID: 11400000, guid: a2b607e19fd39f848a90e99467dfb78e, type: 2}
+      isCompleted: 0
+    - questData: {fileID: 11400000, guid: e632242775ffa694e9fa95e1140d9863, type: 2}
+      isCompleted: 0
+    - questData: {fileID: 11400000, guid: 3067fe7994ac9a646bfc0aa64acd1aa2, type: 2}
+      isCompleted: 0
+    - questData: {fileID: 11400000, guid: 3458f38598abdfd4ca1a5536b0e614a9, type: 2}
+      isCompleted: 0
+    - questData: {fileID: 11400000, guid: 4a84ddcb13d9e0d4b8a815d5d603d1ce, type: 2}
+      isCompleted: 0
+    - questData: {fileID: 11400000, guid: e632242775ffa694e9fa95e1140d9863, type: 2}
+      isCompleted: 0
+    - questData: {fileID: 11400000, guid: e632242775ffa694e9fa95e1140d9863, type: 2}
+      isCompleted: 0
   cardComboManager: {fileID: 0}
   cardGeneratorManager: {fileID: 0}
   sellDeck: {fileID: 0}
