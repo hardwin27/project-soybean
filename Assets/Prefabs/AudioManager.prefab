@@ -328,10 +328,10 @@ MonoBehaviour:
     Volume: 1
   - Name: tile_on_click
     Clip: {fileID: 8300000, guid: e2507dc63a08a54438788d5400e1fdec, type: 3}
-    Volume: 1
+    Volume: 0
   - Name: tile_on_release
     Clip: {fileID: 8300000, guid: 900c1157c34ed16488c1188d43bcbeb4, type: 3}
-    Volume: 1
+    Volume: 0.8
   - Name: tile_on_combo_generate_tile
     Clip: {fileID: 8300000, guid: b0ead25a1be7fa74aa70f6e01943ddb2, type: 3}
     Volume: 1
@@ -342,7 +342,7 @@ MonoBehaviour:
     Clip: {fileID: 8300000, guid: de7eb66862e2bf5418d32e58dda99145, type: 3}
     Volume: 1
   - Name: shop_on_purchase
-    Clip: {fileID: 8300000, guid: e0c70649840efc14a84100d10346ee2f, type: 3}
+    Clip: {fileID: 8300000, guid: 7f9723c7435405c4da88e7e17b6d5dc5, type: 3}
     Volume: 1
   - Name: building_on_click
     Clip: {fileID: 8300000, guid: 0fba48ffba0c1104a9af5d0e7415e23b, type: 3}
@@ -354,31 +354,37 @@ MonoBehaviour:
     Clip: {fileID: 8300000, guid: e967d022a18d2cd498aec71f97c8c071, type: 3}
     Volume: 1
   - Name: decoration_on_placed
-    Clip: {fileID: 0}
+    Clip: {fileID: 8300000, guid: 64a3a8b22f56012468841713d3585d08, type: 3}
     Volume: 1
   - Name: decoration_on_flipped
-    Clip: {fileID: 0}
+    Clip: {fileID: 8300000, guid: 3f5c186f26cc588449291aebab10a4b7, type: 3}
     Volume: 1
   - Name: decoration_on_stashed
-    Clip: {fileID: 0}
+    Clip: {fileID: 8300000, guid: 3aa08bad15408f04caf8c119d127dcd8, type: 3}
     Volume: 1
   - Name: ui_start_button
-    Clip: {fileID: 0}
+    Clip: {fileID: 8300000, guid: 86850d66e077ad346938f89108573573, type: 3}
     Volume: 1
   - Name: ui_quit_button
-    Clip: {fileID: 0}
+    Clip: {fileID: 8300000, guid: 16f891967c7567047b2aff9cf9537e14, type: 3}
     Volume: 1
   - Name: ui_tab_button
-    Clip: {fileID: 0}
+    Clip: {fileID: 8300000, guid: 451f8a226cd5d904db4d19c2e4bb6fe8, type: 3}
     Volume: 1
   - Name: ui_on_side_panel_closed
-    Clip: {fileID: 0}
-    Volume: 1
+    Clip: {fileID: 8300000, guid: 52b3787ffb7864049a18eb257ebc7e8b, type: 3}
+    Volume: 0.5
   - Name: quest_on_gain_reward
-    Clip: {fileID: 0}
+    Clip: {fileID: 8300000, guid: ceafbb1c75972a24e8b7941cdf42204a, type: 3}
     Volume: 1
   - Name: day_on_end
-    Clip: {fileID: 0}
+    Clip: {fileID: 8300000, guid: 2feccc33a1e35d54b85d481163b458b1, type: 3}
+    Volume: 1
+  - Name: utility_processing
+    Clip: {fileID: 8300000, guid: 39810350baa8e2e479d2e019022922b1, type: 3}
+    Volume: 1
+  - Name: utility_finish
+    Clip: {fileID: 8300000, guid: 2feccc33a1e35d54b85d481163b458b1, type: 3}
     Volume: 1
   musicSource: {fileID: 4196763752996154048}
   sfxSource: {fileID: 3720630105276771204}

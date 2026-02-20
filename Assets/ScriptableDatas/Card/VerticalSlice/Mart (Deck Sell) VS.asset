@@ -12,13 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df4f39c351627cb408d9b81f308cbe56, type: 3}
   m_Name: Mart (Deck Sell) VS
   m_EditorClassIdentifier: 
-  cardName: Mart
+  cardName: MART
   cardPrefab: {fileID: 2096010706551797514, guid: dbea4dede7ac83743b68a33bb5083d5c, type: 3}
   buyPrice: 0
   sellPrice: 0
   progressTime: 0
   cardType: 3
   cardSprite: {fileID: 4581319933034802153, guid: d5f9c1163098ea441a82280cef9021bb, type: 3}
+  useCustomHover: 1
+  customHoverMsg: Sell your products here.
   cardsOnDeck: []
   isLimited: 0
   instructionColor: {r: 0, g: 0, b: 0, a: 0}

@@ -12,13 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df4f39c351627cb408d9b81f308cbe56, type: 3}
   m_Name: Supplier VS 1
   m_EditorClassIdentifier: Assembly-CSharp::DeckCardData
-  cardName: Supplier
+  cardName: SOYBEAN SUPPLIER
   cardPrefab: {fileID: 4761039063977307064, guid: c8a6db85668727449b5886981736e2f0, type: 3}
   buyPrice: 0
   sellPrice: 0
   progressTime: 0
   cardType: 3
   cardSprite: {fileID: 1610608122356091654, guid: 89b79ad7d54e85c4ead276cf30524f37, type: 3}
+  useCustomHover: 1
+  customHoverMsg: Get Soybean for just 1 0x0001FA99 !
   cardsOnDeck:
   - cardData: {fileID: 11400000, guid: d8ebaa62da27f294b8de92874376e4ed, type: 2}
     cardOnDeckSprite: {fileID: 0}
