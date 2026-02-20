@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df4f39c351627cb408d9b81f308cbe56, type: 3}
   m_Name: NattoStore VS
   m_EditorClassIdentifier: Assembly-CSharp::DeckCardData
-  cardName: Coagulant Store
+  cardName: NATTO STARTER STORE
   cardPrefab: {fileID: 4761039063977307064, guid: 64f032de83c423d448d55b935eb5a102, type: 3}
   buyPrice: 0
   sellPrice: 0

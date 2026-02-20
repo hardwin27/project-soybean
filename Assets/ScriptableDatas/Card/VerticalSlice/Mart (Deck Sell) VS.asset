@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df4f39c351627cb408d9b81f308cbe56, type: 3}
   m_Name: Mart (Deck Sell) VS
   m_EditorClassIdentifier: 
-  cardName: Mart
+  cardName: MART
   cardPrefab: {fileID: 2096010706551797514, guid: dbea4dede7ac83743b68a33bb5083d5c, type: 3}
   buyPrice: 0
   sellPrice: 0

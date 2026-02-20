@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c51eb232fdfe1c544ad5ebb73e50fc0d, type: 3}
   m_Name: Bank VS
   m_EditorClassIdentifier: 
-  cardName: Bank
+  cardName: BANK
   cardPrefab: {fileID: 8029541574351091782, guid: 2b4d807550670304e884e4db2896b19f, type: 3}
   buyPrice: 0
   sellPrice: 0

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df4f39c351627cb408d9b81f308cbe56, type: 3}
   m_Name: Supplier VS 1
   m_EditorClassIdentifier: Assembly-CSharp::DeckCardData
-  cardName: Supplier
+  cardName: SOYBEAN SUPPLIER
   cardPrefab: {fileID: 4761039063977307064, guid: c8a6db85668727449b5886981736e2f0, type: 3}
   buyPrice: 0
   sellPrice: 0

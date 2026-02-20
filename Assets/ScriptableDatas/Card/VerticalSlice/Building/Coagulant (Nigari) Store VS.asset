@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df4f39c351627cb408d9b81f308cbe56, type: 3}
   m_Name: Coagulant (Nigari) Store VS
   m_EditorClassIdentifier: Assembly-CSharp::DeckCardData
-  cardName: Coagulant Store
+  cardName: NIGARI STORE
   cardPrefab: {fileID: 4761039063977307064, guid: 69c0d723e4bbab04d9707d4c910ed194, type: 3}
   buyPrice: 0
   sellPrice: 0
