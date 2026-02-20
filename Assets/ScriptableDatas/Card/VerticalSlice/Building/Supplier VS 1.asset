@@ -19,6 +19,8 @@ MonoBehaviour:
   progressTime: 0
   cardType: 3
   cardSprite: {fileID: 1610608122356091654, guid: 89b79ad7d54e85c4ead276cf30524f37, type: 3}
+  useCustomHover: 1
+  customHoverMsg: Get Soybean for just 1 0x0001FA99 !
   cardsOnDeck:
   - cardData: {fileID: 11400000, guid: d8ebaa62da27f294b8de92874376e4ed, type: 2}
     cardOnDeckSprite: {fileID: 0}

@@ -19,6 +19,8 @@ MonoBehaviour:
   progressTime: 0
   cardType: 3
   cardSprite: {fileID: -6004712983087854423, guid: 28f6c60610f58f4409a6376dc62463e8, type: 3}
+  useCustomHover: 1
+  customHoverMsg: We provide Natto Starter for 1 0x0001FA99 each.
   cardsOnDeck:
   - cardData: {fileID: 11400000, guid: f3a3a84ca213451438924a30342bda3f, type: 2}
     cardOnDeckSprite: {fileID: 0}
