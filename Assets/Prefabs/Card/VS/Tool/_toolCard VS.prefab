@@ -154,6 +154,9 @@ MonoBehaviour:
   shouldBeBounded: 0
   cardDefaultSortName: Card
   cardDraggedSortName: DraggedCard
+  isInitiallyFlipped: 0
+  cardDraggedAudioCode: tile_on_click
+  cardDroppedAudioCode: tile_on_release
   overlapCardControllers: []
   toolCardData: {fileID: 0}
   runtimeStats: []

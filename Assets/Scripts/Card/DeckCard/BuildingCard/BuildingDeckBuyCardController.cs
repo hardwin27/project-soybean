@@ -53,7 +53,7 @@ public class BuildingDeckBuyCardController : BuildingDeckCardController
             return false;
         }
 
-        
+        Debug.Log($"{gameObject.name} stacked money: {totalMoney} || CurrentCardOnDeck.CardData:  {CurrentCardOnDeck.CardData.BuyPrice}");
 
         return (totalMoney >= CurrentCardOnDeck.CardData.BuyPrice);
     }
@@ -91,18 +91,21 @@ public class BuildingDeckBuyCardController : BuildingDeckCardController
 
         int moneyRemoved = 0;
 
+        Debug.Log($"{gameObject.name} Money: {money} || reqMoney: {reqMoney} cardStacks.Count: {cardStacks.Count}");
+
         while (money > 0 && money >= reqMoney && cardStacks.Count > 0)
         {
-            money -= 1;
-            moneyRemoved++;
-            if (moneyRemoved >+ reqMoney)
+            while(moneyRemoved < reqMoney)
             {
                 CardController card = cardStacks[cardStacks.Count - 1];
                 cardStacks.Remove(card);
                 card.gameObject.SetActive(false);
-                OnDeckCardGenerated?.Invoke(CurrentCardOnDeck.CardData);
-                moneyRemoved = 0;
+                money -= 1;
+                moneyRemoved++;
             }
+
+            OnDeckCardGenerated?.Invoke(CurrentCardOnDeck.CardData);
+            moneyRemoved = 0;
         }
 
         ChangeToNextCard();
