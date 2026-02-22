@@ -115,7 +115,7 @@ public class QuestController : MonoBehaviour
                     if (quest.QuestData is SellQuestData)
                     {
                         SellQuestData sellQuestData = (SellQuestData)quest.QuestData;
-                        SellQuestTracker sellQuestTracker = sellQuestTrackers.Find(tracker => tracker.SellQuestData == sellQuestData);
+                        SellQuestTracker sellQuestTracker = sellQuestTrackers.Find(tracker => tracker.SellQuestData.TargetSoldCard == cardController.CardData);
                         if (sellQuestTracker != null)
                         {
                             sellQuestTracker.AddProgress(1);

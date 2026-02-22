@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BuildingDeckBuyCardController : BuildingDeckCardController
@@ -52,6 +53,8 @@ public class BuildingDeckBuyCardController : BuildingDeckCardController
             return false;
         }
 
+        
+
         return (totalMoney >= CurrentCardOnDeck.CardData.BuyPrice);
     }
 
@@ -86,13 +89,20 @@ public class BuildingDeckBuyCardController : BuildingDeckCardController
             }
         }
 
+        int moneyRemoved = 0;
+
         while (money > 0 && money >= reqMoney && cardStacks.Count > 0)
         {
-            money -= reqMoney;
-            CardController card = cardStacks[cardStacks.Count - 1];
-            cardStacks.Remove(card);
-            card.gameObject.SetActive(false);
-            OnDeckCardGenerated?.Invoke(CurrentCardOnDeck.CardData);
+            money -= 1;
+            moneyRemoved++;
+            if (moneyRemoved >+ reqMoney)
+            {
+                CardController card = cardStacks[cardStacks.Count - 1];
+                cardStacks.Remove(card);
+                card.gameObject.SetActive(false);
+                OnDeckCardGenerated?.Invoke(CurrentCardOnDeck.CardData);
+                moneyRemoved = 0;
+            }
         }
 
         ChangeToNextCard();

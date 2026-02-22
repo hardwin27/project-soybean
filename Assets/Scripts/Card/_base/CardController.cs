@@ -94,7 +94,7 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         }
 
         BoundCardPos(transform.position);
-        StartCoroutine("DelayedOverlapCheck");
+        StartCoroutine(DelayedOverlapCheck());
     }
 
     public virtual void OnBeginDrag(PointerEventData eventData)
@@ -183,7 +183,7 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
     protected System.Collections.IEnumerator DelayedOverlapCheck()
     {
-        yield return null;
+        yield return new WaitForEndOfFrame();
         List<Collider2D> overlapColliders = new List<Collider2D>();
         Physics2D.OverlapCollider(cardCollider, new ContactFilter2D().NoFilter(), overlapColliders);
 
