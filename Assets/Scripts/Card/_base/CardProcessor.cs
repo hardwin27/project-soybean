@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using ReadOnlyEditor;
+using System;
 
 [RequireComponent(typeof(CardController))]
 [RequireComponent(typeof(CardVisual))]
@@ -22,6 +23,9 @@ public class CardProcessor : MonoBehaviour
 
     private float processDuration;
     private float processTimer;
+
+    public Action OnProcessFinished;
+    public Action OnProcessStarted;
 
     private void Awake()
     {
@@ -68,7 +72,7 @@ public class CardProcessor : MonoBehaviour
     {
         isProcessing = false;
 
-        AudioManager.Instance.PlaySFXObject("tile_on_combo_generate_tile");
+        /*AudioManager.Instance.PlaySFXObject("tile_on_combo_generate_tile");*/
 
         if (hideStackWhenProgressing)
         {
@@ -169,6 +173,8 @@ public class CardProcessor : MonoBehaviour
             }
         }
 
+        OnProcessFinished?.Invoke();
+
         ResetProcess();
     }
 
@@ -208,6 +214,8 @@ public class CardProcessor : MonoBehaviour
 
         progressSlider.gameObject.SetActive(true);
         isProcessing = true;
-        AudioManager.Instance.PlaySFXObject("process_started");
+        /*AudioManager.Instance.PlaySFXObject("process_started");*/
+
+        OnProcessStarted?.Invoke();
     }
 }

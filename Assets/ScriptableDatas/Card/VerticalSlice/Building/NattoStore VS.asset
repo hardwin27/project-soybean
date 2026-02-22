@@ -24,8 +24,6 @@ MonoBehaviour:
   cardsOnDeck:
   - cardData: {fileID: 11400000, guid: f3a3a84ca213451438924a30342bda3f, type: 2}
     cardOnDeckSprite: {fileID: 0}
-  - cardData: {fileID: 11400000, guid: d60705397d1f77549b25e694f8bb6088, type: 2}
-    cardOnDeckSprite: {fileID: 0}
   isLimited: 0
   instructionColor: {r: 0, g: 0, b: 0, a: 0}
   instructionCommandWord: 

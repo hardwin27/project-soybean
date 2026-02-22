@@ -72,6 +72,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 7120037634392541513}
   m_SourcePrefab: {fileID: 100100000, guid: 00016afbe1d87b84e8c90df8eec0b543, type: 3}
+--- !u!4 &6050132316422385443 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 248320811589225539, guid: 00016afbe1d87b84e8c90df8eec0b543, type: 3}
+  m_PrefabInstance: {fileID: 5801855949189374816}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8855010220605935515 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3055417324052999419, guid: 00016afbe1d87b84e8c90df8eec0b543, type: 3}
@@ -89,6 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efe5b94705b34944192cb511746ab09f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BuildingDeckCardGenerator
+  fixedSpawnPoint: {fileID: 6050132316422385443}
 --- !u!114 &7120037634392541513
 MonoBehaviour:
   m_ObjectHideFlags: 0

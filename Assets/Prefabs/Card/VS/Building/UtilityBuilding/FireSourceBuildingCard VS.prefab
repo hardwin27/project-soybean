@@ -232,6 +232,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 2.88
       objectReference: {fileID: 0}
+    - target: {fileID: 9021684899821340207, guid: 00016afbe1d87b84e8c90df8eec0b543, type: 3}
+      propertyPath: isAudioPlayed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9021684899821340207, guid: 00016afbe1d87b84e8c90df8eec0b543, type: 3}
+      propertyPath: processDoneAudioCode
+      value: utility_finish
+      objectReference: {fileID: 0}
+    - target: {fileID: 9021684899821340207, guid: 00016afbe1d87b84e8c90df8eec0b543, type: 3}
+      propertyPath: doingProcessAudioCode
+      value: utility_processing
+      objectReference: {fileID: 0}
     - target: {fileID: 9139622597664707544, guid: 00016afbe1d87b84e8c90df8eec0b543, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1

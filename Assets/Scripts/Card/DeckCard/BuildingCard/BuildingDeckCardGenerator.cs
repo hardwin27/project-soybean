@@ -5,6 +5,8 @@ public class BuildingDeckCardGenerator : MonoBehaviour
 {
     private BuildingDeckCardController controller;
 
+    [SerializeField] private Transform fixedSpawnPoint;
+
     private void Awake()
     {
         controller = GetComponent<BuildingDeckCardController>();
@@ -13,7 +15,17 @@ public class BuildingDeckCardGenerator : MonoBehaviour
 
     private void GenerateCardFromDeck(CardData cardData)
     {
-        Vector2 randomPos = RandomValue.RandomPosAround(transform.position, 2f);
-        CardGeneratorManager.Instance.GenerateCard(cardData, randomPos);
+        Vector3 spawnPos;
+
+        if (fixedSpawnPoint != null) 
+        { 
+            spawnPos = fixedSpawnPoint.position;
+        }
+        else
+        {
+            Vector2 randomPos = RandomValue.RandomPosAround(transform.position, 2f);
+            spawnPos = new Vector3(randomPos.x, randomPos.y, transform.position.z);
+        }
+        CardGeneratorManager.Instance.GenerateCard(cardData, spawnPos);
     }
 }

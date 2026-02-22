@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using SingletonSystem;
+using UnityEngine.Networking;
 
 public class AudioManager : Singleton<AudioManager>
 {
@@ -14,6 +15,11 @@ public class AudioManager : Singleton<AudioManager>
     private void Start()
     {
         sfxManager = SFXManager.Instance;
+    }
+
+    public SoundData GetSoundData(string name)
+    {
+        return (string.IsNullOrEmpty(name)) ? null : Array.Find(sfxSounds, x => x.Name == name);
     }
 
     public void PlayMusic(string name)

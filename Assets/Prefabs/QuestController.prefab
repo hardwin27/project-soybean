@@ -79,9 +79,9 @@ MonoBehaviour:
       isCompleted: 0
     - questData: {fileID: 11400000, guid: 4a84ddcb13d9e0d4b8a815d5d603d1ce, type: 2}
       isCompleted: 0
-    - questData: {fileID: 11400000, guid: e632242775ffa694e9fa95e1140d9863, type: 2}
+    - questData: {fileID: 11400000, guid: 6db52bfd41b1a664b9c41a89680a9e61, type: 2}
       isCompleted: 0
-    - questData: {fileID: 11400000, guid: e632242775ffa694e9fa95e1140d9863, type: 2}
+    - questData: {fileID: 11400000, guid: b69f53ad85a4b724c86909f99bc1f121, type: 2}
       isCompleted: 0
   cardComboManager: {fileID: 0}
   cardGeneratorManager: {fileID: 0}

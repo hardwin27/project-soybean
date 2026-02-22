@@ -330,6 +330,10 @@ PrefabInstance:
       propertyPath: cardDroppedAudioCode
       value: tile_on_release
       objectReference: {fileID: 0}
+    - target: {fileID: 8084539914969754829, guid: 6ed42a861f27fea44b91d9f1cab9e63b, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 6001937223753941545}
     - target: {fileID: 8347156867831986490, guid: 6ed42a861f27fea44b91d9f1cab9e63b, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -431,6 +435,11 @@ PolygonCollider2D:
 --- !u!1 &5639423143339655665 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9186254762713597025, guid: 6ed42a861f27fea44b91d9f1cab9e63b, type: 3}
+  m_PrefabInstance: {fileID: 3548664370104386960}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &6001937223753941545 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 7094376039562086329, guid: 6ed42a861f27fea44b91d9f1cab9e63b, type: 3}
   m_PrefabInstance: {fileID: 3548664370104386960}
   m_PrefabAsset: {fileID: 0}
 --- !u!224 &8695630284156014869 stripped
