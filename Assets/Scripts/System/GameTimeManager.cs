@@ -61,8 +61,6 @@ public class GameTimeManager : Singleton<GameTimeManager>
         isDayActive = true;
 
         OnDayStarted?.Invoke();
-
-        Debug.Log($"Day Started: Week {currentWeek}, Day {currentDay}");
     }
 
     public void EndDay()
@@ -74,7 +72,5 @@ public class GameTimeManager : Singleton<GameTimeManager>
         OnDayEnded?.Invoke();
 
         AudioManager.Instance.PlaySFXObject("day_on_end");
-
-        Debug.Log("Day Ended");
     }
 }

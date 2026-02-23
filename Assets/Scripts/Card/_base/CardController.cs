@@ -140,8 +140,6 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
     public void OnDisable()
     {
-        Debug.Log($"{gameObject.name} is DISABLED");
-
         OnCardDestroyed?.Invoke();
         if (StackedOnCard != null)
         {
@@ -183,8 +181,8 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
     protected System.Collections.IEnumerator DelayedOverlapCheck()
     {
-        yield return new WaitForEndOfFrame();
-        List<Collider2D> overlapColliders = new List<Collider2D>();
+        yield return new WaitForFixedUpdate();
+        /*List<Collider2D> overlapColliders = new List<Collider2D>();
         Physics2D.OverlapCollider(cardCollider, new ContactFilter2D().NoFilter(), overlapColliders);
 
         overlapCardControllers = new List<CardController>();
@@ -201,7 +199,9 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
                     }
                 }
             }
-        }
+        }*/
+
+        HandleDragEnd(ignoreBuilding: true);
     }
 
     public void SetTopCard(CardController card)
@@ -350,16 +350,24 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         return true;
     }
 
-    protected void HandleDragEnd()
+    protected void HandleDragEnd(bool ignoreBuilding = false)
     {
         List<Collider2D> overlapColliders = new List<Collider2D>();
-        Physics2D.OverlapCollider(cardCollider, new ContactFilter2D().NoFilter(), overlapColliders);
+        Physics2D.OverlapCollider(cardCollider, ContactFilter2D.noFilter, overlapColliders);
 
         overlapCardControllers = new List<CardController>();
         foreach (Collider2D overlapCollider in overlapColliders)
         {
+            Debug.Log($"{gameObject.name} overlap with {overlapCollider.gameObject.name}");
             if (overlapCollider.TryGetComponent(out CardController cardController))
             {
+                if (ignoreBuilding)
+                {
+                    if (cardController is BuildingCardController)
+                    {
+                        continue;
+                    }
+                }
                 if (!cardController.IsDragged)
                 {
                     overlapCardControllers.Add(cardController);

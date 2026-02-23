@@ -18,7 +18,6 @@ public class RewardController : MonoBehaviour
         {
             if (questStatus.QuestData.HasReward)
             {
-                Debug.Log($"Handle Quest With {questStatus.QuestData.QuestDecorationReward.DecorationReward.CardName} reward");
                 questStatus.OnQuestUpdated += () =>
                 {
                     if (questStatus.IsCompleted)

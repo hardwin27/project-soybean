@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class BuildingDeckBuyCardController : BuildingDeckCardController
 {
@@ -17,9 +18,9 @@ public class BuildingDeckBuyCardController : BuildingDeckCardController
         }
     }
 
-    protected override void OnMouseUp()
+    public override void OnPointerClick(PointerEventData eventData)
     {
-        base.OnMouseUp();
+        base.OnPointerClick(eventData);
         if (CurrentCardOnDeck == null)
         {
             return;

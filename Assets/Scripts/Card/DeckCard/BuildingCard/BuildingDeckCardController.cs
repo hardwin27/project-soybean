@@ -2,8 +2,9 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using ReadOnlyEditor;
+using UnityEngine.EventSystems;
 
-public class BuildingDeckCardController : BuildingCardController, ICardTaker
+public class BuildingDeckCardController : BuildingCardController, ICardTaker, IPointerClickHandler
 {
     [SerializeField, ReadOnly] protected DeckCardData deckCardData;
     [SerializeField, ReadOnly] protected int currentCardIndex;
@@ -31,9 +32,16 @@ public class BuildingDeckCardController : BuildingCardController, ICardTaker
         base.Awake();
     }
 
-    protected virtual void OnMouseUp()
+    /*public virtual void OnPointerUp(PointerEventData eventData)
     {
-        AudioManager.Instance.PlaySFXObject("card_dragged");
+        *//*AudioManager.Instance.PlaySFXObject("card_dragged");*//*
+        Debug.Log($"{gameObject.name} OnPointerUp");
+        return;
+    }*/
+
+    public virtual void OnPointerClick(PointerEventData eventData)
+    {
+        Debug.Log($"{gameObject.name} OnPointerUp");
         return;
     }
 
