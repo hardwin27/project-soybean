@@ -33,7 +33,6 @@ public class CardGeneratorManager : Singleton<CardGeneratorManager>
         cards = FindObjectsByType<CardController>(FindObjectsSortMode.None).ToList();
         foreach (var card in cards)
         {
-            Debug.Log($"CARD LOOP {card.CardData.CardName}");
             card.AssignBoundary(boundaryCollider);
         }
     }

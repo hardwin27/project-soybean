@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using ReadOnlyEditor;
+using UnityEngine.EventSystems;
 
 public class BuildingDeckBankCardController : BuildingDeckCardController
 {
@@ -22,19 +23,21 @@ public class BuildingDeckBankCardController : BuildingDeckCardController
         OnDeckBankDatUpdated?.Invoke();
     }
 
-    protected override void OnMouseUp()
+    public override void OnPointerClick(PointerEventData eventData)
     {
-        base.OnMouseUp();
-        /*Debug.Log($"DECK BANK");*/
+        Debug.Log($"DECK BANK");
+
+        base.OnPointerClick(eventData);
 
         if (currentMoney > 0)
         {
             currentMoney--;
             OnDeckCardGenerated?.Invoke(moneyCardData);
             OnDeckBankDatUpdated.Invoke();
-        }
 
-        AudioManager.Instance.PlaySFXObject("bank_on_withdraw");
+
+            AudioManager.Instance.PlaySFXObject("bank_on_withdraw");
+        }
     }
 
     public override bool CanTakeCard(List<CardController> cardStacks)

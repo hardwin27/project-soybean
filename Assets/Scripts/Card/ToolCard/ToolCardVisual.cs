@@ -31,7 +31,6 @@ public class ToolCardVisual : CardVisual
 
     protected void UpdateToolVisual()
     {
-        Debug.Log($"{gameObject} Tool UpdateVisual");
         int filledResourceCount = 0;
         StatData targetedStat = null;
 

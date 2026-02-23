@@ -12,6 +12,14 @@ PrefabInstance:
       propertyPath: cardData
       value: 
       objectReference: {fileID: 11400000, guid: 9e33862d008158f4bb217a718a769e81, type: 2}
+    - target: {fileID: 248320811589225539, guid: 00016afbe1d87b84e8c90df8eec0b543, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 248320811589225539, guid: 00016afbe1d87b84e8c90df8eec0b543, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.46
+      objectReference: {fileID: 0}
     - target: {fileID: 1058659164360096559, guid: 00016afbe1d87b84e8c90df8eec0b543, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
