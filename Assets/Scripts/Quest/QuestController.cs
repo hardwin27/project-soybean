@@ -15,7 +15,7 @@ public class QuestController : MonoBehaviour
     [SerializeField] private BuildingDeckBankCardController bankDeck;
     [SerializeField] private GameplayUiController gameplayUi;
 
-    [SerializeField, ReadOnly] private List<SellQuestTracker> sellQuestTrackers = new List<SellQuestTracker>();
+    [SerializeField, ReadOnly] private List<QuestTracker> sellQuestTrackers = new List<QuestTracker>();
 
     /*public Action<QuestStatus> OnQuestAdded;*/
     public Action<QuestChapter> OnQuestChapterAdded;
@@ -48,7 +48,7 @@ public class QuestController : MonoBehaviour
                 if (questData.QuestData is SellQuestData)
                 {
                     SellQuestData sellQuestData = questData.QuestData as SellQuestData;
-                    sellQuestTrackers.Add(new SellQuestTracker(sellQuestData));
+                    sellQuestTrackers.Add(new QuestTracker(questData));
                 }
             }
         }
@@ -106,28 +106,46 @@ public class QuestController : MonoBehaviour
 
     private void HandleCardSold(CardController cardController)
     {
-        foreach (var chapter in questChapters)
+        foreach (QuestTracker sellTracker in sellQuestTrackers)
         {
-            foreach (var quest in chapter.Quests)
+            if (sellTracker.QuestStatus.QuestData is SellQuestData sellQuestData)
             {
-                if (!quest.IsCompleted)
+                if (!sellTracker.QuestStatus.IsCompleted && sellQuestData.TargetSoldCard == cardController.CardData)
                 {
-                    if (quest.QuestData is SellQuestData)
+                    Debug.Log($"Progressing sell quest for {sellTracker.QuestStatus.QuestData.QuestTitle}. Current progress: {sellTracker.CurrentProgress + 1}/{sellQuestData.TargetSoldAmount}");
+                    sellTracker.AddProgress(1);
+                    if (sellTracker.CurrentProgress >= sellQuestData.TargetSoldAmount)
                     {
-                        SellQuestData sellQuestData = (SellQuestData)quest.QuestData;
-                        SellQuestTracker sellQuestTracker = sellQuestTrackers.Find(tracker => tracker.SellQuestData.TargetSoldCard == cardController.CardData);
-                        if (sellQuestTracker != null)
-                        {
-                            sellQuestTracker.AddProgress(1);
-                            if (sellQuestTracker.CurrentProgress >= sellQuestData.TargetSoldAmount)
-                            {
-                                quest.ToggleQuest(true);
-                            }
-                        }
+                        sellTracker.QuestStatus.ToggleQuest(true);
                     }
                 }
             }
         }
+
+        // foreach (var chapter in questChapters)
+        // {
+        //     foreach (var quest in chapter.Quests)
+        //     {
+        //         if (!quest.IsCompleted)
+        //         {
+        //             if (quest.QuestData is SellQuestData)
+        //             {
+        //                 SellQuestData sellQuestData = (SellQuestData)quest.QuestData;
+        //                 SellQuestTracker sellQuestTracker = sellQuestTrackers.Find(tracker => tracker.SellQuestData == sellQuestData);
+        //                 if (sellQuestTracker != null)
+        //                 {
+        //                     Debug.Log($"Sell Quest Tracker: {sellQuestTracker.SellQuestData.QuestTitle}");
+        //                     Debug.Log($"Progressing sell quest for {cardController.CardData.CardName}. Current progress: {sellQuestTracker.CurrentProgress + 1}/{sellQuestData.TargetSoldAmount}");
+        //                     sellQuestTracker.AddProgress(1);
+        //                     if (sellQuestTracker.CurrentProgress >= sellQuestData.TargetSoldAmount)
+        //                     {
+        //                         quest.ToggleQuest(true);
+        //                     }
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
     }
 
     private void HandleBankUpdated()

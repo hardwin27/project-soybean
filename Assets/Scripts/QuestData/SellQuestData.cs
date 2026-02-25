@@ -1,26 +1,26 @@
 using UnityEngine;
 using ReadOnlyEditor;
 
-[System.Serializable]
-public class SellQuestTracker
-{
-    [SerializeField, ReadOnly] private SellQuestData sellQuestData;
-    [SerializeField, ReadOnly] private int currentProgress;
+// [System.Serializable]
+// public class SellQuestTracker
+// {
+//     [SerializeField, ReadOnly] private SellQuestData sellQuestData;
+//     [SerializeField, ReadOnly] private int currentProgress;
 
-    public SellQuestData SellQuestData { get => sellQuestData; }
-    public int CurrentProgress { get => currentProgress; }
+//     public SellQuestData SellQuestData { get => sellQuestData; }
+//     public int CurrentProgress { get => currentProgress; }
 
-    public SellQuestTracker(SellQuestData _sellQuestData)
-    {
-        sellQuestData = _sellQuestData;
-        currentProgress = 0;
-    }
+//     public SellQuestTracker(SellQuestData _sellQuestData)
+//     {
+//         sellQuestData = _sellQuestData;
+//         currentProgress = 0;
+//     }
 
-    public void AddProgress(int progress)
-    {
-        currentProgress += progress;
-    }
-}
+//     public void AddProgress(int progress)
+//     {
+//         currentProgress += progress;
+//     }
+// }
 
 [CreateAssetMenu(fileName = "SellQuestData", menuName = "Quest/Sell Quest Data")]
 public class SellQuestData : QuestData

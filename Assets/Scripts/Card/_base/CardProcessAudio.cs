@@ -28,7 +28,6 @@ public class CardProcessAudio : MonoBehaviour
     private void PlayProcessingAudio()
     {
         SoundData doingProcessSoundData = audioManager.GetSoundData(doingProcessAudioCode);
-        Debug.Log($"{gameObject.name} doingProcessSoundData null = {doingProcessSoundData == null}");
         if (doingProcessSoundData != null ) 
         {
             audioSource.loop = true;

@@ -55,6 +55,7 @@ public class BuildingDeckSellCardController : BuildingDeckCardController
 
         foreach (CardController card in cardStacks)
         {
+            Debug.Log($"Sold {card.CardData.CardName}");
             OnCardSold?.Invoke(card);
             card.gameObject.SetActive(false);
         }

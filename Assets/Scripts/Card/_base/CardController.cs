@@ -358,7 +358,6 @@ public class CardController : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         overlapCardControllers = new List<CardController>();
         foreach (Collider2D overlapCollider in overlapColliders)
         {
-            Debug.Log($"{gameObject.name} overlap with {overlapCollider.gameObject.name}");
             if (overlapCollider.TryGetComponent(out CardController cardController))
             {
                 if (ignoreBuilding)
