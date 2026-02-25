@@ -36,3 +36,4 @@ MonoBehaviour:
     - statData: {fileID: 11400000, guid: e828a091bd70cf142b1e44398cc44aab, type: 2}
       statValue: 1
   recipeTargetSprite: {fileID: 6418955286837810562, guid: 09ae6a55539667b48805f92293c94156, type: 3}
+  recipeSpecialTargetName: Pan with Water

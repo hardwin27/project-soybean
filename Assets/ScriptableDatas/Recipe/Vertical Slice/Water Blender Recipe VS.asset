@@ -36,3 +36,4 @@ MonoBehaviour:
     - statData: {fileID: 11400000, guid: e828a091bd70cf142b1e44398cc44aab, type: 2}
       statValue: 1
   recipeTargetSprite: {fileID: 5229556713592434100, guid: a43381c92c1522f40baef5af04b9d580, type: 3}
+  recipeSpecialTargetName: Blender with Water

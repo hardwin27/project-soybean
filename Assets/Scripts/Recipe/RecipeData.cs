@@ -40,6 +40,7 @@ public class RecipeData : ScriptableObject
     [SerializeField] private List<CardData> destroyedCards;
     [SerializeField] private List<RecipeToolReq> toolChanges = new List<RecipeToolReq>();
     [SerializeField] private Sprite recipeTargetSprite;
+    [SerializeField] private string recipeSpecialTargetName;
 
     public List<RecipeCardData> CardCombos { get => cardCombos; }
     public CardData TopCardReq { get => topCardReq; }
@@ -65,6 +66,7 @@ public class RecipeData : ScriptableObject
     public List<CardData> DestroyedCards { get => destroyedCards; }
     public List<RecipeToolReq> ToolChanges { get => toolChanges; }
     public Sprite RecipeTargetSprite { get => recipeTargetSprite; }
+    public string RecipeSpecialTargetName { get => recipeSpecialTargetName; }
 
     public int RecipeTargetCount => (GeneratedCards.Count > 0) ? GeneratedCards.Count : 1;
 }

@@ -46,7 +46,7 @@ public class RecipeEntryUi : MonoBehaviour
             targetTileUis[0].TIleIconImage.sprite = (recipeData.RecipeTargetSprite == null)?
                 recipeData.ToolChanges[0].ToolCard.CardSprite :
                 recipeData.RecipeTargetSprite;
-            targetTileUis[0].TileNameText.text = recipeData.ToolChanges[0].ToolCard.CardName;
+            targetTileUis[0].TileNameText.text = string.IsNullOrEmpty(recipeData.RecipeSpecialTargetName) ? recipeData.ToolChanges[0].ToolCard.CardName : recipeData.RecipeSpecialTargetName;
         }
         else
         {
