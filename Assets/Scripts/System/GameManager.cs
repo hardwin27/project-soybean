@@ -13,6 +13,7 @@ public class GameManager : Singleton<GameManager>
     private AudioManager audioManager;
     private GameTimeManager gameTimeManager;
     private ProgressionManager progressionManager;
+    private PopUpManager popUpManager;
 
     public Action OnDayStageStarted;
     public Action OnDayStageEnded;
@@ -22,6 +23,7 @@ public class GameManager : Singleton<GameManager>
         audioManager = AudioManager.Instance;
         gameTimeManager = GameTimeManager.Instance;
         progressionManager = ProgressionManager.Instance;
+        popUpManager = PopUpManager.Instance;
 
         gameTimeManager.OnDayEnded += HandleDayEnded;
     }
@@ -32,9 +34,12 @@ public class GameManager : Singleton<GameManager>
         /*questController.OnLastQuestCompleted += HandleLastQuestFinished;
         restartGameButton.onClick.AddListener(ReloadScene);*/
 
-        StartFirstDay();
-
         audioManager.PlayMusic("main_bgm");
+
+        popUpManager.OpenPopUp(
+            "Welcome!", 
+            "Check out the Quest Tab on the right to see your current objectives.", 
+        StartFirstDay);
     }
 
     private void StartFirstDay()

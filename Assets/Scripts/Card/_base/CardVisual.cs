@@ -61,6 +61,7 @@ public class CardVisual : MonoBehaviour
     private void Start()
     {
         ToggleVisibility(true);
+        UpdateHoverDisplay();
     }
 
     public void ToggleHoverUi(bool showHoverUi)
