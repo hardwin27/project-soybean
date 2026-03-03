@@ -62,6 +62,7 @@ public class CardVisual : MonoBehaviour
     {
         ToggleVisibility(true);
         UpdateHoverDisplay();
+        // hoverUiParent.SetActive(false);
     }
 
     public void ToggleHoverUi(bool showHoverUi)
@@ -126,6 +127,7 @@ public class CardVisual : MonoBehaviour
             hoverUiTexts[0].text = $"{cardController.CardData.CardName}";
 
             hoverUiTexts[1].gameObject.SetActive(true);
+            // hoverUiTexts[1].text = $"{TextUtility.ParseHexCodesToUnicode(cardController.CardData.CustomHoverMsg)}";
             hoverUiTexts[1].text = $"{cardController.CardData.CustomHoverMsg}";
         }
         else

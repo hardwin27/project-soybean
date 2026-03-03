@@ -20,7 +20,7 @@ MonoBehaviour:
   cardType: 3
   cardSprite: {fileID: 1938997569129587823, guid: 19785f1303f00814ea9f6d8364644bc0, type: 3}
   useCustomHover: 1
-  customHoverMsg: Best Nigari in town for 2 0x0001FA99 each!
+  customHoverMsg: Best Nigari in town for 2 \U0001FA99 each!
   cardsOnDeck:
   - cardData: {fileID: 11400000, guid: d60705397d1f77549b25e694f8bb6088, type: 2}
     cardOnDeckSprite: {fileID: 0}
