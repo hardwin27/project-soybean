@@ -69,7 +69,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2684607610596628514, guid: c2546f2a8b98e064ab1c4f16abaeb43b, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 2684607610596628514, guid: c2546f2a8b98e064ab1c4f16abaeb43b, type: 3}
       propertyPath: m_LocalScale.x
@@ -149,6 +149,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6467877307544940365, guid: c2546f2a8b98e064ab1c4f16abaeb43b, type: 3}
       propertyPath: isAllowedToStack
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7321150263022469873, guid: c2546f2a8b98e064ab1c4f16abaeb43b, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8990613802429113439, guid: c2546f2a8b98e064ab1c4f16abaeb43b, type: 3}
